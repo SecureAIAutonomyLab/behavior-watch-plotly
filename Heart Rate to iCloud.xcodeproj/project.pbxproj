@@ -1,0 +1,1157 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02710232C0466ED3946745FF /* Pods_Heart_Rate_to_iCloudTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CDD8C6C75C3BA8A7C27A0F0 /* Pods_Heart_Rate_to_iCloudTests.framework */; };
+		1BA6076642AC3268612B25DE /* Pods_Heart_Rate_to_iCloud_Heart_Rate_to_iCloudUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3D3A2BE6AEA5A04AE9DF84 /* Pods_Heart_Rate_to_iCloud_Heart_Rate_to_iCloudUITests.framework */; };
+		587E60ED9FBDBBA6B4D947D6 /* Pods_Heart_Rate_to_iCloud_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17C1574E7DBDAB89B9E3646 /* Pods_Heart_Rate_to_iCloud_WatchKit_Extension.framework */; };
+		E83C5CB672A9676BA2A287EF /* Pods_Heart_Rate_to_iCloud_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210A0BEACD5473430D0C286A /* Pods_Heart_Rate_to_iCloud_WatchKit_App.framework */; };
+		F107A2D025CF1A9100487410 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A2CF25CF1A9100487410 /* AppDelegate.swift */; };
+		F107A2D225CF1A9100487410 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A2D125CF1A9100487410 /* SceneDelegate.swift */; };
+		F107A2D425CF1A9100487410 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A2D325CF1A9100487410 /* ViewController.swift */; };
+		F107A2D725CF1A9100487410 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F107A2D525CF1A9100487410 /* Main.storyboard */; };
+		F107A2D925CF1A9200487410 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F107A2D825CF1A9200487410 /* Assets.xcassets */; };
+		F107A2DC25CF1A9200487410 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F107A2DA25CF1A9200487410 /* LaunchScreen.storyboard */; };
+		F107A2E725CF1A9200487410 /* Heart_Rate_to_iCloudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A2E625CF1A9200487410 /* Heart_Rate_to_iCloudTests.swift */; };
+		F107A2F225CF1A9200487410 /* Heart_Rate_to_iCloudUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A2F125CF1A9200487410 /* Heart_Rate_to_iCloudUITests.swift */; };
+		F107A2F725CF1A9300487410 /* Heart Rate to iCloud WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F107A2F625CF1A9300487410 /* Heart Rate to iCloud WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F107A2FD25CF1A9300487410 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F107A2FB25CF1A9300487410 /* Interface.storyboard */; };
+		F107A2FF25CF1A9300487410 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F107A2FE25CF1A9300487410 /* Assets.xcassets */; };
+		F107A30625CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F107A30525CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F107A30B25CF1A9400487410 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A30A25CF1A9400487410 /* InterfaceController.swift */; };
+		F107A30D25CF1A9400487410 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A30C25CF1A9400487410 /* ExtensionDelegate.swift */; };
+		F107A30F25CF1A9400487410 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A30E25CF1A9400487410 /* NotificationController.swift */; };
+		F107A31125CF1A9400487410 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A31025CF1A9400487410 /* ComplicationController.swift */; };
+		F107A31325CF1A9500487410 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F107A31225CF1A9500487410 /* Assets.xcassets */; };
+		F107A33625CF1C5D00487410 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F107A33525CF1C5D00487410 /* HealthKit.framework */; };
+		F107A33925CF1C6200487410 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F107A33825CF1C6200487410 /* HealthKit.framework */; };
+		F10BC24E25CF40A300869324 /* Session Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BC24D25CF40A300869324 /* Session Handler.swift */; };
+		F146A61225E0F372004EA129 /* AWS Data Management.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146A61125E0F372004EA129 /* AWS Data Management.swift */; };
+		F175B56625CF1F89006F140C /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2443525CF1E60004F8E02 /* HealthDataManager.swift */; };
+		F175B56D25CF2159006F140C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175B56C25CF2159006F140C /* Extensions.swift */; };
+		F1B2443C25CF1E63004F8E02 /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2443525CF1E60004F8E02 /* HealthDataManager.swift */; };
+		F7BEBA66BBCEBA39A1DA6A1B /* Pods_Heart_Rate_to_iCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE2D71AB382223347A40BBD /* Pods_Heart_Rate_to_iCloud.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F107A2E325CF1A9200487410 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F107A2C425CF1A9000487410 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F107A2CB25CF1A9100487410;
+			remoteInfo = "Heart Rate to iCloud";
+		};
+		F107A2EE25CF1A9200487410 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F107A2C425CF1A9000487410 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F107A2CB25CF1A9100487410;
+			remoteInfo = "Heart Rate to iCloud";
+		};
+		F107A2F825CF1A9300487410 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F107A2C425CF1A9000487410 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F107A2F525CF1A9300487410;
+			remoteInfo = "Heart Rate to iCloud WatchKit App";
+		};
+		F107A30725CF1A9400487410 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F107A2C425CF1A9000487410 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F107A30425CF1A9400487410;
+			remoteInfo = "Heart Rate to iCloud WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F107A31B25CF1A9500487410 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F107A30625CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A31F25CF1A9500487410 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F107A2F725CF1A9300487410 /* Heart Rate to iCloud WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0CDD8C6C75C3BA8A7C27A0F0 /* Pods_Heart_Rate_to_iCloudTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Heart_Rate_to_iCloudTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		210A0BEACD5473430D0C286A /* Pods_Heart_Rate_to_iCloud_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Heart_Rate_to_iCloud_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E4D2746DEA935E6A469F6C9 /* Pods-Heart Rate to iCloud WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloud WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloud WatchKit Extension/Pods-Heart Rate to iCloud WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		51ADD4CD61D78473B5845901 /* Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.debug.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		59BE5E8D1DF27D1E5315895E /* Pods-Heart Rate to iCloud WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloud WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloud WatchKit App/Pods-Heart Rate to iCloud WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		5C3D3A2BE6AEA5A04AE9DF84 /* Pods_Heart_Rate_to_iCloud_Heart_Rate_to_iCloudUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Heart_Rate_to_iCloud_Heart_Rate_to_iCloudUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DBA683683523BAD44ADE917 /* Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.release.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.release.xcconfig"; sourceTree = "<group>"; };
+		62E804928FA307E6D563A14C /* Pods-Heart Rate to iCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloud.release.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloud/Pods-Heart Rate to iCloud.release.xcconfig"; sourceTree = "<group>"; };
+		7C45876D4861BD6B6B46EAD4 /* Pods-Heart Rate to iCloudTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloudTests.debug.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloudTests/Pods-Heart Rate to iCloudTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7CE3A9C7BA103ED6B49835DA /* Pods-Heart Rate to iCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloud.debug.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloud/Pods-Heart Rate to iCloud.debug.xcconfig"; sourceTree = "<group>"; };
+		8FE2D71AB382223347A40BBD /* Pods_Heart_Rate_to_iCloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Heart_Rate_to_iCloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF567C48479075317F58F212 /* Pods-Heart Rate to iCloud WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloud WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloud WatchKit App/Pods-Heart Rate to iCloud WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		D17C1574E7DBDAB89B9E3646 /* Pods_Heart_Rate_to_iCloud_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Heart_Rate_to_iCloud_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8BF36DB8FAE361CC654DF20 /* Pods-Heart Rate to iCloudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloudTests.release.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloudTests/Pods-Heart Rate to iCloudTests.release.xcconfig"; sourceTree = "<group>"; };
+		EF2121EDF401B594013C945A /* Pods-Heart Rate to iCloud WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart Rate to iCloud WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Heart Rate to iCloud WatchKit Extension/Pods-Heart Rate to iCloud WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		F107A2CC25CF1A9100487410 /* Heart Rate to iCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart Rate to iCloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F107A2CF25CF1A9100487410 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F107A2D125CF1A9100487410 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F107A2D325CF1A9100487410 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F107A2D625CF1A9100487410 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F107A2D825CF1A9200487410 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F107A2DB25CF1A9200487410 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F107A2DD25CF1A9200487410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F107A2E225CF1A9200487410 /* Heart Rate to iCloudTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Heart Rate to iCloudTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F107A2E625CF1A9200487410 /* Heart_Rate_to_iCloudTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart_Rate_to_iCloudTests.swift; sourceTree = "<group>"; };
+		F107A2E825CF1A9200487410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F107A2ED25CF1A9200487410 /* Heart Rate to iCloudUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Heart Rate to iCloudUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F107A2F125CF1A9200487410 /* Heart_Rate_to_iCloudUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart_Rate_to_iCloudUITests.swift; sourceTree = "<group>"; };
+		F107A2F325CF1A9200487410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F107A2F625CF1A9300487410 /* Heart Rate to iCloud WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart Rate to iCloud WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F107A2FC25CF1A9300487410 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		F107A2FE25CF1A9300487410 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F107A30025CF1A9300487410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F107A30525CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Heart Rate to iCloud WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F107A30A25CF1A9400487410 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		F107A30C25CF1A9400487410 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		F107A30E25CF1A9400487410 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		F107A31025CF1A9400487410 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		F107A31225CF1A9500487410 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F107A31425CF1A9500487410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F107A31525CF1A9500487410 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		F107A33325CF1C5D00487410 /* Heart Rate to iCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Heart Rate to iCloud.entitlements"; sourceTree = "<group>"; };
+		F107A33525CF1C5D00487410 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		F107A33725CF1C6200487410 /* Heart Rate to iCloud WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Heart Rate to iCloud WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		F107A33825CF1C6200487410 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		F10BC24D25CF40A300869324 /* Session Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session Handler.swift"; sourceTree = "<group>"; };
+		F146A61125E0F372004EA129 /* AWS Data Management.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AWS Data Management.swift"; sourceTree = "<group>"; };
+		F175B56C25CF2159006F140C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F1B2443525CF1E60004F8E02 /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		497003C0FF2D91616CEB5674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E83C5CB672A9676BA2A287EF /* Pods_Heart_Rate_to_iCloud_WatchKit_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A2C925CF1A9100487410 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F107A33625CF1C5D00487410 /* HealthKit.framework in Frameworks */,
+				F7BEBA66BBCEBA39A1DA6A1B /* Pods_Heart_Rate_to_iCloud.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A2DF25CF1A9200487410 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02710232C0466ED3946745FF /* Pods_Heart_Rate_to_iCloudTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A2EA25CF1A9200487410 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BA6076642AC3268612B25DE /* Pods_Heart_Rate_to_iCloud_Heart_Rate_to_iCloudUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A30225CF1A9400487410 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F107A33925CF1C6200487410 /* HealthKit.framework in Frameworks */,
+				587E60ED9FBDBBA6B4D947D6 /* Pods_Heart_Rate_to_iCloud_WatchKit_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1524BD3E469111A279A42A2C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7CE3A9C7BA103ED6B49835DA /* Pods-Heart Rate to iCloud.debug.xcconfig */,
+				62E804928FA307E6D563A14C /* Pods-Heart Rate to iCloud.release.xcconfig */,
+				59BE5E8D1DF27D1E5315895E /* Pods-Heart Rate to iCloud WatchKit App.debug.xcconfig */,
+				CF567C48479075317F58F212 /* Pods-Heart Rate to iCloud WatchKit App.release.xcconfig */,
+				EF2121EDF401B594013C945A /* Pods-Heart Rate to iCloud WatchKit Extension.debug.xcconfig */,
+				2E4D2746DEA935E6A469F6C9 /* Pods-Heart Rate to iCloud WatchKit Extension.release.xcconfig */,
+				51ADD4CD61D78473B5845901 /* Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.debug.xcconfig */,
+				5DBA683683523BAD44ADE917 /* Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.release.xcconfig */,
+				7C45876D4861BD6B6B46EAD4 /* Pods-Heart Rate to iCloudTests.debug.xcconfig */,
+				D8BF36DB8FAE361CC654DF20 /* Pods-Heart Rate to iCloudTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F107A2C325CF1A9000487410 = {
+			isa = PBXGroup;
+			children = (
+				F107A2CE25CF1A9100487410 /* Heart Rate to iCloud */,
+				F107A2E525CF1A9200487410 /* Heart Rate to iCloudTests */,
+				F107A2F025CF1A9200487410 /* Heart Rate to iCloudUITests */,
+				F107A2FA25CF1A9300487410 /* Heart Rate to iCloud WatchKit App */,
+				F107A30925CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension */,
+				F107A2CD25CF1A9100487410 /* Products */,
+				F107A33425CF1C5D00487410 /* Frameworks */,
+				1524BD3E469111A279A42A2C /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		F107A2CD25CF1A9100487410 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F107A2CC25CF1A9100487410 /* Heart Rate to iCloud.app */,
+				F107A2E225CF1A9200487410 /* Heart Rate to iCloudTests.xctest */,
+				F107A2ED25CF1A9200487410 /* Heart Rate to iCloudUITests.xctest */,
+				F107A2F625CF1A9300487410 /* Heart Rate to iCloud WatchKit App.app */,
+				F107A30525CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F107A2CE25CF1A9100487410 /* Heart Rate to iCloud */ = {
+			isa = PBXGroup;
+			children = (
+				F107A2CF25CF1A9100487410 /* AppDelegate.swift */,
+				F107A2D125CF1A9100487410 /* SceneDelegate.swift */,
+				F107A33325CF1C5D00487410 /* Heart Rate to iCloud.entitlements */,
+				F107A2D325CF1A9100487410 /* ViewController.swift */,
+				F146A61125E0F372004EA129 /* AWS Data Management.swift */,
+				F10BC24D25CF40A300869324 /* Session Handler.swift */,
+				F1B2443525CF1E60004F8E02 /* HealthDataManager.swift */,
+				F175B56C25CF2159006F140C /* Extensions.swift */,
+				F107A2D525CF1A9100487410 /* Main.storyboard */,
+				F107A2D825CF1A9200487410 /* Assets.xcassets */,
+				F107A2DA25CF1A9200487410 /* LaunchScreen.storyboard */,
+				F107A2DD25CF1A9200487410 /* Info.plist */,
+			);
+			path = "Heart Rate to iCloud";
+			sourceTree = "<group>";
+		};
+		F107A2E525CF1A9200487410 /* Heart Rate to iCloudTests */ = {
+			isa = PBXGroup;
+			children = (
+				F107A2E625CF1A9200487410 /* Heart_Rate_to_iCloudTests.swift */,
+				F107A2E825CF1A9200487410 /* Info.plist */,
+			);
+			path = "Heart Rate to iCloudTests";
+			sourceTree = "<group>";
+		};
+		F107A2F025CF1A9200487410 /* Heart Rate to iCloudUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F107A2F125CF1A9200487410 /* Heart_Rate_to_iCloudUITests.swift */,
+				F107A2F325CF1A9200487410 /* Info.plist */,
+			);
+			path = "Heart Rate to iCloudUITests";
+			sourceTree = "<group>";
+		};
+		F107A2FA25CF1A9300487410 /* Heart Rate to iCloud WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				F107A2FB25CF1A9300487410 /* Interface.storyboard */,
+				F107A2FE25CF1A9300487410 /* Assets.xcassets */,
+				F107A30025CF1A9300487410 /* Info.plist */,
+			);
+			path = "Heart Rate to iCloud WatchKit App";
+			sourceTree = "<group>";
+		};
+		F107A30925CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F107A33725CF1C6200487410 /* Heart Rate to iCloud WatchKit Extension.entitlements */,
+				F107A30A25CF1A9400487410 /* InterfaceController.swift */,
+				F107A30C25CF1A9400487410 /* ExtensionDelegate.swift */,
+				F107A30E25CF1A9400487410 /* NotificationController.swift */,
+				F107A31025CF1A9400487410 /* ComplicationController.swift */,
+				F107A31225CF1A9500487410 /* Assets.xcassets */,
+				F107A31425CF1A9500487410 /* Info.plist */,
+				F107A31525CF1A9500487410 /* PushNotificationPayload.apns */,
+			);
+			path = "Heart Rate to iCloud WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		F107A33425CF1C5D00487410 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F107A33825CF1C6200487410 /* HealthKit.framework */,
+				F107A33525CF1C5D00487410 /* HealthKit.framework */,
+				8FE2D71AB382223347A40BBD /* Pods_Heart_Rate_to_iCloud.framework */,
+				210A0BEACD5473430D0C286A /* Pods_Heart_Rate_to_iCloud_WatchKit_App.framework */,
+				D17C1574E7DBDAB89B9E3646 /* Pods_Heart_Rate_to_iCloud_WatchKit_Extension.framework */,
+				5C3D3A2BE6AEA5A04AE9DF84 /* Pods_Heart_Rate_to_iCloud_Heart_Rate_to_iCloudUITests.framework */,
+				0CDD8C6C75C3BA8A7C27A0F0 /* Pods_Heart_Rate_to_iCloudTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F107A2CB25CF1A9100487410 /* Heart Rate to iCloud */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F107A32025CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloud" */;
+			buildPhases = (
+				71807AAFFB13B3A4CE6F7A95 /* [CP] Check Pods Manifest.lock */,
+				F107A2C825CF1A9100487410 /* Sources */,
+				F107A2C925CF1A9100487410 /* Frameworks */,
+				F107A2CA25CF1A9100487410 /* Resources */,
+				F107A31F25CF1A9500487410 /* Embed Watch Content */,
+				F68CF776B56800B167FD1307 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F107A2F925CF1A9300487410 /* PBXTargetDependency */,
+			);
+			name = "Heart Rate to iCloud";
+			productName = "Heart Rate to iCloud";
+			productReference = F107A2CC25CF1A9100487410 /* Heart Rate to iCloud.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F107A2E125CF1A9200487410 /* Heart Rate to iCloudTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F107A32325CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloudTests" */;
+			buildPhases = (
+				89675DE95062F6BE72AA79AF /* [CP] Check Pods Manifest.lock */,
+				F107A2DE25CF1A9200487410 /* Sources */,
+				F107A2DF25CF1A9200487410 /* Frameworks */,
+				F107A2E025CF1A9200487410 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F107A2E425CF1A9200487410 /* PBXTargetDependency */,
+			);
+			name = "Heart Rate to iCloudTests";
+			productName = "Heart Rate to iCloudTests";
+			productReference = F107A2E225CF1A9200487410 /* Heart Rate to iCloudTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F107A2EC25CF1A9200487410 /* Heart Rate to iCloudUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F107A32625CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloudUITests" */;
+			buildPhases = (
+				38E8CCD08104FC83515A6B0C /* [CP] Check Pods Manifest.lock */,
+				F107A2E925CF1A9200487410 /* Sources */,
+				F107A2EA25CF1A9200487410 /* Frameworks */,
+				F107A2EB25CF1A9200487410 /* Resources */,
+				984ABC43924DABC4D6A77F33 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F107A2EF25CF1A9200487410 /* PBXTargetDependency */,
+			);
+			name = "Heart Rate to iCloudUITests";
+			productName = "Heart Rate to iCloudUITests";
+			productReference = F107A2ED25CF1A9200487410 /* Heart Rate to iCloudUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F107A2F525CF1A9300487410 /* Heart Rate to iCloud WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F107A31C25CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloud WatchKit App" */;
+			buildPhases = (
+				15E7ADE86D2052A1D749EB99 /* [CP] Check Pods Manifest.lock */,
+				F107A2F425CF1A9300487410 /* Resources */,
+				F107A31B25CF1A9500487410 /* Embed App Extensions */,
+				497003C0FF2D91616CEB5674 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F107A30825CF1A9400487410 /* PBXTargetDependency */,
+			);
+			name = "Heart Rate to iCloud WatchKit App";
+			productName = "Heart Rate to iCloud WatchKit App";
+			productReference = F107A2F625CF1A9300487410 /* Heart Rate to iCloud WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		F107A30425CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F107A31825CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloud WatchKit Extension" */;
+			buildPhases = (
+				FCF8F56CEFC87222AC807D4F /* [CP] Check Pods Manifest.lock */,
+				F107A30125CF1A9400487410 /* Sources */,
+				F107A30225CF1A9400487410 /* Frameworks */,
+				F107A30325CF1A9400487410 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Heart Rate to iCloud WatchKit Extension";
+			productName = "Heart Rate to iCloud WatchKit Extension";
+			productReference = F107A30525CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F107A2C425CF1A9000487410 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					F107A2CB25CF1A9100487410 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					F107A2E125CF1A9200487410 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = F107A2CB25CF1A9100487410;
+					};
+					F107A2EC25CF1A9200487410 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = F107A2CB25CF1A9100487410;
+					};
+					F107A2F525CF1A9300487410 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					F107A30425CF1A9400487410 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+				};
+			};
+			buildConfigurationList = F107A2C725CF1A9000487410 /* Build configuration list for PBXProject "Heart Rate to iCloud" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F107A2C325CF1A9000487410;
+			productRefGroup = F107A2CD25CF1A9100487410 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F107A2CB25CF1A9100487410 /* Heart Rate to iCloud */,
+				F107A2E125CF1A9200487410 /* Heart Rate to iCloudTests */,
+				F107A2EC25CF1A9200487410 /* Heart Rate to iCloudUITests */,
+				F107A2F525CF1A9300487410 /* Heart Rate to iCloud WatchKit App */,
+				F107A30425CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F107A2CA25CF1A9100487410 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F107A2DC25CF1A9200487410 /* LaunchScreen.storyboard in Resources */,
+				F107A2D925CF1A9200487410 /* Assets.xcassets in Resources */,
+				F107A2D725CF1A9100487410 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A2E025CF1A9200487410 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A2EB25CF1A9200487410 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A2F425CF1A9300487410 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F107A2FF25CF1A9300487410 /* Assets.xcassets in Resources */,
+				F107A2FD25CF1A9300487410 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A30325CF1A9400487410 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F107A31325CF1A9500487410 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15E7ADE86D2052A1D749EB99 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Heart Rate to iCloud WatchKit App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		38E8CCD08104FC83515A6B0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71807AAFFB13B3A4CE6F7A95 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Heart Rate to iCloud-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89675DE95062F6BE72AA79AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Heart Rate to iCloudTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		984ABC43924DABC4D6A77F33 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F68CF776B56800B167FD1307 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud/Pods-Heart Rate to iCloud-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud/Pods-Heart Rate to iCloud-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud/Pods-Heart Rate to iCloud-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCF8F56CEFC87222AC807D4F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Heart Rate to iCloud WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F107A2C825CF1A9100487410 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F10BC24E25CF40A300869324 /* Session Handler.swift in Sources */,
+				F175B56D25CF2159006F140C /* Extensions.swift in Sources */,
+				F107A2D425CF1A9100487410 /* ViewController.swift in Sources */,
+				F1B2443C25CF1E63004F8E02 /* HealthDataManager.swift in Sources */,
+				F107A2D025CF1A9100487410 /* AppDelegate.swift in Sources */,
+				F107A2D225CF1A9100487410 /* SceneDelegate.swift in Sources */,
+				F146A61225E0F372004EA129 /* AWS Data Management.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A2DE25CF1A9200487410 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F107A2E725CF1A9200487410 /* Heart_Rate_to_iCloudTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A2E925CF1A9200487410 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F107A2F225CF1A9200487410 /* Heart_Rate_to_iCloudUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F107A30125CF1A9400487410 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F107A30F25CF1A9400487410 /* NotificationController.swift in Sources */,
+				F107A31125CF1A9400487410 /* ComplicationController.swift in Sources */,
+				F175B56625CF1F89006F140C /* HealthDataManager.swift in Sources */,
+				F107A30D25CF1A9400487410 /* ExtensionDelegate.swift in Sources */,
+				F107A30B25CF1A9400487410 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F107A2E425CF1A9200487410 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F107A2CB25CF1A9100487410 /* Heart Rate to iCloud */;
+			targetProxy = F107A2E325CF1A9200487410 /* PBXContainerItemProxy */;
+		};
+		F107A2EF25CF1A9200487410 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F107A2CB25CF1A9100487410 /* Heart Rate to iCloud */;
+			targetProxy = F107A2EE25CF1A9200487410 /* PBXContainerItemProxy */;
+		};
+		F107A2F925CF1A9300487410 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F107A2F525CF1A9300487410 /* Heart Rate to iCloud WatchKit App */;
+			targetProxy = F107A2F825CF1A9300487410 /* PBXContainerItemProxy */;
+		};
+		F107A30825CF1A9400487410 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F107A30425CF1A9400487410 /* Heart Rate to iCloud WatchKit Extension */;
+			targetProxy = F107A30725CF1A9400487410 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F107A2D525CF1A9100487410 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F107A2D625CF1A9100487410 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F107A2DA25CF1A9200487410 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F107A2DB25CF1A9200487410 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F107A2FB25CF1A9300487410 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F107A2FC25CF1A9300487410 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F107A31625CF1A9500487410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F107A31725CF1A9500487410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F107A31925CF1A9500487410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF2121EDF401B594013C945A /* Pods-Heart Rate to iCloud WatchKit Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Heart Rate to iCloud WatchKit Extension/Heart Rate to iCloud WatchKit Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloud.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		F107A31A25CF1A9500487410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E4D2746DEA935E6A469F6C9 /* Pods-Heart Rate to iCloud WatchKit Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Heart Rate to iCloud WatchKit Extension/Heart Rate to iCloud WatchKit Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloud.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
+		F107A31D25CF1A9500487410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59BE5E8D1DF27D1E5315895E /* Pods-Heart Rate to iCloud WatchKit App.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				IBSC_MODULE = Heart_Rate_to_iCloud_WatchKit_Extension;
+				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloud.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		F107A31E25CF1A9500487410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF567C48479075317F58F212 /* Pods-Heart Rate to iCloud WatchKit App.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				IBSC_MODULE = Heart_Rate_to_iCloud_WatchKit_Extension;
+				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloud.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
+		F107A32125CF1A9500487410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CE3A9C7BA103ED6B49835DA /* Pods-Heart Rate to iCloud.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Heart Rate to iCloud/Heart Rate to iCloud.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				INFOPLIST_FILE = "Heart Rate to iCloud/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloud";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F107A32225CF1A9500487410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62E804928FA307E6D563A14C /* Pods-Heart Rate to iCloud.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Heart Rate to iCloud/Heart Rate to iCloud.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				INFOPLIST_FILE = "Heart Rate to iCloud/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloud";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F107A32425CF1A9500487410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C45876D4861BD6B6B46EAD4 /* Pods-Heart Rate to iCloudTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				INFOPLIST_FILE = "Heart Rate to iCloudTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloudTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Heart Rate to iCloud.app/Heart Rate to iCloud";
+			};
+			name = Debug;
+		};
+		F107A32525CF1A9500487410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8BF36DB8FAE361CC654DF20 /* Pods-Heart Rate to iCloudTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				INFOPLIST_FILE = "Heart Rate to iCloudTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloudTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Heart Rate to iCloud.app/Heart Rate to iCloud";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F107A32725CF1A9500487410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51ADD4CD61D78473B5845901 /* Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				INFOPLIST_FILE = "Heart Rate to iCloudUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloudUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Heart Rate to iCloud";
+			};
+			name = Debug;
+		};
+		F107A32825CF1A9500487410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DBA683683523BAD44ADE917 /* Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				INFOPLIST_FILE = "Heart Rate to iCloudUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Heart-Rate-to-iCloudUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Heart Rate to iCloud";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F107A2C725CF1A9000487410 /* Build configuration list for PBXProject "Heart Rate to iCloud" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F107A31625CF1A9500487410 /* Debug */,
+				F107A31725CF1A9500487410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F107A31825CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloud WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F107A31925CF1A9500487410 /* Debug */,
+				F107A31A25CF1A9500487410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F107A31C25CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloud WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F107A31D25CF1A9500487410 /* Debug */,
+				F107A31E25CF1A9500487410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F107A32025CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloud" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F107A32125CF1A9500487410 /* Debug */,
+				F107A32225CF1A9500487410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F107A32325CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloudTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F107A32425CF1A9500487410 /* Debug */,
+				F107A32525CF1A9500487410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F107A32625CF1A9500487410 /* Build configuration list for PBXNativeTarget "Heart Rate to iCloudUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F107A32725CF1A9500487410 /* Debug */,
+				F107A32825CF1A9500487410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F107A2C425CF1A9000487410 /* Project object */;
+}

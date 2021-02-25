@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17701" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
+    <device id="watch44"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label width="136" height="73" alignment="left" text="Name/ID" textAlignment="center" numberOfLines="3" id="2kI-5t-NOh"/>
+                        <button width="136" height="32" alignment="left" title="Monitor ∞sec" id="Rbr-9f-xXa">
+                            <connections>
+                                <action selector="didTapStartStopWorkout" destination="AgC-eL-Hgc" id="HnN-46-QuJ"/>
+                            </connections>
+                        </button>
+                        <label width="136" alignment="left" text="Timer Length" id="NJY-4N-ssX"/>
+                        <label alignment="left" text="HeartRate" id="CFQ-5f-wUS"/>
+                        <label width="53" height="22" alignment="left" text="--" textAlignment="left" id="1I9-6a-tZC"/>
+                        <label alignment="left" text="Ox Saturation" id="a2n-ky-MIJ"/>
+                        <label width="36" height="21" alignment="left" text="--" textAlignment="left" id="yDo-t0-mxs"/>
+                        <label width="105" alignment="left" text="ECG Data" id="Y05-1D-TVm"/>
+                        <label alignment="left" text="--" id="tpY-N1-ENZ"/>
+                        <label alignment="left" text="Noise Expos." id="hpb-9t-BFW"/>
+                        <label alignment="left" text="--" id="4cA-zw-Vmk"/>
+                        <button width="106" height="30" alignment="left" title="30sec" id="5Af-G3-4Gt">
+                            <connections>
+                                <action selector="thirtySeconds" destination="AgC-eL-Hgc" id="g9h-UF-GJE"/>
+                            </connections>
+                        </button>
+                        <button width="112" height="30" alignment="left" title="3min" id="oaG-ax-1jE">
+                            <connections>
+                                <action selector="threeMinutes" destination="AgC-eL-Hgc" id="Tda-lN-Z91"/>
+                            </connections>
+                        </button>
+                        <button width="118" height="30" alignment="left" title="30min" id="Vxc-kk-UP9">
+                            <connections>
+                                <action selector="thirtyMinutes" destination="AgC-eL-Hgc" id="yLb-lo-YFu"/>
+                            </connections>
+                        </button>
+                        <button width="124" height="30" alignment="left" title="1hr" id="39f-pT-crk">
+                            <connections>
+                                <action selector="oneHour" destination="AgC-eL-Hgc" id="J0M-hH-dOr"/>
+                            </connections>
+                        </button>
+                        <button width="130" height="30" alignment="left" title="10hr" id="yqT-zb-8hs">
+                            <connections>
+                                <action selector="tenHours" destination="AgC-eL-Hgc" id="YCO-a0-2Zf"/>
+                            </connections>
+                        </button>
+                        <button width="136" height="30" alignment="left" title="1day" id="L8w-v8-HMZ">
+                            <connections>
+                                <action selector="oneDay" destination="AgC-eL-Hgc" id="aNC-qQ-GjU"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="IDNameLabel" destination="2kI-5t-NOh" id="1dq-Yy-P1D"/>
+                        <outlet property="SPO2Label" destination="yDo-t0-mxs" id="0Lf-2r-XOR"/>
+                        <outlet property="ecgLabel" destination="tpY-N1-ENZ" id="7mh-Wk-1o6"/>
+                        <outlet property="heartRate" destination="1I9-6a-tZC" id="cnD-f0-XYK"/>
+                        <outlet property="noiseExposLabel" destination="4cA-zw-Vmk" id="K7o-EI-G2k"/>
+                        <outlet property="timerLength" destination="NJY-4N-ssX" id="T4F-yL-Eva"/>
+                        <outlet property="workoutButton" destination="Rbr-9f-xXa" id="bBg-TQ-vpe"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="219.52173913043478" y="341.51785714285717"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="732"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+    </scenes>
+</document>
