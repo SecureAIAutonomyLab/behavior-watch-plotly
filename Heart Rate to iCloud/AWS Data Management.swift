@@ -7,6 +7,7 @@
 
 import Foundation
 import AWSIoT
+import WatchConnectivity
 
 class AWSManagement {
     static let awsManagement = AWSManagement()

@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform :ios, '14.0'
 
 target 'Heart Rate to iCloud' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -7,7 +7,13 @@ target 'Heart Rate to iCloud' do
 
   # Pods for Heart Rate to iCloud
 	pod 'AWSIoT', '~> 2.23'
-
+	pod 'Amplify'
+ 	pod 'AmplifyPlugins/AWSAPIPlugin'
+	pod 'AmplifyPlugins/AWSDataStorePlugin'
+	pod 'Amplify/Tools'
+ 	pod 'AmplifyPlugins/AWSS3StoragePlugin'
+  pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
+	pod 'Charts'
 	
   target 'Heart Rate to iCloudTests' do
     inherit! :search_paths

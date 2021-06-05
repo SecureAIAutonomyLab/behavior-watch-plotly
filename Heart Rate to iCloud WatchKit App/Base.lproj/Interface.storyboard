@@ -1,31 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17701" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="18122" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p8U-za-EzW" pageOrientation="vertical">
     <device id="watch44"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="18022"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Sign In Interface Controller-->
+        <scene sceneID="9Y1-oJ-fXP">
+            <objects>
+                <controller contentMode="scaleAspectFill" animationDuration="1" fullScreen="YES" id="p8U-za-EzW" customClass="SignInInterfaceController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label width="136" height="87" alignment="center" text="Welcome to Cloud Vitals" textAlignment="center" numberOfLines="3" id="tl6-rD-W4b">
+                            <fontDescription key="font" type="system" pointSize="22"/>
+                        </label>
+                        <separator alignment="left" id="azH-lW-cca">
+                            <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </separator>
+                        <label height="67" alignment="center" text="Sign in on your iPhone to utilize app services" textAlignment="center" numberOfLines="3" id="xbH-PM-fEF">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <button width="1" alignment="left" title="--" id="aJ4-1M-q9E">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="AgC-eL-Hgc" kind="push" identifier="segue1" id="UTW-aS-qrQ"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="signedInButton" destination="aJ4-1M-q9E" id="qV5-w9-2Xx"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-49.521739130434781" y="314.95535714285717"/>
+        </scene>
+        <!--Interface Storyboard-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target">
+                <controller identifier="Interface Storyboard" hidesWhenLoading="NO" fullScreen="YES" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label width="136" height="73" alignment="left" text="Name/ID" textAlignment="center" numberOfLines="3" id="2kI-5t-NOh"/>
-                        <button width="136" height="32" alignment="left" title="Monitor ∞sec" id="Rbr-9f-xXa">
+                        <label width="136" height="68" alignment="center" text="Name/ID" textAlignment="center" numberOfLines="3" id="2kI-5t-NOh"/>
+                        <separator alignment="left" id="dYO-tG-Ahm">
+                            <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </separator>
+                        <timer width="101" alignment="left" id="DgE-eT-n6e">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </timer>
+                        <button width="136" height="32" alignment="center" title="Monitor ∞sec" id="Rbr-9f-xXa">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
                             <connections>
                                 <action selector="didTapStartStopWorkout" destination="AgC-eL-Hgc" id="HnN-46-QuJ"/>
                             </connections>
                         </button>
+                        <label alignment="center" text="HeartRate" id="CFQ-5f-wUS"/>
+                        <label width="136" height="22" alignment="center" text="--" textAlignment="center" id="1I9-6a-tZC">
+                            <color key="textColor" red="0.36355019703838876" green="0.87451453023994297" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="center" text="Ox Saturation" textAlignment="center" id="a2n-ky-MIJ"/>
+                        <label width="115" height="21" alignment="center" text="--" textAlignment="center" id="yDo-t0-mxs">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="center" text="Noise Expos." id="hpb-9t-BFW"/>
+                        <label width="127" alignment="center" text="--" textAlignment="center" id="4cA-zw-Vmk">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="center" text="Time Slept" id="xJT-ph-Y2t"/>
+                        <label width="136" alignment="center" text="--" textAlignment="center" id="wch-qg-OS1">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="center" text="Longitude" id="BTF-A5-41S"/>
+                        <label width="136" alignment="center" text="--" textAlignment="center" id="ZhP-jO-p0r">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="center" text="Latitude" id="052-BN-A4Z"/>
+                        <label width="136" alignment="center" text="--" textAlignment="center" id="OEb-cr-oeT">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <imageView width="90" height="77" alignment="center" image="Image-2" id="cKN-QX-9gm"/>
+                        <label alignment="center" text="Accelerations" id="lps-PP-oEJ"/>
+                        <label alignment="center" text="X" id="1lC-0U-f7q"/>
+                        <label width="136" height="22" alignment="center" text="--" textAlignment="center" id="jmP-bg-W1d">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="center" text="Y" textAlignment="center" id="aLz-vC-NGx"/>
+                        <label width="136" height="22" alignment="center" text="--" textAlignment="center" id="6U9-v9-wdM">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="center" text="Z" id="4d8-gk-z9M"/>
+                        <label width="136" height="22" alignment="center" text="--" textAlignment="center" id="ELT-ZI-Yle">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="center" text="Resultant" id="oEw-jv-IT1"/>
+                        <label width="136" height="22" alignment="center" text="--" textAlignment="center" id="jI0-mX-1sR">
+                            <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
                         <label width="136" alignment="left" text="Timer Length" id="NJY-4N-ssX"/>
-                        <label alignment="left" text="HeartRate" id="CFQ-5f-wUS"/>
-                        <label width="53" height="22" alignment="left" text="--" textAlignment="left" id="1I9-6a-tZC"/>
-                        <label alignment="left" text="Ox Saturation" id="a2n-ky-MIJ"/>
-                        <label width="36" height="21" alignment="left" text="--" textAlignment="left" id="yDo-t0-mxs"/>
-                        <label width="105" alignment="left" text="ECG Data" id="Y05-1D-TVm"/>
-                        <label alignment="left" text="--" id="tpY-N1-ENZ"/>
-                        <label alignment="left" text="Noise Expos." id="hpb-9t-BFW"/>
-                        <label alignment="left" text="--" id="4cA-zw-Vmk"/>
                         <button width="106" height="30" alignment="left" title="30sec" id="5Af-G3-4Gt">
                             <connections>
                                 <action selector="thirtySeconds" destination="AgC-eL-Hgc" id="g9h-UF-GJE"/>
@@ -56,19 +129,38 @@
                                 <action selector="oneDay" destination="AgC-eL-Hgc" id="aNC-qQ-GjU"/>
                             </connections>
                         </button>
+                        <separator alignment="left" id="YC7-Qz-acn">
+                            <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </separator>
+                        <button width="1" alignment="left" hidden="YES" title="Accelerometer" id="aOA-ea-vD5">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                            <connections>
+                                <segue destination="KVd-xu-ujr" kind="push" id="kGz-QS-Axf"/>
+                            </connections>
+                        </button>
                     </items>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="IDNameLabel" destination="2kI-5t-NOh" id="1dq-Yy-P1D"/>
                         <outlet property="SPO2Label" destination="yDo-t0-mxs" id="0Lf-2r-XOR"/>
-                        <outlet property="ecgLabel" destination="tpY-N1-ENZ" id="7mh-Wk-1o6"/>
                         <outlet property="heartRate" destination="1I9-6a-tZC" id="cnD-f0-XYK"/>
+                        <outlet property="latitudeLabel" destination="OEb-cr-oeT" id="9WS-Fr-jAi"/>
+                        <outlet property="longitudeLabel" destination="ZhP-jO-p0r" id="Syk-tM-4mE"/>
+                        <outlet property="monitoringTimer" destination="DgE-eT-n6e" id="9yn-e4-GSw"/>
                         <outlet property="noiseExposLabel" destination="4cA-zw-Vmk" id="K7o-EI-G2k"/>
+                        <outlet property="resultantLabel" destination="jI0-mX-1sR" id="7SC-M7-OC9"/>
+                        <outlet property="sleepLabel" destination="wch-qg-OS1" id="y1d-8Y-hZn"/>
                         <outlet property="timerLength" destination="NJY-4N-ssX" id="T4F-yL-Eva"/>
                         <outlet property="workoutButton" destination="Rbr-9f-xXa" id="bBg-TQ-vpe"/>
+                        <outlet property="xLabel" destination="jmP-bg-W1d" id="djT-TG-AnG"/>
+                        <outlet property="yLabel" destination="6U9-v9-wdM" id="2pp-jv-5OI"/>
+                        <outlet property="zLabel" destination="ELT-ZI-Yle" id="3XL-Fa-rJT"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="219.52173913043478" y="341.51785714285717"/>
+            <point key="canvasLocation" x="219.52173913043478" y="300.15625"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -85,21 +177,58 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="732"/>
+            <point key="canvasLocation" x="220" y="842"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
                 <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="220" y="1078"/>
+        </scene>
+        <!--Accelerometer Interface Controller-->
+        <scene sceneID="Oeo-N4-T98">
+            <objects>
+                <controller id="KVd-xu-ujr" customClass="AccelerometerInterfaceController" customModule="Heart_Rate_to_iCloud_WatchKit_Extension">
+                    <items>
+                        <dateLabel alignment="left" format="zMMMM/d/yy HH:mm:ss" id="vBm-vM-zim">
+                            <date key="previewedDate" timeIntervalSinceReferenceDate="437256540">
+                                <!--2014-11-09 20:09:00 +0000-->
+                            </date>
+                        </dateLabel>
+                        <label width="136" height="68" alignment="center" text="Name/ID" textAlignment="center" numberOfLines="3" id="Lhb-4A-XYc">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
+                        <separator alignment="left" id="o8y-df-Ewf">
+                            <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </separator>
+                        <button width="136" height="37" alignment="center" title="Monitor Accleration" id="XnP-0o-qIU">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                            <connections>
+                                <action selector="monitorAcclerations" destination="KVd-xu-ujr" id="hbh-vL-VkT"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="accelerationButton" destination="XnP-0o-qIU" id="0ho-HD-lXI"/>
+                        <outlet property="currentTimeStamp" destination="vBm-vM-zim" id="YKK-Nn-A9r"/>
+                        <outlet property="userNameLabel" destination="Lhb-4A-XYc" id="vDP-SR-ICZ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="467.86956521739125" y="116.49553571428572"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
                 <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="468" y="345"/>
+            <point key="canvasLocation" x="468" y="732"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image-2" width="155" height="133.5"/>
+    </resources>
 </document>

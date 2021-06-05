@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "cloudvitals5a0f5467": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "storage": {
+    "VitalsResource": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}

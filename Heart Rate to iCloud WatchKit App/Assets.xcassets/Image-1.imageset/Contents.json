@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "kissclipart-blood-oxygen-icon-clipart-oxygen-saturation-comput-18a8fe2dec35c159.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "kissclipart-blood-oxygen-icon-clipart-oxygen-saturation-comput-18a8fe2dec35c159@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "kissclipart-blood-oxygen-icon-clipart-oxygen-saturation-comput-18a8fe2dec35c159@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

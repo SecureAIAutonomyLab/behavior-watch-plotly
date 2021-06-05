@@ -1,0 +1,20 @@
+{
+  "cvenv": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cloudvitals-cvenv-130429-authRole",
+      "UnauthRoleArn": "arn:aws:iam::958172591806:role/amplify-cloudvitals-cvenv-130429-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::958172591806:role/amplify-cloudvitals-cvenv-130429-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-cloudvitals-cvenv-130429-deployment",
+      "UnauthRoleName": "amplify-cloudvitals-cvenv-130429-unauthRole",
+      "StackName": "amplify-cloudvitals-cvenv-130429",
+      "StackId": "arn:aws:cloudformation:us-east-2:958172591806:stack/amplify-cloudvitals-cvenv-130429/b89b3d10-89a6-11eb-9d67-06d47d127426",
+      "AmplifyAppId": "d3amu68odkvk6g"
+    },
+    "categories": {
+      "auth": {
+        "cloudvitals5a0f5467": {}
+      }
+    }
+  }
+}

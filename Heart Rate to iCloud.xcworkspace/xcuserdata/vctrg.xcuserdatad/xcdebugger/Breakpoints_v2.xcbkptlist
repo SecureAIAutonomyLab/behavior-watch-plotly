@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D079A4AC-19B1-4BF5-BC62-EA847F5B69B1"
-            shouldBeEnabled = "No"
+            uuid = "2E4C06BE-10B1-417A-971D-8AFEB19B7EDA"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Heart Rate to iCloud/ViewController.swift"
+            filePath = "Heart Rate to iCloud WatchKit Extension/SignInInterfaceController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "configureWatchKitSession()"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "signInPushed()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DAB3B624-9501-458E-A12F-28DB3960C740"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Heart Rate to iCloud/AccelerometerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "returnFinalTimeStamp()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

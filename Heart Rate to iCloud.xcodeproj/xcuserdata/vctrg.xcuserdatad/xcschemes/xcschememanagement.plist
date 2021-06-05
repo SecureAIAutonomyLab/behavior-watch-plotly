@@ -4,25 +4,68 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Heart Rate to iCloud WatchKit App (Complication).xcscheme_^#shared#^_</key>
+		<key>Cloud Vitals WatchKit App (Complication).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>Heart Rate to iCloud WatchKit App (Notification).xcscheme_^#shared#^_</key>
+		<key>Cloud Vitals WatchKit App (Notification).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>Heart Rate to iCloud WatchKit App.xcscheme_^#shared#^_</key>
+		<key>Cloud Vitals WatchKit App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>Heart Rate to iCloud.xcscheme_^#shared#^_</key>
+		<key>Cloud Vitals.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>7</integer>
+		</dict>
+		<key>Heart Rate to iCloud WatchKit App (Complication).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
+		<key>Heart Rate to iCloud WatchKit App (Notification).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
+		<key>Heart Rate to iCloud WatchKit App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
+		<key>Heart Rate to iCloud.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>F107A2CB25CF1A9100487410</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F107A2E125CF1A9200487410</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F107A2EC25CF1A9200487410</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F107A2F525CF1A9300487410</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

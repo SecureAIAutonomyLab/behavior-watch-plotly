@@ -2,8 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.1-Aim-Industries.Cloud-VitalsBackgroundAppRefreshIdentifier</string>
+		<string>com.1-Aim-Industries.Cloud-VitalsAppBackgroundProcessingIdentifier</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Cloud Vitals</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,11 +22,31 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Cloud Vitals Requires Access to Biometric Data in Order to Enable Data Processing in the Cloud</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Cloud Vitals Will Update Biometric Data to Provide Real-Time Feedback</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Cloud Vitals Wants to Use Your Location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Cloud Vitals Wants to Use Your Location</string>
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.[YOUR_IDENTIFIER]</key>
+		<dict>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<true/>
+			<key>NSUbiquitousContainerName</key>
+			<string>[com.1-Aim-Industries.Cloud-Vitals]</string>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>Any</string>
+		</dict>
+	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -41,6 +68,11 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -52,13 +84,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Test App Wants to Access HR Data</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Test App Wants to Access HR Data</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -66,17 +92,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSUbiquitousContainers</key>
-        <dict>
-            <key>iCloud.[YOUR_IDENTIFIER]</key>
-            <dict>
-                <key>NSUbiquitousContainerIsDocumentScopePublic</key>
-                <true/>
-                <key>NSUbiquitousContainerName</key>
-                <string>[com.1-Aim-Industries.Heart-Rate-to-iCloud]</string>
-                <key>NSUbiquitousContainerSupportedFolderLevels</key>
-                <string>Any</string>
-            </dict>
-        </dict>
 </dict>
 </plist>
