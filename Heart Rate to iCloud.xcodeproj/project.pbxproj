@@ -10,6 +10,7 @@
 		1D75A1409878494777104F49 /* Pods_Heart_Rate_to_iCloudTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13764B083D695C276CE010AF /* Pods_Heart_Rate_to_iCloudTests.framework */; };
 		5D18232FACB78C3DD16E2B91 /* Pods_Heart_Rate_to_iCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975490A23878AC453311348A /* Pods_Heart_Rate_to_iCloud.framework */; };
 		62ECBEE5840E8940C24CA45E /* Pods_Heart_Rate_to_iCloud_Heart_Rate_to_iCloudUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9463D657218DD0AADA1BF0C7 /* Pods_Heart_Rate_to_iCloud_Heart_Rate_to_iCloudUITests.framework */; };
+		6825E5AC268274B200FDD1EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175B56C25CF2159006F140C /* Extensions.swift */; };
 		A35C783969B443F4A14578D3 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = FA1663789E5E45E4993BFCA2 /* awsconfiguration.json */; };
 		B63FF4F5D213ACC400B02DEF /* Pods_Heart_Rate_to_iCloud_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 605D9882DED6F02AB127888F /* Pods_Heart_Rate_to_iCloud_WatchKit_App.framework */; };
 		CEA33B7FD4FA7E2A58171D96 /* Pods_Heart_Rate_to_iCloud_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59DC727B198F5CCCC8B4704 /* Pods_Heart_Rate_to_iCloud_WatchKit_Extension.framework */; };
@@ -34,7 +35,6 @@
 		F10BC24E25CF40A300869324 /* Session Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BC24D25CF40A300869324 /* Session Handler.swift */; };
 		F11595F725EF52C50043DCBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F107A2FE25CF1A9300487410 /* Assets.xcassets */; };
 		F135E65B2633C55100D54A51 /* AccelerometerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F135E65A2633C55100D54A51 /* AccelerometerInterfaceController.swift */; };
-		F146A61225E0F372004EA129 /* AWS Data Management.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146A61125E0F372004EA129 /* AWS Data Management.swift */; };
 		F175B56625CF1F89006F140C /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2443525CF1E60004F8E02 /* HealthDataManager.swift */; };
 		F175B56D25CF2159006F140C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175B56C25CF2159006F140C /* Extensions.swift */; };
 		F17D34F9260D8BB3001FFBAA /* IDInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D34F8260D8BB3001FFBAA /* IDInterfaceController.swift */; };
@@ -148,7 +148,6 @@
 		F107A33725CF1C6200487410 /* Heart Rate to iCloud WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Heart Rate to iCloud WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		F10BC24D25CF40A300869324 /* Session Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session Handler.swift"; sourceTree = "<group>"; };
 		F135E65A2633C55100D54A51 /* AccelerometerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerInterfaceController.swift; sourceTree = "<group>"; };
-		F146A61125E0F372004EA129 /* AWS Data Management.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AWS Data Management.swift"; sourceTree = "<group>"; };
 		F175B56C25CF2159006F140C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F17D34F8260D8BB3001FFBAA /* IDInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDInterfaceController.swift; sourceTree = "<group>"; };
 		F1A72496260D849E00ECEBB8 /* SignInInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInInterfaceController.swift; sourceTree = "<group>"; };
@@ -229,6 +228,34 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6825E5A8268273BE00FDD1EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F107A2D525CF1A9100487410 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6825E5A9268273C700FDD1EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F101D8B325F6A44800F44534 /* AccelerometerViewController.swift */,
+				F17D34F8260D8BB3001FFBAA /* IDInterfaceController.swift */,
+				F107A2D325CF1A9100487410 /* ViewController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6825E5AA268273EF00FDD1EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F175B56C25CF2159006F140C /* Extensions.swift */,
+				F10BC24D25CF40A300869324 /* Session Handler.swift */,
+				F1B2443525CF1E60004F8E02 /* HealthDataManager.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		80954D32D92940CDB7321B6E /* AmplifyConfig */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,14 +300,9 @@
 				F107A2CF25CF1A9100487410 /* AppDelegate.swift */,
 				F107A2D125CF1A9100487410 /* SceneDelegate.swift */,
 				F107A33325CF1C5D00487410 /* Heart Rate to iCloud.entitlements */,
-				F107A2D325CF1A9100487410 /* ViewController.swift */,
-				F17D34F8260D8BB3001FFBAA /* IDInterfaceController.swift */,
-				F101D8B325F6A44800F44534 /* AccelerometerViewController.swift */,
-				F1B2443525CF1E60004F8E02 /* HealthDataManager.swift */,
-				F146A61125E0F372004EA129 /* AWS Data Management.swift */,
-				F10BC24D25CF40A300869324 /* Session Handler.swift */,
-				F175B56C25CF2159006F140C /* Extensions.swift */,
-				F107A2D525CF1A9100487410 /* Main.storyboard */,
+				6825E5A9268273C700FDD1EE /* Model */,
+				6825E5A8268273BE00FDD1EE /* View */,
+				6825E5AA268273EF00FDD1EE /* Controller */,
 				F107A2D825CF1A9200487410 /* Assets.xcassets */,
 				F107A2DA25CF1A9200487410 /* LaunchScreen.storyboard */,
 				F107A2DD25CF1A9200487410 /* Info.plist */,
@@ -346,6 +368,7 @@
 				F107A2CA25CF1A9100487410 /* Resources */,
 				F107A31F25CF1A9500487410 /* Embed Watch Content */,
 				F68CF776B56800B167FD1307 /* [CP] Embed Pods Frameworks */,
+				00D1E8CEF33D3B5AD01B2C95 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -385,6 +408,7 @@
 				F107A2EA25CF1A9200487410 /* Frameworks */,
 				F107A2EB25CF1A9200487410 /* Resources */,
 				984ABC43924DABC4D6A77F33 /* [CP] Embed Pods Frameworks */,
+				C7BBE871A1E86E39845F2266 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -531,6 +555,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		00D1E8CEF33D3B5AD01B2C95 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud/Pods-Heart Rate to iCloud-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud/Pods-Heart Rate to iCloud-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud/Pods-Heart Rate to iCloud-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		15E7ADE86D2052A1D749EB99 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -636,6 +677,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C7BBE871A1E86E39845F2266 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests/Pods-Heart Rate to iCloud-Heart Rate to iCloudUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F68CF776B56800B167FD1307 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -690,7 +748,6 @@
 				F1B2443C25CF1E63004F8E02 /* HealthDataManager.swift in Sources */,
 				F107A2D025CF1A9100487410 /* AppDelegate.swift in Sources */,
 				F107A2D225CF1A9100487410 /* SceneDelegate.swift in Sources */,
-				F146A61225E0F372004EA129 /* AWS Data Management.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,6 +772,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F107A30F25CF1A9400487410 /* NotificationController.swift in Sources */,
+				6825E5AC268274B200FDD1EE /* Extensions.swift in Sources */,
 				F107A31125CF1A9400487410 /* ComplicationController.swift in Sources */,
 				F175B56625CF1F89006F140C /* HealthDataManager.swift in Sources */,
 				F107A30D25CF1A9400487410 /* ExtensionDelegate.swift in Sources */,
@@ -828,7 +886,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -882,7 +940,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -904,14 +962,14 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.03;
+				MARKETING_VERSION = 3.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
 			};
 			name = Debug;
 		};
@@ -929,7 +987,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.03;
+				MARKETING_VERSION = 3.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -937,7 +995,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
 			};
 			name = Release;
 		};
@@ -952,14 +1010,14 @@
 				DEVELOPMENT_TEAM = YV65AQXUJQ;
 				IBSC_MODULE = Heart_Rate_to_iCloud_WatchKit_Extension;
 				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit App/Info.plist";
-				MARKETING_VERSION = 2.03;
+				MARKETING_VERSION = 3.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
 			};
 			name = Debug;
 		};
@@ -974,7 +1032,7 @@
 				DEVELOPMENT_TEAM = YV65AQXUJQ;
 				IBSC_MODULE = Heart_Rate_to_iCloud_WatchKit_Extension;
 				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit App/Info.plist";
-				MARKETING_VERSION = 2.03;
+				MARKETING_VERSION = 3.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -982,7 +1040,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
 			};
 			name = Release;
 		};
@@ -1001,7 +1059,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.03;
+				MARKETING_VERSION = 3.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1025,7 +1083,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.03;
+				MARKETING_VERSION = 3.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

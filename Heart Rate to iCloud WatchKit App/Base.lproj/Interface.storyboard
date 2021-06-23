@@ -80,8 +80,16 @@
                         <label width="136" alignment="center" text="--" textAlignment="center" id="OEb-cr-oeT">
                             <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <imageView width="90" height="77" alignment="center" image="Image-2" id="cKN-QX-9gm"/>
-                        <label alignment="center" text="Accelerations" id="lps-PP-oEJ"/>
+                        <switch width="1" alignment="left" value="YES" enabled="NO" title="Upload Data" id="1zH-dd-J2z">
+                            <accessibilityTraits key="accessibilityTraits" notEnabled="YES"/>
+                            <connections>
+                                <action selector="uploadSwitch:" destination="AgC-eL-Hgc" id="3eI-BG-Ts6"/>
+                            </connections>
+                        </switch>
+                        <separator alignment="left" id="YC7-Qz-acn">
+                            <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </separator>
+                        <label alignment="center" text="Accelerations:" id="lps-PP-oEJ"/>
                         <label alignment="center" text="X" id="1lC-0U-f7q"/>
                         <label width="136" height="22" alignment="center" text="--" textAlignment="center" id="jmP-bg-W1d">
                             <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,46 +106,58 @@
                         <label width="136" height="22" alignment="center" text="--" textAlignment="center" id="jI0-mX-1sR">
                             <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <label width="136" alignment="left" text="Timer Length" id="NJY-4N-ssX"/>
-                        <button width="106" height="30" alignment="left" title="30sec" id="5Af-G3-4Gt">
+                        <switch width="1" alignment="left" value="YES" enabled="NO" title="Upload XYZ" id="eUW-dn-jzT">
+                            <accessibilityTraits key="accessibilityTraits" notEnabled="YES"/>
+                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="thirtySeconds" destination="AgC-eL-Hgc" id="g9h-UF-GJE"/>
+                                <action selector="uploadSwitch:" destination="AgC-eL-Hgc" id="krJ-Fv-D0e"/>
                             </connections>
-                        </button>
-                        <button width="112" height="30" alignment="left" title="3min" id="oaG-ax-1jE">
+                        </switch>
+                        <switch width="1" alignment="left" value="YES" enabled="NO" title="Upload Resultant" id="guN-en-k4R">
                             <connections>
-                                <action selector="threeMinutes" destination="AgC-eL-Hgc" id="Tda-lN-Z91"/>
+                                <action selector="uploadSwitch:" destination="AgC-eL-Hgc" id="mQM-su-dpE"/>
                             </connections>
-                        </button>
-                        <button width="118" height="30" alignment="left" title="30min" id="Vxc-kk-UP9">
-                            <connections>
-                                <action selector="thirtyMinutes" destination="AgC-eL-Hgc" id="yLb-lo-YFu"/>
-                            </connections>
-                        </button>
-                        <button width="124" height="30" alignment="left" title="1hr" id="39f-pT-crk">
-                            <connections>
-                                <action selector="oneHour" destination="AgC-eL-Hgc" id="J0M-hH-dOr"/>
-                            </connections>
-                        </button>
-                        <button width="130" height="30" alignment="left" title="10hr" id="yqT-zb-8hs">
-                            <connections>
-                                <action selector="tenHours" destination="AgC-eL-Hgc" id="YCO-a0-2Zf"/>
-                            </connections>
-                        </button>
-                        <button width="136" height="30" alignment="left" title="1day" id="L8w-v8-HMZ">
-                            <connections>
-                                <action selector="oneDay" destination="AgC-eL-Hgc" id="aNC-qQ-GjU"/>
-                            </connections>
-                        </button>
-                        <separator alignment="left" id="YC7-Qz-acn">
-                            <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </separator>
-                        <button width="1" alignment="left" hidden="YES" title="Accelerometer" id="aOA-ea-vD5">
+                        </switch>
+                        <button width="111" height="31" alignment="center" title="Axis Diagram" id="aOA-ea-vD5">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" type="boldSystem" pointSize="15"/>
                             <connections>
-                                <segue destination="KVd-xu-ujr" kind="push" id="kGz-QS-Axf"/>
+                                <segue destination="KVd-xu-ujr" kind="push" id="wcI-5T-bSD"/>
+                            </connections>
+                        </button>
+                        <separator alignment="left" id="NFY-wl-QjB">
+                            <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </separator>
+                        <label width="136" alignment="center" text="Timer Length" textAlignment="center" id="NJY-4N-ssX"/>
+                        <button width="106" height="30" alignment="center" title="30sec" id="5Af-G3-4Gt">
+                            <connections>
+                                <action selector="thirtySeconds" destination="AgC-eL-Hgc" id="g9h-UF-GJE"/>
+                            </connections>
+                        </button>
+                        <button width="112" height="30" alignment="center" title="3min" id="oaG-ax-1jE">
+                            <connections>
+                                <action selector="threeMinutes" destination="AgC-eL-Hgc" id="Tda-lN-Z91"/>
+                            </connections>
+                        </button>
+                        <button width="118" height="30" alignment="center" title="30min" id="Vxc-kk-UP9">
+                            <connections>
+                                <action selector="thirtyMinutes" destination="AgC-eL-Hgc" id="yLb-lo-YFu"/>
+                            </connections>
+                        </button>
+                        <button width="124" height="30" alignment="center" title="1hr" id="39f-pT-crk">
+                            <connections>
+                                <action selector="oneHour" destination="AgC-eL-Hgc" id="J0M-hH-dOr"/>
+                            </connections>
+                        </button>
+                        <button width="130" height="30" alignment="center" title="10hr" id="yqT-zb-8hs">
+                            <connections>
+                                <action selector="tenHours" destination="AgC-eL-Hgc" id="YCO-a0-2Zf"/>
+                            </connections>
+                        </button>
+                        <button width="136" height="30" alignment="center" title="1day" id="L8w-v8-HMZ">
+                            <connections>
+                                <action selector="oneDay" destination="AgC-eL-Hgc" id="aNC-qQ-GjU"/>
                             </connections>
                         </button>
                     </items>
@@ -153,6 +173,9 @@
                         <outlet property="resultantLabel" destination="jI0-mX-1sR" id="7SC-M7-OC9"/>
                         <outlet property="sleepLabel" destination="wch-qg-OS1" id="y1d-8Y-hZn"/>
                         <outlet property="timerLength" destination="NJY-4N-ssX" id="T4F-yL-Eva"/>
+                        <outlet property="uploadDataButton" destination="1zH-dd-J2z" id="vcA-f2-cyg"/>
+                        <outlet property="uploadResultantButton" destination="guN-en-k4R" id="9sf-AN-fxx"/>
+                        <outlet property="uploadXYZButton" destination="eUW-dn-jzT" id="usl-Oy-gbL"/>
                         <outlet property="workoutButton" destination="Rbr-9f-xXa" id="bBg-TQ-vpe"/>
                         <outlet property="xLabel" destination="jmP-bg-W1d" id="djT-TG-AnG"/>
                         <outlet property="yLabel" destination="6U9-v9-wdM" id="2pp-jv-5OI"/>
@@ -160,14 +183,14 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="219.52173913043478" y="300.15625"/>
+            <point key="canvasLocation" x="219.52173913043478" y="294.84375"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                        <label alignment="left" text="Timer Done" numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>
@@ -184,41 +207,33 @@
             <objects>
                 <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="220" y="1078"/>
+            <point key="canvasLocation" x="189" y="1179"/>
         </scene>
         <!--Accelerometer Interface Controller-->
         <scene sceneID="Oeo-N4-T98">
             <objects>
                 <controller id="KVd-xu-ujr" customClass="AccelerometerInterfaceController" customModule="Heart_Rate_to_iCloud_WatchKit_Extension">
                     <items>
-                        <dateLabel alignment="left" format="zMMMM/d/yy HH:mm:ss" id="vBm-vM-zim">
+                        <dateLabel alignment="left" hidden="YES" format="zMMMM/d/yy HH:mm:ss" id="vBm-vM-zim">
                             <date key="previewedDate" timeIntervalSinceReferenceDate="437256540">
                                 <!--2014-11-09 20:09:00 +0000-->
                             </date>
                         </dateLabel>
-                        <label width="136" height="68" alignment="center" text="Name/ID" textAlignment="center" numberOfLines="3" id="Lhb-4A-XYc">
+                        <label width="136" height="49" alignment="center" text="Name/ID" textAlignment="center" numberOfLines="3" id="Lhb-4A-XYc">
                             <fontDescription key="font" style="UICTFontTextStyleBody"/>
                         </label>
                         <separator alignment="left" id="o8y-df-Ewf">
                             <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
-                        <button width="136" height="37" alignment="center" title="Monitor Accleration" id="XnP-0o-qIU">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
-                            <connections>
-                                <action selector="monitorAcclerations" destination="KVd-xu-ujr" id="hbh-vL-VkT"/>
-                            </connections>
-                        </button>
+                        <imageView width="117" height="125" alignment="center" image="Image-2" id="cKN-QX-9gm"/>
                     </items>
                     <connections>
-                        <outlet property="accelerationButton" destination="XnP-0o-qIU" id="0ho-HD-lXI"/>
                         <outlet property="currentTimeStamp" destination="vBm-vM-zim" id="YKK-Nn-A9r"/>
                         <outlet property="userNameLabel" destination="Lhb-4A-XYc" id="vDP-SR-ICZ"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="467.86956521739125" y="116.49553571428572"/>
+            <point key="canvasLocation" x="467.86956521739125" y="119.91071428571429"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">

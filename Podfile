@@ -12,6 +12,7 @@ target 'Heart Rate to iCloud' do
 	pod 'AmplifyPlugins/AWSDataStorePlugin'
 	pod 'Amplify/Tools'
  	pod 'AmplifyPlugins/AWSS3StoragePlugin'
+	pod 'GoogleSignIn'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
 	pod 'Charts'
 	

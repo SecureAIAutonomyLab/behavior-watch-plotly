@@ -22,6 +22,11 @@ PODS:
     - AWSCore (~> 2.23.0)
     - AWSPluginsCore (= 1.7.0)
     - AWSS3 (~> 2.23.0)
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
   - AppSyncRealTimeClient (1.4.3):
     - Starscream (~> 3.1.0)
   - AWSAuthCore (2.23.0):
@@ -46,6 +51,14 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - GoogleSignIn (5.0.2):
+    - AppAuth (~> 1.2)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GTMAppAuth (1.2.2):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher/Core (~> 1.5)
+  - GTMSessionFetcher/Core (1.5.0)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -60,11 +73,13 @@ DEPENDENCIES:
   - AmplifyPlugins/AWSS3StoragePlugin
   - AWSIoT (~> 2.23)
   - Charts
+  - GoogleSignIn
 
 SPEC REPOS:
   trunk:
     - Amplify
     - AmplifyPlugins
+    - AppAuth
     - AppSyncRealTimeClient
     - AWSAuthCore
     - AWSCognitoIdentityProvider
@@ -75,12 +90,16 @@ SPEC REPOS:
     - AWSPluginsCore
     - AWSS3
     - Charts
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
     - SQLite.swift
     - Starscream
 
 SPEC CHECKSUMS:
   Amplify: 4cdf0631faffa42a47dc24affa6d84c555ca2f6a
   AmplifyPlugins: dcf678f54171ce6d6367b79d5149bda5f47d9f9e
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   AppSyncRealTimeClient: 04df4dffe57cfbd06da336d0bfcd5641ba9adcb5
   AWSAuthCore: 037e5faef3f7a0b4501eddcc382f9c74a22c0a77
   AWSCognitoIdentityProvider: c078ed88e0f8d2df52850acfa2dae91c451ae47e
@@ -91,9 +110,12 @@ SPEC CHECKSUMS:
   AWSPluginsCore: d4593ef79107b15a02597705b63c9c915a946ee9
   AWSS3: 7f89c85b958d0979a39069003a2fe06facf78373
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
+  GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
+  GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: b9f2b4c88301ecff25406278506e048477ae56a4
+PODFILE CHECKSUM: bf9ef506c1f57cd525b03cbe77fab56c97564cc7
 
 COCOAPODS: 1.10.1

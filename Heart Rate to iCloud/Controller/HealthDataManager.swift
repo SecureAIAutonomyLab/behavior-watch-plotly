@@ -16,48 +16,41 @@ class HealthDataManager {
     static let sharedInstance = HealthDataManager()
     
     var healthStore: HKHealthStore?
+//    variable to access health store
     var observerQuery: HKObserverQuery?
     var observerQuery2: HKObserverQuery?
     var observerQuery3: HKObserverQuery?
     var observerQuery4: HKObserverQuery?
+//    variables for different observer queries
     var session = WCSession.default
+//    watch session variable
     let heartRateUnit = HKUnit(from: "count/min")
     let SPO2Unit = HKUnit(from: "%")
     let NoiseEXUnit = HKUnit(from: "dBASPL")
     let UVEXUnit = HKUnit(from: "count")
+//    variables for different units of measurement for the vitals
     var locationManager = CLLocationManager()
+//    variabel to access location services
     
     func initialize() -> Bool {
         guard HKHealthStore.isHealthDataAvailable() else {
             print("Health data not available")
             return false
+//            check if health data is available and guard against crashing if it is not
         }
-        
         healthStore = HKHealthStore()
-        
         return true
     }
     
     func requestAuthorization(completion: @escaping ((Bool) -> Void)) { //request authorization for quantityType biometrics
         let healthDataTypes = Set([HKObjectType.quantityType(forIdentifier: .heartRate)!,HKObjectType.quantityType(forIdentifier: .oxygenSaturation)!,HKObjectType.quantityType(forIdentifier: .environmentalAudioExposure)!,HKObjectType.quantityType(forIdentifier: .restingHeartRate)!])
-        if #available(iOS 14.0, *) {
-            let ecgType = Set([HKObjectType.electrocardiogramType()])
-            
-            healthStore?.requestAuthorization(toShare: nil, read: ecgType, completion: { (success, error) in
-                if !success {
-                    print("Error getting ECG Data")
-                }
-                completion(success)
-            })
-
-        } else {
-            // Fallback on earlier versions
-        } 
+//        define data that you want to request authorization for
         
         healthStore?.requestAuthorization(toShare: nil, read: healthDataTypes, completion: { (success, error) in
             if !success {
                 print("Error getting autorization for heart rate, SPO2, and noise exposure data")
             }
+//            handle any errors here
             completion(success)
         })
     }
@@ -71,7 +64,7 @@ class HealthDataManager {
         let typestoShare = Set([
             HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
         ])
-        
+//        request to read and write sleep data
         healthStore?.requestAuthorization(toShare: typestoShare, read: typestoRead) { (success, error) -> Void in
             if success == false {
                 NSLog(" Display not allowed")
@@ -79,6 +72,7 @@ class HealthDataManager {
                 self.retrieveSleep(completion: completion)
             }
         }
+//         handle any errors when requesting sleep data
     }
     
     func requestLocationAuthorization() -> String {
@@ -89,13 +83,12 @@ class HealthDataManager {
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
         CLLocationManager.authorizationStatus() == .authorizedAlways) {
            currentLoc = locationManager.location
-           print(currentLoc.coordinate.latitude)
-           print(currentLoc.coordinate.longitude)
             latitude = String(format: "%.6f", currentLoc.coordinate.latitude)
             longitude = String(format: "%.6f", currentLoc.coordinate.longitude)
         }
         return("\(latitude), \(longitude)")
     }
+//    request authorization for location data
     func requestLongitude() -> String {
         var longitude = ""
         locationManager.requestWhenInUseAuthorization()
@@ -103,11 +96,11 @@ class HealthDataManager {
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
         CLLocationManager.authorizationStatus() == .authorizedAlways) {
            currentLoc = locationManager.location
-           print(currentLoc.coordinate.longitude)
             longitude = String(format: "%.6f", currentLoc.coordinate.longitude)
         }
         return("\(longitude)")
     }
+//    get longitude from location services
     func requestLatitude() -> String {
         var latitude = ""
         locationManager.requestWhenInUseAuthorization()
@@ -115,14 +108,14 @@ class HealthDataManager {
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
         CLLocationManager.authorizationStatus() == .authorizedAlways) {
            currentLoc = locationManager.location
-           print(currentLoc.coordinate.latitude)
             latitude = String(format: "%.6f", currentLoc.coordinate.latitude)
         }
         return("\(latitude)")
     }
+//    get latitude from location services
     func observeHeartRateSamples(_ newHeartRate: ((Double) -> (Void))?) {
         let heartRateSampleType = HKObjectType.quantityType(forIdentifier: .heartRate)
-        
+//        assign variable to heart rate quantity type
         if let observerQuery = observerQuery {
             healthStore?.stop(observerQuery)
         }
@@ -335,64 +328,5 @@ class HealthDataManager {
         }
     }
     
-    func ecgQuery(completion: @escaping (String) -> ()){
-        
-        if #available(iOS 14.0, *) {
-            let healthStore = HKHealthStore()
-            let ecgType = HKObjectType.electrocardiogramType()
-        
-            let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
-        
-        let ecgQuery = HKSampleQuery(sampleType: ecgType,
-                                     predicate: nil,
-                                     limit: 1,
-                                     sortDescriptors: [sortDescriptor]) { (query, samples, error) in
-            if let error = error {
-                // Handle the error here.
-                fatalError("*** An error occurred \(error.localizedDescription) ***")
-            }
-            
-            guard let ecgSamples = samples as? [HKElectrocardiogram] else {
-                fatalError("*** Unable to convert \(String(describing: samples)) to [HKElectrocardiogram] ***")
-            }
-            
-            for samples in ecgSamples {
-                print(samples)
-                let voltageQuery = HKElectrocardiogramQuery(samples) { (query, result) in
-                    switch(result) {
-                    
-                    case .measurement(let measurement):
-        
-                        if let voltageQuantity = measurement.quantity(for: .appleWatchSimilarToLeadI) {
-                            // Do something with the voltage quantity here.
-//                            print(voltageQuantity)
-                            completion("\(voltageQuantity)")
-                        }
-                    
-                    case .done:
-                        // No more voltage measurements. Finish processing the existing measurements.
-                    completion("DONE")
-                    print("done")
-
-
-                    case .error(let error):
-                        // Handle the error here.
-                    print(error)
-
-                    @unknown default:
-                        fatalError("Fatal Error")
-                    }
-                }
-
-                // Execute the query.
-                healthStore.execute(voltageQuery)
-    }
-        }
-            healthStore.execute(ecgQuery)
-
-        } else {
-            // Fallback on earlier versions
-        }
-    }
 }
 
