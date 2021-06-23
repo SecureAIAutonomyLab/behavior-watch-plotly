@@ -23,6 +23,7 @@ class SignInInterfaceController: WKInterfaceController {
         configureWatchKitSession()
         signedInButton.setEnabled(false)
         signedInButton.setTitle("Not Signed In")
+//      show that user is not signed in when first opening the app
     }
     
     override func willActivate() {
@@ -30,6 +31,7 @@ class SignInInterfaceController: WKInterfaceController {
         DispatchQueue.main.async {
         let data: [String: Any] = ["Watch Display Activated": "Activated"  as Any]
         self.watchSession.sendMessage(data, replyHandler: nil, errorHandler: nil)
+//            send message to phone indicating active watch display
         }
     }
     override func didDeactivate() {
@@ -48,6 +50,7 @@ class SignInInterfaceController: WKInterfaceController {
     
     func loggedIn(){
         pushController(withName:"Interface Storyboard", context: self)
+//        change to main interface controller after signing in
     }
     
 }
@@ -68,13 +71,14 @@ extension SignInInterfaceController: WCSessionDelegate {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                     //.2 second code delay
                 self.loggedIn()
+//                    check if iPhone app was logged in to login the apple watch app
             }
         }
     }
-        DispatchQueue.main.async {
-            if (message["Load Main Watch Screen"] as? String) != nil {
+        if (message["Load Main Watch Screen"] as? String) != nil {
                 self.loggedIn()
+//                iPhone message telling apple watch to login if user has already logged in previously
             }
         }
 }
-}
+

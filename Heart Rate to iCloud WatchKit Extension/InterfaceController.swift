@@ -32,11 +32,15 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var uploadDataButton: WKInterfaceSwitch!
     @IBOutlet var uploadXYZButton: WKInterfaceSwitch!
     @IBOutlet var uploadResultantButton: WKInterfaceSwitch!
+//    interface labes for presenting physiological data, location, and accelerations
+//    also buttons for controlling the monitoring of vitals
+//    outlets allow the coder to change properties of the interface items
     
     let userDefaultsVitals = UserDefaults.standard
     //    Access Shared Defaults Object
     var timer2 = Timer.init()
     var timer3 = Timer.init()
+//    timers for acceleration monitoring
     var workoutSession: HKWorkoutSession? // //workout session var
     var watchSession = WCSession.default //watch session variable
     var monitorVitals = false //button checker variable
@@ -45,6 +49,7 @@ class InterfaceController: WKInterfaceController {
     var timer = Timer() //timer variable
     var timerAccel = Timer.init()//timer variable for accelerometer
     let workoutTimes = ["30sec": 30, "3min": 180, "30min": 1800, "1hr": 3600, "10hr": 36000, "1day": 86400]
+//    array of times that indicate timer length
     var secondsPassed = 0
     var totalTime = 0
     var userName: String!
@@ -63,9 +68,12 @@ class InterfaceController: WKInterfaceController {
         uploadDataButton.setColor(#colorLiteral(red: 0.93564713, green: 0.2231650352, blue: 0.1551090479, alpha: 1))
         uploadXYZButton.setColor(#colorLiteral(red: 0.93564713, green: 0.2231650352, blue: 0.1551090479, alpha: 1))
         uploadResultantButton.setColor(#colorLiteral(red: 0.93564713, green: 0.2231650352, blue: 0.1551090479, alpha: 1))
+        //        clear interface when opening app and set colors for uploading switches
         session.delegate = self
         session.activate()
+//        begin apple watch session
         IDNameLabel.setText(userDefaultsVitals.string(forKey: "User Name"))
+//        update username label with username from iPhone app
         
     }
     
@@ -73,6 +81,7 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         IDNameLabel.setText(userDefaultsVitals.string(forKey: "User Name"))
+//        update username label again in case there issues earlier
         if WCSession.isSupported() {
             watchSession.delegate = self
             watchSession.activate()
@@ -82,6 +91,7 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         IDNameLabel.setText(userDefaultsVitals.string(forKey: "User Name"))
+        //        update username label again in case there issues earlier
         super.didDeactivate()
     }
     
