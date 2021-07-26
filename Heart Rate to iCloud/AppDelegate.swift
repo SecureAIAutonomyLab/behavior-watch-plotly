@@ -12,30 +12,34 @@ import AuthenticationServices
 import BackgroundTasks
 import GoogleSignIn
  
-
+/// DESCRIPTION: The AppDelegate class handles objects that need to be initialized before the app screen is present to the user. The connection to AWS and the S3 bucket is established through here as well as setting up the Google Sign in feature. The ability for the app to run in the background is also configured here.
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let userLoginDefaults = UserDefaults.standard
-    let alphabetArray : [String] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    let numberArray : [String] = ["1","2","3","4","5","6","7","8","9","0"]
-    let symbolArray : [String] = ["!","@","#","$","%","^","&","*","(",")"]
-//    arrays for random key creation
+    let loginDataManager = LoginDataManager()
+    let AWS = AWSDataManager()
 
+    /// DESCRIPTION: The redeclaration of the application method is called when the app launches. Everytime the app is launched the connection to Amplify is established as well as the ability for the app to run in the background. The configuration for the notifications is also created here so that the notifications sent include an alert, banner, and sound.
+    /// PARAMS: The parameters for this method are the application itself, and the options for launching the application in the fom of a .LaunchOptionsKey.
+    /// RETURNS: When the application opens this method is called and it always returns true indicating that the app was successful in its launch.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        configureAmplify()
+        AWS.configureAmplify()
         registerBackgroundTasks()
         //        Initialize sign-in
-        GIDSignIn.sharedInstance().clientID = "149269937983-ntln6k81a4c9ms969ssqs33o6ppq2e4s.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            print("granted \(granted)")
+        }
         return true
-        
     }
     
     // MARK: UISceneSession Lifecycle
     
+    /// DESCRIPTION: This redeclaration of the application method is called when a new scene session is being created. Use this method to select a configuration to create the new scene with.
+    /// PARAMS: The parameters for this method are the application that is running, the session that is being connected to and the the options for connecting to that scene.
+    /// RETURNS: Once the method is called it returns a scene with the configuration that was set when the method was called.
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -43,116 +47,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let _ = HealthDataManager.sharedInstance.initialize()
         //      initialize Health Data Manager class
         
-        
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-    
+    /// DESCRIPTION: This redeclaration of the application method is called when the user discards a scene session. If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions. Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    /// PARAMS: The parameters for this method are the current application serving as the UIApplication parameter and the scenes that were discarded serving as the UISceneSession parameter
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+        applicationDidEnterBackground(application)
+        print("EXIT")
     }
-    
-    @available(iOS 9.0, *)
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url)
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-              withError error: Error!) {
-        if let error = error {
-            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-                print("The user has not signed in before or they have since signed out.")
-                let email = userLoginDefaults.string(forKey: "Email")
-                if email == nil {
-                let alphaRando = alphabetArray.randomElement()!
-                let numRando = numberArray.randomElement()!
-                let symbRando = symbolArray.randomElement()!
-                let alphaRando1 = alphabetArray.randomElement()!
-                let numRando1 = numberArray.randomElement()!
-                let symbRando1 = symbolArray.randomElement()!
-                let alphaRando2 = alphabetArray.randomElement()!
-                let numRando2 = numberArray.randomElement()!
-                let symbRando2 = symbolArray.randomElement()!
-                let alphaRando3 = alphabetArray.randomElement()!
-                let numRando3 = numberArray.randomElement()!
-                let symbRando3 = symbolArray.randomElement()!
-            //        create random string of variables to act as a secret key once the user has logged in for the first and only time
-                let randomKey = ("\(alphaRando)\(alphaRando1)\(alphaRando2)\(numRando)\(numRando1)\(numRando2)\(symbRando)\(symbRando1)\(symbRando2)\(alphaRando3)\(numRando3)\(symbRando3)")
-            //              random key format: aaa111!!!a1!
-            //        create random key
-                userLoginDefaults.setValue("IN", forKey: "Sign In")
-                userLoginDefaults.setValue(randomKey, forKey: "Random Key")
-                userLoginDefaults.setValue("False", forKey: "Apple Sign In")
-                    
-                }
-            } else {
-                print("\(error.localizedDescription)")
-            }
-            return
-        }
-        // Perform any operations on signed in user here.
-//        let userId = user.userID                  // For client-side use only!
-//        let idToken = user.authentication.idToken // Safe to send to the server
-//        let fullName = user.profile.name
-        let email2 = userLoginDefaults.string(forKey: "Email")
-        let givenName = user.profile.givenName
-        let familyName = user.profile.familyName
-        let email = user.profile.email
-        if email != email2 {
-        let alphaRando = alphabetArray.randomElement()!
-        let numRando = numberArray.randomElement()!
-        let symbRando = symbolArray.randomElement()!
-        let alphaRando1 = alphabetArray.randomElement()!
-        let numRando1 = numberArray.randomElement()!
-        let symbRando1 = symbolArray.randomElement()!
-        let alphaRando2 = alphabetArray.randomElement()!
-        let numRando2 = numberArray.randomElement()!
-        let symbRando2 = symbolArray.randomElement()!
-        let alphaRando3 = alphabetArray.randomElement()!
-        let numRando3 = numberArray.randomElement()!
-        let symbRando3 = symbolArray.randomElement()!
-    //        create random string of variables to act as a secret key once the user has logged in for the first and only time
-        let randomKey = ("\(alphaRando)\(alphaRando1)\(alphaRando2)\(numRando)\(numRando1)\(numRando2)\(symbRando)\(symbRando1)\(symbRando2)\(alphaRando3)\(numRando3)\(symbRando3)")
-    //              random key format: aaa111!!!a1!
-    //        create random key
-        userLoginDefaults.setValue(randomKey, forKey: "Random Key")
-        // ...
-        }
-        userLoginDefaults.setValue("IN", forKey: "Sign In")
-        userLoginDefaults.setValue("False", forKey: "Apple Sign In")
-    let fullNameString = "\(givenName!) \(familyName!)"
-        userLoginDefaults.setValue(email, forKey: "Email")
-        userLoginDefaults.setValue(fullNameString, forKey: "Full Name")
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
-              withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
-    
-    func configureAmplify() {
-        //        let models = AmplifyModels()
-        //        let dataStorePlugin = AWSDataStorePlugin(modelRegistration: models)
-        //        let apiPlugin = AWSAPIPlugin(modelRegistration: models)
-        do {
-            try Amplify.add(plugin: AWSCognitoAuthPlugin())
-            //        add Amplify cognito plug in
-            try Amplify.add(plugin: AWSS3StoragePlugin())
-            //         add S3 storage plugin
-            //            try Amplify.add(plugin: apiPlugin)
-            //            try Amplify.add(plugin: dataStorePlugin)
-            try Amplify.configure()
-            //        configure AWS Amplify services
-            print("Initialized Amplify");
-        } catch {
-            // simplified error handling for the tutorial
-            print("Could not initialize Amplify: \(error)")
-        }
-        Amplify.Logging.logLevel = .info
-    }
-    
+///  DESCRIPTION: Use background task identifiers to register the app to run with background tasks. The app will now enable background tasks an give the user the option to disbale the feature in the settings of the app in the phone's settings.
     func registerBackgroundTasks() {
         // Declared at the "Permitted background task scheduler identifiers" in info.plist
         let backgroundAppRefreshTaskSchedulerIdentifier = "com.1-Aim-Industries.Cloud-VitalsBackgroundAppRefreshIdentifier"
@@ -174,12 +80,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             task.setTaskCompleted(success: isFetchingSuccess)
         }
     }
-    
+///    DESCRIPTION: Checks if the app went into the background an calls the submitBackgroundTasks() method to call background tasks to run.
+///    PARAMS: The parameters are the application itself as a data type and whether or not the app went into background mode.
     func applicationDidEnterBackground(_ application: UIApplication) {
         submitBackgroundTasks()
         //        check if app went in the background and run background functions
     }
-    
+///    DESCRIPTION: If the app was detected entering the background mode this method will be called where the app will begin to run in the background.
     func submitBackgroundTasks() {
         // Declared at the "Permitted background task scheduler identifiers" in info.plist
         let backgroundAppRefreshTaskSchedulerIdentifier = "com.1-Aim-Industries.Cloud-VitalsBackgroundAppRefreshIdentifier"
@@ -194,7 +101,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             print("Failed to submit BGTask")
         }
     }
-    //    run specified background tasks
 }
 
 

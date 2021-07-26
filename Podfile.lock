@@ -51,6 +51,18 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - FBSDKCoreKit (11.0.1):
+    - FBSDKCoreKit/Core (= 11.0.1)
+  - FBSDKCoreKit/Core (11.0.1):
+    - FBSDKCoreKit_Basics (~> 11.0.1)
+  - FBSDKCoreKit_Basics (11.0.1):
+    - FBSDKCoreKit_Basics/Basics (= 11.0.1)
+  - FBSDKCoreKit_Basics/Basics (11.0.1)
+  - FBSDKLoginKit (11.0.1):
+    - FBSDKLoginKit/Login (= 11.0.1)
+  - FBSDKLoginKit/Login (11.0.1):
+    - FBSDKCoreKit (~> 11.0.1)
+    - FBSDKCoreKit_Basics (~> 11.0.1)
   - GoogleSignIn (5.0.2):
     - AppAuth (~> 1.2)
     - GTMAppAuth (~> 1.0)
@@ -59,6 +71,7 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.5.0)
+  - ScrollableGraphView (4.0.6)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -73,7 +86,9 @@ DEPENDENCIES:
   - AmplifyPlugins/AWSS3StoragePlugin
   - AWSIoT (~> 2.23)
   - Charts
+  - FBSDKLoginKit
   - GoogleSignIn
+  - ScrollableGraphView
 
 SPEC REPOS:
   trunk:
@@ -90,9 +105,13 @@ SPEC REPOS:
     - AWSPluginsCore
     - AWSS3
     - Charts
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - FBSDKLoginKit
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
+    - ScrollableGraphView
     - SQLite.swift
     - Starscream
 
@@ -110,12 +129,16 @@ SPEC CHECKSUMS:
   AWSPluginsCore: d4593ef79107b15a02597705b63c9c915a946ee9
   AWSS3: 7f89c85b958d0979a39069003a2fe06facf78373
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  FBSDKCoreKit: 38c9e29a3f1436362acacff6486d3a28628c288f
+  FBSDKCoreKit_Basics: 06780a4a12e16596bde8406add02c6aa1bf38616
+  FBSDKLoginKit: 8243e04c590c38b85c69fcf09d1234514d2475c3
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: bf9ef506c1f57cd525b03cbe77fab56c97564cc7
+PODFILE CHECKSUM: 22ad95d67354c4bd59e271fd97dbbb596ff94e9c
 
 COCOAPODS: 1.10.1

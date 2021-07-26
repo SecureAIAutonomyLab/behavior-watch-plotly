@@ -42,6 +42,8 @@
 	<string>Access Biometric Data</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Access Biometric Data</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Using Location For Behavioral Analytics</string>
 	<key>UIBackgroundModes</key>
 	<array/>
 	<key>WKBackgroundModes</key>

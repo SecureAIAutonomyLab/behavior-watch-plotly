@@ -32,9 +32,9 @@ class AccelerometerViewController : UIViewController {
     //    create outlet for user guide page button
     @IBOutlet var vitalsButton: UIButton!
     //    create outlet for vitals page button
-    @IBOutlet var uploadingLabel: UILabel!
-    @IBOutlet var uploadingProgress: UIActivityIndicatorView!
     
+    let settingsVC = SettingsViewController()
+    var awsData = AWSDataManager()
     var session: WCSession?
     //    create variable for apple watch session
     var biometricArray : [String] = []
@@ -85,100 +85,6 @@ class AccelerometerViewController : UIViewController {
         }
     }
     
-    func uploadXYZArray(xyzArray: [Double]) {
-        let secretKey = userDefaultsVitals.string(forKey: "Random Key")!
-        let finalData = "\(returnFinalTimeStamp()),xyz_acc:\(xyzArray[0]) \(xyzArray[1]) \(xyzArray[2])\n"
-        // create final data string with heartbeat value and timestamp
-        var biometricInputArray: [String] = userDefaultsVitals.object(forKey: "Vitals Array6") as? [String] ?? []
-        // retrieve biometric array from app storage (NSUserDefaults) to append final data
-        biometricInputArray.append(finalData)
-        // append final data to biometric array
-        userDefaultsVitals.setValue(biometricInputArray, forKey: "Vitals Array6")
-        // put new biometric array back into iPhone storage
-        let newArray : [String] = userDefaultsVitals.object(forKey: "Vitals Array6") as! [String]
-        // retrieve biometric array once again in order to pass it on to AWS
-        let finalArray = newArray.joined(separator: " ")
-        // join array values with commas
-        let XYZData = finalArray.data(using: .utf8)!
-        // transform finalArray into Data datatype to allow for AWS uploading
-        //        let storageOperation = Amplify.Storage.uploadData(key: userName, data: XYZData)
-        let storageOperation = Amplify.Storage.uploadData(key: "\(secretKey)", data: XYZData)
-        //upload new biometric array to AWS S3 bucket
-        progressSink = storageOperation
-            .progressPublisher
-            .sink { progress in print("Progress: \(progress)") }
-        // monitor upload progress
-        uploadingLabel.isHidden = false
-        uploadingProgress.startAnimating()
-        resultSink = storageOperation
-            .resultPublisher
-            .sink {
-                if case let .failure(storageError) = $0 {
-                    print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
-                    // check for upload errors
-                }
-            }
-            receiveValue: { data in
-                print("Completed: \(data)")
-                // check for upload completion
-                self.uploadingLabel.isHidden = true
-                self.uploadingProgress.stopAnimating()
-            }
-    }
-    
-    func uploadResultantAccel(resultantAccel: Double) {
-        let secretKey = userDefaultsVitals.string(forKey: "Random Key")!
-        let finalData = "\(returnFinalTimeStamp()),resultant_acc:\(resultantAccel)\n"
-        // create final data string with heartbeat value and timestamp
-        var biometricInputArray: [String] = userDefaultsVitals.object(forKey: "Vitals Array6") as? [String] ?? []
-        // retrieve biometric array from app storage (NSUserDefaults) to append final data
-        biometricInputArray.append(finalData)
-        // append final data to biometric array
-        userDefaultsVitals.setValue(biometricInputArray, forKey: "Vitals Array6")
-        // put new biometric array back into iPhone storage
-        let newArray : [String] = userDefaultsVitals.object(forKey: "Vitals Array6") as! [String]
-        // retrieve biometric array once again in order to pass it on to AWS
-        let finalArray = newArray.joined(separator: " ")
-        // join array values with commas
-        let XYZData = finalArray.data(using: .utf8)!
-        // transform finalArray into Data datatype to allow for AWS uploading
-        //        let storageOperation = Amplify.Storage.uploadData(key: userName, data: XYZData)
-        let storageOperation = Amplify.Storage.uploadData(key: "\(secretKey)", data: XYZData)
-        //upload new biometric array to AWS S3 bucket
-        progressSink = storageOperation
-            .progressPublisher
-            .sink { progress in print("Progress: \(progress)") }
-        // monitor upload progress
-        uploadingLabel.isHidden = false
-        uploadingProgress.startAnimating()
-        resultSink = storageOperation
-            .resultPublisher
-            .sink {
-                if case let .failure(storageError) = $0 {
-                    print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
-                    // check for upload errors
-                }
-            }
-            receiveValue: { data in
-                print("Completed: \(data)")
-                // check for upload completion
-                self.uploadingLabel.isHidden = true
-                self.uploadingProgress.stopAnimating()
-                
-            }
-    }
-    
-    func returnFinalTimeStamp() -> String {
-        let timeStamp = ViewController.getDateOnly(fromTimeStamp: 0.0)
-        //    set variable to return timestamp variable
-        var currentTime: Double
-        currentTime = CACurrentMediaTime()
-        let truncatedMilliseconds = currentTime.truncatingRemainder(dividingBy: 1)
-        let finalMilliseconds = Int(truncatedMilliseconds * 1000)
-        let finalTimeStamp = "\(timeStamp)\(finalMilliseconds)"
-        return(finalTimeStamp)
-        //        get timestamp from ViewController.swift
-    }
     @IBAction func xyzButton(_ sender: Any) {
         if xyzSwitch.isOn{
             self.userDefaultsVitals.setValue("ON", forKey: "XYZ Switch")
@@ -186,8 +92,6 @@ class AccelerometerViewController : UIViewController {
         }
         else{
             self.userDefaultsVitals.setValue("OFF", forKey: "XYZ Switch")
-            self.uploadingLabel.isHidden = true
-            self.uploadingProgress.stopAnimating()
         }
         //        change state of xyz upload switch if state was changed by user
     }
@@ -197,8 +101,6 @@ class AccelerometerViewController : UIViewController {
         }
         else{
             self.userDefaultsVitals.setValue("OFF", forKey: "Resultant Switch")
-            self.uploadingLabel.isHidden = true
-            self.uploadingProgress.stopAnimating()
         }
         //        change state of resultant upload switch if state was changed by user
     }
@@ -216,42 +118,7 @@ extension AccelerometerViewController: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        
-        DispatchQueue.main.async {
-            //            run all processes below in the main thread
-            if let xyzArray = message["Array"] as? [Double] {
-                self.xLabel.text = ("\(xyzArray[0])")
-                self.yLabel.text = ("\(xyzArray[1])")
-                self.zLabel.text = ("\(xyzArray[2])")
-                //                retrieve xyz acceleration values from apple watch
-                if self.xyzSwitch.isOn {
-                    self.uploadXYZArray(xyzArray: xyzArray)
-                }
-                else{
-                }
-                //                upload xyz values if enabled
-            }
-            if let resultantXYZ = message["Resultant"] as? Double {
-                let resultantRound = Double(round(1000*resultantXYZ)/1000)
-                self.resultantLabel.text = ("\(resultantRound)")
-                //                retrieve resultant acceleration value from apple watch
-                if self.resultantSwitch.isOn {
-                    self.uploadResultantAccel(resultantAccel: resultantRound)
-                }
-                else{
-                }
-                //                upload resultant values if enabled
-            }
-            if (message["Stop Pressed"] as? String) != nil {
-                self.timer.invalidate()
-                self.xLabel.text = "--"
-                self.yLabel.text = "--"
-                self.zLabel.text = "--"
-                self.resultantLabel.text = "--"
-                self.userDefaultsVitals.setValue("Stop", forKey: "Check Pressed")
-                //                clear interface if user stopped monitoring on the apple watch
-            }
-        }
+    
         DispatchQueue.main.async {
             let dataSwitchCheck = self.userDefaultsVitals.string(forKey: "Data Switch")
             //            retrieve state of ViewController.swift's data switch
@@ -259,21 +126,21 @@ extension AccelerometerViewController: WCSessionDelegate {
             if let heartRate = message["hr"] as? String {
                 let heartRateMessage = ("heart_rate:\(heartRate)")
                 if dataSwitchCheck == "ON" {
-                    viewController.uploadHeartBeatData(HRValue: heartRateMessage)
+                    self.awsData.uploadPhysiologicalData(vitalsValue: heartRateMessage)
                 }
             }
             
             if let SPO2 = message["spo2"] as? String {
                 let spo2Message = ("blood_o2:\(SPO2)")
                 if dataSwitchCheck == "ON"{
-                    viewController.uploadSPO2Data(SPO2Value: spo2Message)
+                    self.awsData.uploadPhysiologicalData(vitalsValue: spo2Message)
                 }
             }
             
             if let noiseExpos = message["NoiseEx"] as? String {
                 let longTermNEMessage = ("noise:\(noiseExpos)")
                 if dataSwitchCheck == "ON"{
-                    viewController.uploadLTNEData(LTNEValue: longTermNEMessage)
+                    self.awsData.uploadPhysiologicalData(vitalsValue: longTermNEMessage)
                 }
             }
             
@@ -284,14 +151,15 @@ extension AccelerometerViewController: WCSessionDelegate {
                     }
                 }
                 if dataSwitchCheck == "ON"{
-                    viewController.uploadSleepData(sleepValue: sleepMessage)
+                    self.awsData.uploadPhysiologicalData(vitalsValue: sleepMessage)
                 }
             }
             if (message["Start Pressed"] as? String) != nil {
                 if dataSwitchCheck == "ON" {
+                    let uploadLocation = HealthDataManager.sharedInstance.requestLocationAuthorization()[1]
                     self.timer = Timer(fire: Date(), interval: (120.0/1.0),
                                        repeats: true, block: { (timer) in
-                                        viewController.uploadLocationData()
+                                        self.awsData.uploadPhysiologicalData(vitalsValue: uploadLocation)
                                        })
                     RunLoop.current.add(self.timer, forMode: .default)
                 }

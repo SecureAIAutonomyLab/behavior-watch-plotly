@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="18122" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p8U-za-EzW" pageOrientation="vertical">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="18122" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
     <device id="watch44"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -28,7 +28,7 @@
                             </connections>
                         </button>
                     </items>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.074586845930000006" green="0.070505000649999996" blue="0.074607960880000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="signedInButton" destination="aJ4-1M-q9E" id="qV5-w9-2Xx"/>
                     </connections>
@@ -41,7 +41,7 @@
             <objects>
                 <controller identifier="Interface Storyboard" hidesWhenLoading="NO" fullScreen="YES" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Heart_Rate_to_iCloud_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label width="136" height="68" alignment="center" text="Name/ID" textAlignment="center" numberOfLines="3" id="2kI-5t-NOh"/>
+                        <label width="136" height="111" alignment="center" text="Name/ID" textAlignment="center" numberOfLines="4" id="2kI-5t-NOh"/>
                         <separator alignment="left" id="dYO-tG-Ahm">
                             <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
@@ -60,6 +60,26 @@
                         <label width="136" height="22" alignment="center" text="--" textAlignment="center" id="1I9-6a-tZC">
                             <color key="textColor" red="0.36355019703838876" green="0.87451453023994297" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
+                        <button width="117" height="24" alignment="center" title="More HR Data" id="TzV-xJ-4wy">
+                            <connections>
+                                <action selector="moreHRData" destination="AgC-eL-Hgc" id="wy0-Fk-JUz"/>
+                            </connections>
+                        </button>
+                        <label height="20" alignment="center" text="Resting HR" textAlignment="center" id="uA5-h7-Smw"/>
+                        <label width="100" height="19" alignment="center" text="--" textAlignment="center" id="TLp-Qi-Dmo">
+                            <color key="textColor" red="0.33519554140000002" green="0.87333238120000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label height="20" alignment="center" text="HRV" textAlignment="center" id="liE-W0-ako"/>
+                        <label width="100" height="19" alignment="center" text="--" textAlignment="center" id="KE6-b4-uW7">
+                            <color key="textColor" red="0.33519554140000002" green="0.87333238120000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label height="20" alignment="center" text="Latest ECG" textAlignment="center" id="iaI-Ck-MLy"/>
+                        <label width="162" height="19" alignment="center" text="--" textAlignment="center" id="wHb-uo-ud9">
+                            <color key="textColor" red="0.33519554140000002" green="0.87333238120000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <separator alignment="left" id="vSq-qd-haP">
+                            <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </separator>
                         <label alignment="center" text="Ox Saturation" textAlignment="center" id="a2n-ky-MIJ"/>
                         <label width="115" height="21" alignment="center" text="--" textAlignment="center" id="yDo-t0-mxs">
                             <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,12 +100,6 @@
                         <label width="136" alignment="center" text="--" textAlignment="center" id="OEb-cr-oeT">
                             <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <switch width="1" alignment="left" value="YES" enabled="NO" title="Upload Data" id="1zH-dd-J2z">
-                            <accessibilityTraits key="accessibilityTraits" notEnabled="YES"/>
-                            <connections>
-                                <action selector="uploadSwitch:" destination="AgC-eL-Hgc" id="3eI-BG-Ts6"/>
-                            </connections>
-                        </switch>
                         <separator alignment="left" id="YC7-Qz-acn">
                             <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
@@ -106,18 +120,6 @@
                         <label width="136" height="22" alignment="center" text="--" textAlignment="center" id="jI0-mX-1sR">
                             <color key="textColor" red="0.36355019700000002" green="0.87451453020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <switch width="1" alignment="left" value="YES" enabled="NO" title="Upload XYZ" id="eUW-dn-jzT">
-                            <accessibilityTraits key="accessibilityTraits" notEnabled="YES"/>
-                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="uploadSwitch:" destination="AgC-eL-Hgc" id="krJ-Fv-D0e"/>
-                            </connections>
-                        </switch>
-                        <switch width="1" alignment="left" value="YES" enabled="NO" title="Upload Resultant" id="guN-en-k4R">
-                            <connections>
-                                <action selector="uploadSwitch:" destination="AgC-eL-Hgc" id="mQM-su-dpE"/>
-                            </connections>
-                        </switch>
                         <button width="111" height="31" alignment="center" title="Axis Diagram" id="aOA-ea-vD5">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -130,52 +132,69 @@
                             <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
                         <label width="136" alignment="center" text="Timer Length" textAlignment="center" id="NJY-4N-ssX"/>
-                        <button width="106" height="30" alignment="center" title="30sec" id="5Af-G3-4Gt">
+                        <button width="1" height="31" alignment="left" title="Timers" id="24w-n0-fnl">
+                            <connections>
+                                <action selector="ShowTimer" destination="AgC-eL-Hgc" id="pMV-bm-yuf"/>
+                            </connections>
+                        </button>
+                        <button width="106" height="30" alignment="center" hidden="YES" title="30sec" id="5Af-G3-4Gt">
                             <connections>
                                 <action selector="thirtySeconds" destination="AgC-eL-Hgc" id="g9h-UF-GJE"/>
                             </connections>
                         </button>
-                        <button width="112" height="30" alignment="center" title="3min" id="oaG-ax-1jE">
+                        <button width="112" height="30" alignment="center" hidden="YES" title="3min" id="oaG-ax-1jE">
                             <connections>
                                 <action selector="threeMinutes" destination="AgC-eL-Hgc" id="Tda-lN-Z91"/>
                             </connections>
                         </button>
-                        <button width="118" height="30" alignment="center" title="30min" id="Vxc-kk-UP9">
+                        <button width="118" height="30" alignment="center" hidden="YES" title="30min" id="Vxc-kk-UP9">
                             <connections>
                                 <action selector="thirtyMinutes" destination="AgC-eL-Hgc" id="yLb-lo-YFu"/>
                             </connections>
                         </button>
-                        <button width="124" height="30" alignment="center" title="1hr" id="39f-pT-crk">
+                        <button width="124" height="30" alignment="center" hidden="YES" title="1hr" id="39f-pT-crk">
                             <connections>
                                 <action selector="oneHour" destination="AgC-eL-Hgc" id="J0M-hH-dOr"/>
                             </connections>
                         </button>
-                        <button width="130" height="30" alignment="center" title="10hr" id="yqT-zb-8hs">
+                        <button width="130" height="30" alignment="center" hidden="YES" title="10hr" id="yqT-zb-8hs">
                             <connections>
                                 <action selector="tenHours" destination="AgC-eL-Hgc" id="YCO-a0-2Zf"/>
                             </connections>
                         </button>
-                        <button width="136" height="30" alignment="center" title="1day" id="L8w-v8-HMZ">
+                        <button width="136" height="30" alignment="center" hidden="YES" title="1day" id="L8w-v8-HMZ">
                             <connections>
                                 <action selector="oneDay" destination="AgC-eL-Hgc" id="aNC-qQ-GjU"/>
                             </connections>
                         </button>
                     </items>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.074586845930000006" green="0.070505000649999996" blue="0.074607960880000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="IDNameLabel" destination="2kI-5t-NOh" id="1dq-Yy-P1D"/>
                         <outlet property="SPO2Label" destination="yDo-t0-mxs" id="0Lf-2r-XOR"/>
+                        <outlet property="ecgLabel" destination="wHb-uo-ud9" id="DZ1-jG-vyt"/>
+                        <outlet property="ecgTitle" destination="iaI-Ck-MLy" id="Q6W-oj-4YC"/>
                         <outlet property="heartRate" destination="1I9-6a-tZC" id="cnD-f0-XYK"/>
+                        <outlet property="hrDataSeparator" destination="vSq-qd-haP" id="jYF-c6-cr2"/>
+                        <outlet property="hrvLabel" destination="KE6-b4-uW7" id="sDP-ct-4K5"/>
+                        <outlet property="hrvTitle" destination="liE-W0-ako" id="v3Y-vI-tHO"/>
                         <outlet property="latitudeLabel" destination="OEb-cr-oeT" id="9WS-Fr-jAi"/>
                         <outlet property="longitudeLabel" destination="ZhP-jO-p0r" id="Syk-tM-4mE"/>
                         <outlet property="monitoringTimer" destination="DgE-eT-n6e" id="9yn-e4-GSw"/>
+                        <outlet property="moreHRDataButton" destination="TzV-xJ-4wy" id="ICG-1a-AKV"/>
                         <outlet property="noiseExposLabel" destination="4cA-zw-Vmk" id="K7o-EI-G2k"/>
+                        <outlet property="oneD" destination="L8w-v8-HMZ" id="623-6m-SFZ"/>
+                        <outlet property="oneHr" destination="39f-pT-crk" id="Tnm-cw-O8q"/>
+                        <outlet property="restingHRLabel" destination="TLp-Qi-Dmo" id="RI9-06-nFR"/>
+                        <outlet property="restingHRTitle" destination="uA5-h7-Smw" id="GS7-5n-ghQ"/>
                         <outlet property="resultantLabel" destination="jI0-mX-1sR" id="7SC-M7-OC9"/>
+                        <outlet property="showTimers" destination="24w-n0-fnl" id="0F7-7b-M6W"/>
                         <outlet property="sleepLabel" destination="wch-qg-OS1" id="y1d-8Y-hZn"/>
+                        <outlet property="tenHr" destination="yqT-zb-8hs" id="UbR-5h-CAa"/>
+                        <outlet property="thirtyMin" destination="Vxc-kk-UP9" id="COI-yj-AI1"/>
+                        <outlet property="thirtySec" destination="5Af-G3-4Gt" id="AWe-Zs-ais"/>
+                        <outlet property="threeMin" destination="oaG-ax-1jE" id="CoC-mC-l8v"/>
                         <outlet property="timerLength" destination="NJY-4N-ssX" id="T4F-yL-Eva"/>
-                        <outlet property="uploadDataButton" destination="1zH-dd-J2z" id="vcA-f2-cyg"/>
-                        <outlet property="uploadResultantButton" destination="guN-en-k4R" id="9sf-AN-fxx"/>
-                        <outlet property="uploadXYZButton" destination="eUW-dn-jzT" id="usl-Oy-gbL"/>
                         <outlet property="workoutButton" destination="Rbr-9f-xXa" id="bBg-TQ-vpe"/>
                         <outlet property="xLabel" destination="jmP-bg-W1d" id="djT-TG-AnG"/>
                         <outlet property="yLabel" destination="6U9-v9-wdM" id="2pp-jv-5OI"/>
@@ -183,7 +202,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="219.52173913043478" y="294.84375"/>
+            <point key="canvasLocation" x="219.52173913043478" y="288.77232142857144"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -219,7 +238,7 @@
                                 <!--2014-11-09 20:09:00 +0000-->
                             </date>
                         </dateLabel>
-                        <label width="136" height="49" alignment="center" text="Name/ID" textAlignment="center" numberOfLines="3" id="Lhb-4A-XYc">
+                        <label width="136" height="111" alignment="center" text="Name/ID" textAlignment="center" numberOfLines="4" id="Lhb-4A-XYc">
                             <fontDescription key="font" style="UICTFontTextStyleBody"/>
                         </label>
                         <separator alignment="left" id="o8y-df-Ewf">
@@ -227,13 +246,14 @@
                         </separator>
                         <imageView width="117" height="125" alignment="center" image="Image-2" id="cKN-QX-9gm"/>
                     </items>
+                    <color key="backgroundColor" red="0.074586845930000006" green="0.070505000649999996" blue="0.074607960880000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="currentTimeStamp" destination="vBm-vM-zim" id="YKK-Nn-A9r"/>
                         <outlet property="userNameLabel" destination="Lhb-4A-XYc" id="vDP-SR-ICZ"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="467.86956521739125" y="119.91071428571429"/>
+            <point key="canvasLocation" x="467.86956521739125" y="139.26339285714286"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">

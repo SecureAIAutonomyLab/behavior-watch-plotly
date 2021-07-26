@@ -26,20 +26,38 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.149269937983-ntln6k81a4c9ms969ssqs33o6ppq2e4s</string>
+				<string>fbcom.1-Aim-Industries.Cloud-Vitals</string>
 			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>None</string>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>com.1-Aim-Industries.Cloud-Vitals</string>
+	<key>FacebookClientToken</key>
+	<string>Cloud Vitals</string>
+	<key>FacebookDisplayName</key>
+	<string>Cloud Vitals</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fbapi20130214</string>
+		<string>fbapi20130410</string>
+		<string>fbapi20130702</string>
+		<string>fbapi20131010</string>
+		<string>fbapi20131219</string>
+		<string>fbapi20140410</string>
+		<string>fbapi20140116</string>
+		<string>fbapi20150313</string>
+		<string>fbapi20150629</string>
+		<string>fbapi20160328</string>
+		<string>fbauth</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthShareUsageDescription</key>
@@ -47,9 +65,9 @@
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Cloud Vitals Will Update Biometric Data to Provide Real-Time Feedback</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Cloud Vitals Wants to Use Your Location</string>
+	<string>Using Location For Behavioral Analytics</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Cloud Vitals Wants to Use Your Location</string>
+	<string>Using Location For Behavioral Analytics</string>
 	<key>NSUbiquitousContainers</key>
 	<dict>
 		<key>iCloud.[YOUR_IDENTIFIER]</key>
@@ -62,6 +80,8 @@
 			<string>Any</string>
 		</dict>
 	</dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Using UUID to keep data anonymous.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -99,6 +119,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

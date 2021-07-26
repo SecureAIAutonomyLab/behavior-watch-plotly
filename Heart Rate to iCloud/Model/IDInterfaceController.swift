@@ -7,30 +7,26 @@
 
 import Foundation
 import WatchConnectivity
-import AuthenticationServices
 import UIKit
 import GoogleSignIn
+import FBSDKLoginKit
 
+///    DESCRIPTION: The IDInterfaceController class that inherits the UIViewController subclass creates an interface that the user can use to login into Cloud Vitals with either their Apple ID or their google account. Their login information is internally stored so that if a user exits the app and opens it again they don't have to log in if they already have. This class also produces a unique secret key when the user logs in so that when their data is sent to cloud services it remains anonymous.
 class IDInterfaceController: UIViewController{
     
-    let appleIDProvider = ASAuthorizationAppleIDProvider()
-//    set up apple ID auth. services
-    let userDefaults = UserDefaults.standard
 //    set up internal storag variable
     var session = WCSession.default
 //    create apple watch session variable
-    let alphabetArray : [String] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    let numberArray : [String] = ["1","2","3","4","5","6","7","8","9","0"]
-    let symbolArray : [String] = ["!","@","#","$","%","^","&","*","(",")"]
-//    arrays for random key creation
     var timer = Timer.init()
-//  create timer for looping function
+    let loginButton = FBLoginButton()
+    let login = LoginDataManager()
+    let userDefaults = UserDefaults.standard
     @IBOutlet var loginStackView: UIStackView!
 //    create stack view for login button
     @IBOutlet var parentView: UIView!
 //    create parent view variable for comparison
-    @IBOutlet var googleSignIn: GIDSignInButton!
     
+///   DESCRIPTION: viewDidLoad method runs when the screen is about to be presented to the user and when it is called it configures the connection between the Apple Watch and iPhon app components. It also establishes the services to login with google accounts. It also checks if the user has logged in previously with a google account. The method also runs a looping method that checks if the user has logged in previously so that the app can automatically log them in if they have.
     override func viewDidLoad() {
         super.viewDidLoad()
         configureWatchKitSession()
@@ -38,8 +34,8 @@ class IDInterfaceController: UIViewController{
 //      automatically sign in user
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
 //      initialize watch session
-        setUpSignInAppleButton()
-//      run apple id button setup function
+        loginButton.center = view.center
+        view.addSubview(loginButton)
         self.timer = Timer(fire: Date(), interval: (1.0/5.0),
                 repeats: true, block: { (timer) in
                     self.checkLogin()
@@ -48,48 +44,19 @@ class IDInterfaceController: UIViewController{
         RunLoop.current.add(self.timer, forMode: .default)
 
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkLogin()
 //          run login check function
     }
-    
-    func setUpSignInAppleButton() {
-        let authorizationButton = ASAuthorizationAppleIDButton()
-//        set button variable to apple's apple ID button class
-        authorizationButton.addTarget(self, action: #selector(handleAppleIdRequest), for:     .touchUpInside)
-//        Add button on some view or stack
-        authorizationButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        set button background color
-        loginStackView.center = parentView.center
-//        center stack view in parent view's center
-        self.loginStackView.addArrangedSubview(authorizationButton)
-//        add subview in stack view with apple ID button inside
 
-        
-    }
-    
-    @objc
-    func handleAppleIdRequest() {
-    let appleIDProvider = ASAuthorizationAppleIDProvider()
-//        creat variable for apple ID authentication
-    let request = appleIDProvider.createRequest()
-//        request apple for apple ID provider
-    request.requestedScopes = [.fullName, .email]
-//        specifically request for user's full name and email
-    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-//        setup final request variable before running request
-    authorizationController.delegate = self
-//        set authorization controller delegate as ASAuthorizationControllerDelegate
-    authorizationController.performRequests()
-//        finally perform login and personal info requests
-    }
-    
+    /// DESCRIPTION: The prepare method triggers the segue to the Home Screen. The method is called once the user has logged in.
+    /// PARAMS: The for segue parameter indicates that the data type that the method is dealing with is a UIStoryboardSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "loginSegue" {
-                let dataVC = segue.destination as! ViewController
-//                set ViewController.swift as destination view controller
-                let data: [String: Any] = ["Name Label":"\(dataVC.appleSignInCheck()[2])" as Any]
+                let homeVC = segue.destination as! HomeViewController
+                let data: [String: Any] = ["Name Label":"\(login.loginInfo()[2])" as Any]
 //                create data to be sent to apple watch
                 self.session.sendMessage(data, replyHandler: nil, errorHandler: nil)
 //                send user name to apple watch
@@ -118,63 +85,6 @@ class IDInterfaceController: UIViewController{
 //         if email storage is present start user off at vitals screen
         }
     }
-}
-extension IDInterfaceController: ASAuthorizationControllerDelegate {
-
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-//        check for authorization completion
-    if let appleIDCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
-//        check apple ID credentials
-    userDefaults.setValue("True", forKey: "Apple Sign In")
-    let fullName = appleIDCredential.fullName!
-//        create variable for full name from login
-    let email = appleIDCredential.email
-//        create variable for email from login
-    if email != nil {
-//        check if email has been previously stored
-    let alphaRando = alphabetArray.randomElement()!
-    let numRando = numberArray.randomElement()!
-    let symbRando = symbolArray.randomElement()!
-    let alphaRando1 = alphabetArray.randomElement()!
-    let numRando1 = numberArray.randomElement()!
-    let symbRando1 = symbolArray.randomElement()!
-    let alphaRando2 = alphabetArray.randomElement()!
-    let numRando2 = numberArray.randomElement()!
-    let symbRando2 = symbolArray.randomElement()!
-    let alphaRando3 = alphabetArray.randomElement()!
-    let numRando3 = numberArray.randomElement()!
-    let symbRando3 = symbolArray.randomElement()!
-//        create random string of variables to act as a secret key once the user has logged in for the first and only time
-        
-    let randomKey = ("\(alphaRando)\(alphaRando1)\(alphaRando2)\(numRando)\(numRando1)\(numRando2)\(symbRando)\(symbRando1)\(symbRando2)\(alphaRando3)\(numRando3)\(symbRando3)")   
-//              random key format: aaa111!!!a1!
-//        create random keyy
-//    let randomKey = "test"
-    let firstName = fullName.givenName!
-//        split full name into just first name
-    let lastName = fullName.familyName!
-//        split full name into just last name
-    let fullNameString = "\(firstName) \(lastName)"
-//        create string of first and last name
-    let emailString = "\(email!)"
-//        create string from email
-    userDefaults.set(randomKey, forKey: "Random Key")
-    userDefaults.set(fullNameString, forKey: "Full Name Apple")
-    userDefaults.set(emailString, forKey: "Email Apple")
-    userDefaults.set(fullNameString, forKey: "Full Name")
-    userDefaults.set(emailString, forKey: "Email")
-//        To save the strings for the email, random key, and full name
-    userDefaults.setValue("IN", forKey: "Sign In")
-    }
-    performSegue(withIdentifier: "loginSegue", sender: self)
-//        go to ViewController.swift
-    }
-}
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    print("Authorization Error")
-    }
-//    handles any errors when logging in
 }
 
 extension IDInterfaceController: WCSessionDelegate {

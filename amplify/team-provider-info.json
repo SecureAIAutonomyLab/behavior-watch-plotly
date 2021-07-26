@@ -16,5 +16,23 @@
         "cloudvitals5a0f5467": {}
       }
     }
+  },
+  "ailadev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cloudvitals-ailadev-154408-authRole",
+      "UnauthRoleArn": "arn:aws:iam::964108242354:role/amplify-cloudvitals-ailadev-154408-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::964108242354:role/amplify-cloudvitals-ailadev-154408-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-cloudvitals-ailadev-154408-deployment",
+      "UnauthRoleName": "amplify-cloudvitals-ailadev-154408-unauthRole",
+      "StackName": "amplify-cloudvitals-ailadev-154408",
+      "StackId": "arn:aws:cloudformation:us-east-2:964108242354:stack/amplify-cloudvitals-ailadev-154408/69defc50-e0f6-11eb-bbcf-06bb4e67c3e0",
+      "AmplifyAppId": "d1n7f2muiysrvk"
+    },
+    "categories": {
+      "auth": {
+        "cloudvitals5a0f5467": {}
+      }
+    }
   }
 }

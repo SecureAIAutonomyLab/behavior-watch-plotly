@@ -12,7 +12,6 @@ import WatchConnectivity
 import CoreMotion
 import UserNotifications
 
-
 class InterfaceController: WKInterfaceController {
     
     @IBOutlet var heartRate: WKInterfaceLabel!
@@ -29,51 +28,74 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var yLabel: WKInterfaceLabel!
     @IBOutlet var zLabel: WKInterfaceLabel!
     @IBOutlet weak var resultantLabel: WKInterfaceLabel!
-    @IBOutlet var uploadDataButton: WKInterfaceSwitch!
-    @IBOutlet var uploadXYZButton: WKInterfaceSwitch!
-    @IBOutlet var uploadResultantButton: WKInterfaceSwitch!
-//    interface labes for presenting physiological data, location, and accelerations
-//    also buttons for controlling the monitoring of vitals
-//    outlets allow the coder to change properties of the interface items
+    @IBOutlet var ecgTitle: WKInterfaceLabel!
+    @IBOutlet var ecgLabel: WKInterfaceLabel!
+    @IBOutlet var restingHRLabel: WKInterfaceLabel!
+    @IBOutlet var restingHRTitle: WKInterfaceLabel!
+    @IBOutlet var moreHRDataButton: WKInterfaceButton!
+    @IBOutlet var hrDataSeparator: WKInterfaceSeparator!
+    @IBOutlet var hrvTitle: WKInterfaceLabel!
+    @IBOutlet var hrvLabel: WKInterfaceLabel!
+    @IBOutlet var thirtySec: WKInterfaceButton!
+    @IBOutlet var threeMin: WKInterfaceButton!
+    @IBOutlet var thirtyMin: WKInterfaceButton!
+    @IBOutlet var oneHr: WKInterfaceButton!
+    @IBOutlet var tenHr: WKInterfaceButton!
+    @IBOutlet var oneD: WKInterfaceButton!
+    @IBOutlet var showTimers: WKInterfaceButton!
+    
+    //    interface labes for presenting physiological data, location, and accelerations
+    //    also buttons for controlling the monitoring of vitals
+    //    outlets allow the coder to change properties of the interface items
     
     let userDefaultsVitals = UserDefaults.standard
     //    Access Shared Defaults Object
+    let session = WCSession.default //Apple Watch Session variable
+    let motion = CMMotionManager()
+    let workoutTimes = ["30sec": 30, "3min": 180, "30min": 1800, "1hr": 3600, "10hr": 36000, "1day": 86400]
+    //    array of times that indicate timer length
+    let content = UNMutableNotificationContent()
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.01, repeats: false)
+    let userName = LoginDataManager.sharedLogin.loginInfo()[2]
     var timer2 = Timer.init()
     var timer3 = Timer.init()
-//    timers for acceleration monitoring
+    var timerStop = Timer.init()
+    //    timers for acceleration monitoring
     var workoutSession: HKWorkoutSession? // //workout session var
     var watchSession = WCSession.default //watch session variable
     var monitorVitals = false //button checker variable
-    let session = WCSession.default //Apple Watch Session variable
-    let motion = CMMotionManager()
     var timer = Timer() //timer variable
     var timerAccel = Timer.init()//timer variable for accelerometer
-    let workoutTimes = ["30sec": 30, "3min": 180, "30min": 1800, "1hr": 3600, "10hr": 36000, "1day": 86400]
-//    array of times that indicate timer length
+    var clearTimer = Timer.init()
     var secondsPassed = 0
     var totalTime = 0
-    var userName: String!
+    var hiddenLabelVariable = true
+    var hiddenTimerVariable = true
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         // Configure interface objects here.
-        heartRate.setText("--")
-        SPO2Label.setText("--")
-        noiseExposLabel.setText("--")
-        sleepLabel.setText("--")
-        longitudeLabel.setText("--")
-        latitudeLabel.setText("--")
-        resultantLabel.setText("--")
+        clearDataFields()
         timerLength.setText("Pick Time")
-        uploadDataButton.setColor(#colorLiteral(red: 0.93564713, green: 0.2231650352, blue: 0.1551090479, alpha: 1))
-        uploadXYZButton.setColor(#colorLiteral(red: 0.93564713, green: 0.2231650352, blue: 0.1551090479, alpha: 1))
-        uploadResultantButton.setColor(#colorLiteral(red: 0.93564713, green: 0.2231650352, blue: 0.1551090479, alpha: 1))
+        IDNameLabel.setText(userName)
         //        clear interface when opening app and set colors for uploading switches
         session.delegate = self
         session.activate()
-//        begin apple watch session
-        IDNameLabel.setText(userDefaultsVitals.string(forKey: "User Name"))
-//        update username label with username from iPhone app
+        restingHRTitle.setHidden(true)
+        restingHRLabel.setHidden(true)
+        hrvTitle.setHidden(true)
+        hrvLabel.setHidden(true)
+        ecgTitle.setHidden(true)
+        ecgLabel.setHidden(true)
+        hrDataSeparator.setHidden(true)
+        thirtySec.setHidden(true)
+        threeMin.setHidden(true)
+        thirtyMin.setHidden(true)
+        oneHr.setHidden(true)
+        tenHr.setHidden(true)
+        oneD.setHidden(true)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+        }
         
     }
     
@@ -81,7 +103,7 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         IDNameLabel.setText(userDefaultsVitals.string(forKey: "User Name"))
-//        update username label again in case there issues earlier
+        //        update username label again in case there issues earlier
         if WCSession.isSupported() {
             watchSession.delegate = self
             watchSession.activate()
@@ -100,9 +122,10 @@ class InterfaceController: WKInterfaceController {
         if(workoutSession == nil) {
             startWorkout()
             monitorVitals = true
-            
+            // creat boolean variable for checking if monitoring began
             
         } else {
+            timer2.invalidate()
             stopWorkout()
             monitorVitals = false
             timer.invalidate()
@@ -110,128 +133,106 @@ class InterfaceController: WKInterfaceController {
             monitoringTimer.setDate(.init(timeIntervalSinceNow: 0))
             timerLength.setText("Pick Time")
             timerLength.setTextColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
-            
+            //            reset timer label after canceling timer or when it finishes running
             
         }
         if monitorVitals == true{
+            self.userDefaultsVitals.set("Run Loops", forKey: "Run Loops")
             startAccelerometers()
-            startWorkout()
-            monitorHeartRate()
-            monitorSPO2()
-            monitorNoise()
-            monitorSleep()
-            getLocation()
             let result1 = "Start Pressed"
             let data1: [String: Any] = ["Start Pressed": result1 as Any]
             self.session.sendMessage(data1, replyHandler: nil, errorHandler: nil)
+            //            tell iPhone that the user started monitoring on the apple watch
         }
         else if monitorVitals == false{
             stopWorkout()
+            //            stop workout simulation
             timer2.invalidate()
-            xLabel.setText("--")
-            yLabel.setText("--")
-            zLabel.setText("--")
-            heartRate.setText("--")
-            SPO2Label.setText("--")
-            noiseExposLabel.setText("--")
-            sleepLabel.setText("--")
-            longitudeLabel.setText("--")
-            latitudeLabel.setText("--")
-            resultantLabel.setText("--")
+            clearDataFields()
+            //            clear interface when user stops monitoring on the apple watch
             let result = "Stop Pressed"
             let data: [String: Any] = ["Stop Pressed": result as Any]
             self.session.sendMessage(data, replyHandler: nil, errorHandler: nil)
-            
+            //            tell iPhone that the user pressed the stop monitoring button
         }
-        
-        
     }
     @IBAction func thirtySeconds() {
         let time = Double(workoutTimes["30sec"]!)
-        timer.invalidate()
-        timer2.invalidate()
-        monitoringTimer.stop()
+        timerStarted(time: time)
         timerLength.setText("30 Seconds")
-        timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        checkUserRequest()
-        timerLength.setTextColor(#colorLiteral(red: 0.07800521816, green: 1, blue: 0, alpha: 1))
-        monitoringTimer.setDate(.init(timeIntervalSinceNow: 30))
-        monitoringTimer.start()
-        startAccelerometers()
-        
-        
     }
     @IBAction func threeMinutes() {
-        let time2 = Double(workoutTimes["3min"]!)
-        timer.invalidate()
-        timer2.invalidate()
-        monitoringTimer.stop()
+        let time = Double(workoutTimes["3min"]!)
+        timerStarted(time: time)
         timerLength.setText("3 Minutes")
-        timer = Timer.scheduledTimer(timeInterval: time2, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        checkUserRequest()
-        timerLength.setTextColor(#colorLiteral(red: 0.07800521816, green: 1, blue: 0, alpha: 1))
-        monitoringTimer.setDate(.init(timeIntervalSinceNow: 180))
-        monitoringTimer.start()
-        startAccelerometers()
-        
     }
     @IBAction func thirtyMinutes() {
-        let time3 = Double(workoutTimes["30min"]!)
-        timer.invalidate()
-        timer2.invalidate()
-        monitoringTimer.stop()
+        let time = Double(workoutTimes["30min"]!)
+        timerStarted(time: time)
         timerLength.setText("30 Minutes")
-        timer = Timer.scheduledTimer(timeInterval: time3, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        checkUserRequest()
-        timerLength.setTextColor(#colorLiteral(red: 0.07800521816, green: 1, blue: 0, alpha: 1))
-        monitoringTimer.setDate(.init(timeIntervalSinceNow: 1800))
-        monitoringTimer.start()
-        startAccelerometers()
-        
     }
     @IBAction func oneHour() {
-        let time4 = Double(workoutTimes["1hr"]!)
-        timer.invalidate()
-        timer2.invalidate()
-        monitoringTimer.stop()
+        let time = Double(workoutTimes["1hr"]!)
+        timerStarted(time: time)
         timerLength.setText("1 Hour")
-        timer = Timer.scheduledTimer(timeInterval: time4, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        checkUserRequest()
-        timerLength.setTextColor(#colorLiteral(red: 0.07800521816, green: 1, blue: 0, alpha: 1))
-        monitoringTimer.setDate(.init(timeIntervalSinceNow: 3600))
-        monitoringTimer.start()
-        startAccelerometers()
-        
     }
     @IBAction func tenHours() {
-        let time5 = Double(workoutTimes["10hr"]!)
-        timer.invalidate()
-        timer2.invalidate()
-        monitoringTimer.stop()
+        let time = Double(workoutTimes["10hr"]!)
+        timerStarted(time: time)
         timerLength.setText("10 Hours")
-        timer = Timer.scheduledTimer(timeInterval: time5, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        checkUserRequest()
-        timerLength.setTextColor(#colorLiteral(red: 0.07800521816, green: 1, blue: 0, alpha: 1))
-        monitoringTimer.setDate(.init(timeIntervalSinceNow: 36000))
-        monitoringTimer.start()
-        startAccelerometers()
-        
     }
     @IBAction func oneDay() {
-        let time6 = Double(workoutTimes["1day"]!)
-        timer.invalidate()
-        timer2.invalidate()
-        monitoringTimer.stop()
+        let time = Double(workoutTimes["1day"]!)
+        timerStarted(time: time)
         timerLength.setText("1 Day")
-        timer = Timer.scheduledTimer(timeInterval: time6, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        checkUserRequest()
-        timerLength.setTextColor(#colorLiteral(red: 0.07800521816, green: 1, blue: 0, alpha: 1))
-        monitoringTimer.setDate(.init(timeIntervalSinceNow: 86400))
-        monitoringTimer.start()
-        startAccelerometers()
+    }
+    @IBAction func moreHRData() {
+        if hiddenLabelVariable == true {
+            restingHRLabel.setHidden(false)
+            restingHRTitle.setHidden(false)
+            hrvLabel.setHidden(false)
+            hrvTitle.setHidden(false)
+            ecgTitle.setHidden(false)
+            ecgLabel.setHidden(false)
+            hrDataSeparator.setHidden(false)
+            moreHRDataButton.setTitle("Hide HR Data")
+            hiddenLabelVariable = false
+        }
+        else {
+            restingHRTitle.setHidden(true)
+            restingHRLabel.setHidden(true)
+            hrvLabel.setHidden(true)
+            hrvTitle.setHidden(true)
+            ecgTitle.setHidden(true)
+            ecgLabel.setHidden(true)
+            hrDataSeparator.setHidden(true)
+            moreHRDataButton.setTitle("More HR Data")
+            hiddenLabelVariable = true
+        }
         
     }
-    @IBAction func uploadSwitch(_ value: Bool) {
+    
+    @IBAction func ShowTimer() {
+        if hiddenTimerVariable == true {
+            thirtySec.setHidden(false)
+            threeMin.setHidden(false)
+            thirtyMin.setHidden(false)
+            oneHr.setHidden(false)
+            tenHr.setHidden(false)
+            oneD.setHidden(false)
+            showTimers.setTitle("Hide Timers")
+            hiddenTimerVariable = false
+        }
+        else {
+            thirtySec.setHidden(true)
+            threeMin.setHidden(true)
+            thirtyMin.setHidden(true)
+            oneHr.setHidden(true)
+            tenHr.setHidden(true)
+            oneD.setHidden(true)
+            showTimers.setTitle("Timers")
+            hiddenTimerVariable = true
+        }
     }
     
     @objc func updateCounter() { //update the timer so that the timer counts up
@@ -242,75 +243,56 @@ class InterfaceController: WKInterfaceController {
             secondsPassed += 1
             monitorVitals = true
             startAccelerometers()
-            // make the seconds passed count up to the total time
-            
-            //            let percentageProgress = Float(secondsPassed) / Float(totalTime)
-            //algorithim for calculating the percent of the time that has passed as a float
-            
-            //            progressBar.progress = percentageProgress
-            //make the percent of time passed as a decimal equal to the progress bar value
         }
         else {
-            
+            let request = UNNotificationRequest(identifier: "Test Identifier", content: content, trigger: trigger)
             timer.invalidate()
             monitoringTimer.stop()
             monitoringTimer.setDate(.init(timeIntervalSinceNow: 0))
             stopWorkout()
             timer2.invalidate()
             monitorVitals = false
-            //reset the timer when the timer ends
-            //                playSound()
-            //activate the alarm
             timerLength.setText("DONE!")
             timerLength.setTextColor(#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))
-            heartRate.setText("--")
-            SPO2Label.setText("--")
-            noiseExposLabel.setText("--")
-            sleepLabel.setText("--")
-            longitudeLabel.setText("--")
-            latitudeLabel.setText("--")
-            xLabel.setText("--")
-            yLabel.setText("--")
-            zLabel.setText("--")
-            resultantLabel.setText("--")
-            let result = "Notification"
-            let data: [String: Any] = ["Notification": result as Any]
+            clearDataFields()
+            content.title = "Timer Done"
+            content.body = "Finished Monitoring"
+            content.sound = UNNotificationSound.default
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            let result = "Stop Pressed"
+            let data: [String: Any] = ["Stop Pressed": result as Any]
             self.session.sendMessage(data, replyHandler: nil, errorHandler: nil)
-            
-            //change the title to say DONE!
-            
         }
     }
     
     func stopWorkout() {
+        monitorVitals = false
         workoutSession?.stopActivity(with: Date())
         workoutSession?.end()
         workoutSession = nil
-        
         workoutButton.setTitle("Monitor ∞sec")
+        timer2.invalidate()
+        timer.invalidate()
     }
     
     func startWorkout() {
+        monitorVitals = true
         let workoutConfiguration = HKWorkoutConfiguration()
         workoutConfiguration.activityType = .walking
         workoutConfiguration.locationType = .indoor
+        monitorHeartRate()
+        monitorRestingHR()
+        monitorHRV()
+        monitorSPO2()
+        monitorNoise()
+        monitorSleep()
+        getLocation()
         
         do {
             if workoutSession == nil {
                 workoutSession = try HKWorkoutSession(healthStore: HealthDataManager.sharedInstance.healthStore!, configuration: workoutConfiguration)
                 workoutSession?.startActivity(with: Date())
-                startAccelerometers()
                 workoutButton.setTitle("Stop")
-                heartRate.setText("--")
-                SPO2Label.setText("--")
-                noiseExposLabel.setText("--")
-                sleepLabel.setText("--")
-                longitudeLabel.setText("--")
-                latitudeLabel.setText("--")
-                xLabel.setText("--")
-                yLabel.setText("--")
-                zLabel.setText("--")
-                resultantLabel.setText("--")
             }
         } catch {
             print("Error starting workout session: \(error.localizedDescription)")
@@ -331,6 +313,28 @@ class InterfaceController: WKInterfaceController {
             }
         }
     }
+    
+    func monitorRestingHR() {
+        HealthDataManager.sharedInstance.observeRestingHeartRate {
+            (restingHR) -> (Void) in
+            if self.monitorVitals == true {
+                let restingHRValue = String(format: "%.0f", restingHR)
+                self.restingHRLabel.setText("\(restingHRValue) BPM")
+                let data: [String: Any] = ["restingHR": restingHRValue as Any]
+                self.session.sendMessage(data, replyHandler: nil, errorHandler: nil)
+            }
+        }
+    }
+    
+    func monitorHRV() {
+        HealthDataManager.sharedInstance.sdnnQuery()
+        let hrvValue = userDefaultsVitals.double(forKey: "HRV")
+        hrvLabel.setText("\(hrvValue) millis")
+        let hrvData: [String: Any] = ["hrv": "\(hrvValue)" as Any]
+        //send data to companion app so that it can published to cloud services
+        self.session.sendMessage(hrvData, replyHandler: nil, errorHandler: nil)
+    }
+    
     // monitor Blood Oxygen Saturation(SPO2) directly from apple watch
     func monitorSPO2(){
         //retrieve SPO2 value from health data manager class
@@ -374,29 +378,27 @@ class InterfaceController: WKInterfaceController {
     }
     
     func monitorSleep() {
-        if self.monitorVitals == true{
-            HealthDataManager.sharedInstance.retrieveSleepWithAuth { result -> Void in
-                if self.monitorVitals == true{
-                    DispatchQueue.main.async {
-                        let finalResult = String(Int(result / 3600)) + "h " +
-                            String(Int(result.truncatingRemainder(dividingBy: 3600) / 60)) + "m " +
-                            String(Int(result.truncatingRemainder(dividingBy: 3600)
-                                        .truncatingRemainder(dividingBy: 60))) + "s"
-                        self.sleepLabel.setText(finalResult)
-                        let data: [String: Any] = ["SleepTime": result as Any]
-                        self.session.sendMessage(data, replyHandler: nil, errorHandler: nil)
-                    }
+        HealthDataManager.sharedInstance.retrieveSleepWithAuth { result -> Void in
+            if self.monitorVitals == true{
+                DispatchQueue.main.async {
+                    let finalResult = String(Int(result / 3600)) + "h " +
+                        String(Int(result.truncatingRemainder(dividingBy: 3600) / 60)) + "m " +
+                        String(Int(result.truncatingRemainder(dividingBy: 3600)
+                                    .truncatingRemainder(dividingBy: 60))) + "s"
+                    self.sleepLabel.setText(finalResult)
+                    let data: [String: Any] = ["SleepTime": result as Any]
+                    self.session.sendMessage(data, replyHandler: nil, errorHandler: nil)
                 }
-                else if self.monitorVitals == false{
-                    self.noiseExposLabel.setText("--")
-                }
+            }
+            else if self.monitorVitals == false{
+                self.noiseExposLabel.setText("--")
             }
         }
     }
     
     func getLocation() {
-        let longitude = HealthDataManager.sharedInstance.requestLongitude()
-        let latitude = HealthDataManager.sharedInstance.requestLatitude()
+        let longitude = HealthDataManager.sharedInstance.requestLocationAuthorization()[1]
+        let latitude = HealthDataManager.sharedInstance.requestLocationAuthorization()[2]
         longitudeLabel.setText(longitude)
         latitudeLabel.setText(latitude)
     }
@@ -415,28 +417,23 @@ class InterfaceController: WKInterfaceController {
             monitorNoise()
             monitorSleep()
             getLocation()
+            monitorRestingHR()
+            monitorHRV()
         }
         else if monitorVitals == false{
             stopWorkout()
-            heartRate.setText("--")
-            SPO2Label.setText("--")
-            noiseExposLabel.setText("--")
-            sleepLabel.setText("--")
-            longitudeLabel.setText("--")
-            latitudeLabel.setText("--")
-            resultantLabel.setText("--")
+            clearDataFields()
         }
     }
     
     func startAccelerometers() {
         // Make sure the accelerometer hardware is available.
-        if motion.isAccelerometerAvailable && monitorVitals == true {
+        if motion.isAccelerometerAvailable  {
             self.motion.accelerometerUpdateInterval = 1.0 / 10.0  // 60 Hz
             self.motion.startAccelerometerUpdates()
-            
             // Configure a timer to fetch the data.
             self.timer2 = Timer(fire: Date(), interval: (1.0/10.0),
-                                repeats: true, block: { (timer) in
+                                repeats: true, block: { (timer2) in
                                     // Get the accelerometer data.
                                     if let data = self.motion.accelerometerData {
                                         let x = data.acceleration.x
@@ -445,29 +442,57 @@ class InterfaceController: WKInterfaceController {
                                         let xRound = Double(round(1000*x)/1000)
                                         let yRound = Double(round(1000*y)/1000)
                                         let zRound = Double(round(1000*z)/1000)
-                                        print(xRound)
-                                        print(yRound)
-                                        print(zRound)
-                                        self.xLabel.setText("\(xRound) g's")
-                                        self.yLabel.setText("\(yRound) g's")
-                                        self.zLabel.setText("\(zRound) g's")
-                                        //                let timeStamp = self.xLabel.value(forKey: String)
                                         let resultantAccel = sqrt(pow(xRound,2) + pow(yRound,2) + pow(zRound,2))
                                         let resultantRound = Double(round(1000*resultantAccel)/1000)
                                         self.resultantLabel.setText("\(resultantRound)")
-                                        let xyzArray = [xRound, yRound, zRound]
-                                        let XYZ: [String: Any] = ["Array": xyzArray as Any]
+                                        self.xLabel.setText("\(xRound) g's")
+                                        self.yLabel.setText("\(yRound) g's")
+                                        self.zLabel.setText("\(zRound) g's")
+                                        let XYZ: [String: Any] = ["Array": [xRound, yRound, zRound] as Any]
                                         let resultantXYZ: [String: Any] = ["Resultant": resultantAccel as Any]
-                                        //                self.session.sendMessage(resultantXYZ, replyHandler: nil, errorHandler: nil)
                                         self.session.sendMessage(XYZ, replyHandler: nil, errorHandler: nil)
                                         self.session.sendMessage(resultantXYZ, replyHandler: nil, errorHandler: nil)
                                         // Use the accelerometer data in your app.
+                                        if self.userDefaultsVitals.string(forKey: "Run Loops") == "Stop Loops" {
+                                            timer2.invalidate()
+                                        }
                                     }
                                 })
-            
             // Add the timer to the current run loop.
             RunLoop.current.add(self.timer2, forMode: .default)
+            
         }
+    }
+    
+    func clearDataFields() {
+        heartRate.setText("--")
+        restingHRLabel.setText("--")
+        hrvLabel.setText("--")
+        ecgLabel.setText("--")
+        SPO2Label.setText("--")
+        noiseExposLabel.setText("--")
+        sleepLabel.setText("--")
+        longitudeLabel.setText("--")
+        latitudeLabel.setText("--")
+        resultantLabel.setText("--")
+        xLabel.setText("--")
+        yLabel.setText("--")
+        zLabel.setText("--")
+    }
+    
+    func timerStarted(time: Double){
+        timer.invalidate()
+        timer2.invalidate()
+        monitoringTimer.stop()
+        timer = Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        checkUserRequest()
+        timerLength.setTextColor(#colorLiteral(red: 0.07800521816, green: 1, blue: 0, alpha: 1))
+        monitoringTimer.setDate(.init(timeIntervalSinceNow: time))
+        monitoringTimer.start()
+        startAccelerometers()
+        let result1 = "Start Pressed"
+        let data1: [String: Any] = ["Start Pressed": result1 as Any]
+        self.session.sendMessage(data1, replyHandler: nil, errorHandler: nil)
     }
 }
 
@@ -492,35 +517,45 @@ extension InterfaceController: WCSessionDelegate {
                 self.latitudeLabel.setText(latitude)
             }
         }
-        
         DispatchQueue.main.async {
-            if let dataSwitchCheck = message["Data Switch Check"] as? String {
-                if dataSwitchCheck == "ON" {
-                    self.uploadDataButton.setOn(true)
-                    self.userDefaultsVitals.setValue(true, forKey: "Upload Data Button")
+            if let monitor = message["Remote Monitor"] as? String {
+                if monitor == "Monitor" {
+                    self.userDefaultsVitals.set("Run Loops", forKey: "Run Loops")
+                    self.startWorkout()
+                    self.startAccelerometers()
+                    self.monitorHeartRate()
+                    self.monitorRestingHR()
+                    self.monitorSPO2()
+                    self.monitorNoise()
+                    self.monitorSleep()
+                    self.getLocation()
+                    self.monitorHRV()
+                    self.timer.invalidate()
                 }
-                if dataSwitchCheck == "OFF" {
-                    self.uploadDataButton.setOn(false)
-                    self.userDefaultsVitals.setValue(false, forKey: "Upload Data Button")
-                }
-            }
-            if let xyzSwitchCheck = message["XYZ Switch Check"] as? String {
-                if xyzSwitchCheck == "ON" {
-                    self.uploadXYZButton.setOn(true)
-                }
-                if xyzSwitchCheck == "OFF" {
-                    self.uploadXYZButton.setOn(false)
-                }
-            }
-            if let resultantSwitchCheck = message["Resultant Switch Check"] as? String {
-                if resultantSwitchCheck == "ON" {
-                    self.uploadResultantButton.setOn(true)
-                }
-                if resultantSwitchCheck == "OFF" {
-                    self.uploadResultantButton.setOn(false)
+                else if monitor == "Stop" {
+                    self.stopWorkout()
+                    self.userDefaultsVitals.set("Stop Loops", forKey: "Run Loops")
+                    DispatchQueue.main.async {
+                        self.timer.invalidate()
+                        self.timer2.invalidate()
+                        self.clearTimer = Timer(fire: Date(), interval: (1.0/100.0),
+                                                repeats: true, block: { (timer) in
+                                                    self.clearDataFields()
+                                                })
+                        RunLoop.current.add(self.clearTimer, forMode: .default)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Change `2.0` to the desired number of seconds.
+                            // Code you want to be delayed
+                            self.clearTimer.invalidate()
+                        }
+                    }
                 }
             }
         }
+        DispatchQueue.main.async {
+            if let ECG = message["ECG"] as? String {
+                self.ecgLabel.setText(ECG)
+        }
+    }
     }
 }
 

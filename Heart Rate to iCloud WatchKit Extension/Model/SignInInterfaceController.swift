@@ -37,8 +37,6 @@ class SignInInterfaceController: WKInterfaceController {
     override func didDeactivate() {
         super.didDeactivate()
     }
-    @IBAction func signInPushed() {
-    }
     
     func configureWatchKitSession(){
         if WCSession.isSupported() {
@@ -63,8 +61,6 @@ extension SignInInterfaceController: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
             if let IDLabel = message["Name Label"] as? String {
-                self.endIFC.userName = IDLabel
-                print(IDLabel)
                 self.signedInButton.setEnabled(true)
                 self.signedInButton.setBackgroundColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1))
                 self.signedInButton.setTitle("Signed In!")

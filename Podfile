@@ -15,6 +15,8 @@ target 'Heart Rate to iCloud' do
 	pod 'GoogleSignIn'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
 	pod 'Charts'
+  pod 'FBSDKLoginKit'
+  pod 'ScrollableGraphView'
 	
   target 'Heart Rate to iCloudTests' do
     inherit! :search_paths
