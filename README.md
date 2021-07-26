@@ -47,6 +47,7 @@ Open a command terminal at the project's folder (behavior-watch-plotly) and run 
 After running this command a bunch of configuration settings will appear in the following order
 
 Answer them in this order
+
    ? Do you want to use an existing environment? (Y/n) 
                           
         y
