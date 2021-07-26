@@ -105,7 +105,7 @@ class DataViewController: UITableViewController{
     }
     
     /// DESCRIPTION: When the chevron arrow next to the heart beat label is pressed this method is called and it checks whether the user wants to display extra heart beat info or hide that info based on the current state of the button. When either scenario occurs the method either hides the cells with the extra heart beat info or presents them to teh user through internal storage of variables. The image associated with the button is also changed to point either up or down.
-    /// PARAMS: The sender parameter references the button that was pressed
+    /// PARAMS: The sender parameter references the button that was pressed.
     @IBAction func moreHRDataPressed(_ sender: UIButton) {
         if hiddenHRData == true {
             showMoreHRDataButton.setImage(imageUp, for: .normal)
@@ -122,7 +122,7 @@ class DataViewController: UITableViewController{
     }
     
     /// DESCRIPTION: This method is called when the large "Monitor" button is pressed. A bluetooth message is sent to the apple watch app and begins to monitor data from the watch. Once monitoring starts the button's label changes to say "Stop" alerting the user that they can stop the data monitoring witht the same button. When user presses "Stop" a timer loop runs for one secon to make sure no excess data remains on the interface.
-    /// PARAMS: The sender parameter references the button that was pressed
+    /// PARAMS: The sender parameter references the button that was pressed.
     @IBAction func remoteMonitoringPressed(_ sender: UIButton) {
         sender.isSelected.toggle()
         remoteMonitor.setTitle("Stop Monitoring", for: .selected)
@@ -132,6 +132,13 @@ class DataViewController: UITableViewController{
             let monitor: [String: Any] = ["Remote Monitor": "Monitor" as Any]
             session!.sendMessage(monitor, replyHandler: nil, errorHandler: nil)
             userDefaultsVitals.set("Run Location", forKey: "Location Loop")
+            HealthDataManager.sharedInstance.ecgQuery { result -> Void in
+                DispatchQueue.main.async {
+                self.ecgLabel.text = result
+                let ecgValue: [String: Any] = ["ECG": result as Any]
+                self.session!.sendMessage(ecgValue, replyHandler: nil, errorHandler: nil)
+                }
+            }
             getLocation()
         }
         else {
