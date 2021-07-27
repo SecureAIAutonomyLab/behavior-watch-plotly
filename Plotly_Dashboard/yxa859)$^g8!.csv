@@ -1,0 +1,183 @@
+CDTJune/15/2021 12:53:55:12,sleep:5852.0
+ CDTJune/15/2021 12:53:56:256,noise:60
+ CDTJune/15/2021 12:53:56:260,blood_o2:94.0
+ CDTJune/15/2021 12:53:56:280,location:29.585571 -98.619609
+ CDTJune/15/2021 12:53:56:281,heart_rate:70.0
+ CDTJune/15/2021 12:54:07:578,location:29.585571 -98.619609
+ CDTJune/15/2021 12:54:07:580,heart_rate:72.0
+ CDTJune/15/2021 12:54:18:116,xyz_acc:-0.047 -0.14 -1.2
+ CDTJune/15/2021 12:54:18:131,resultant_acc:1.209
+ CDTJune/15/2021 12:54:18:141,xyz_acc:-0.03 -0.028 -0.993
+ CDTJune/15/2021 12:54:18:148,resultant_acc:0.994
+ CDTJune/15/2021 12:54:18:150,xyz_acc:0.015 -0.016 -1.008
+ CDTJune/15/2021 12:54:18:151,resultant_acc:1.008
+ CDTJune/15/2021 12:54:18:152,xyz_acc:-0.001 -0.026 -0.995
+ CDTJune/15/2021 12:54:18:152,resultant_acc:0.995
+ CDTJune/15/2021 12:54:19:188,xyz_acc:0.002 -0.026 -0.998
+ CDTJune/15/2021 12:54:19:189,resultant_acc:0.998
+ CDTJune/15/2021 12:54:19:226,xyz_acc:-0.0 -0.013 -0.993
+ CDTJune/15/2021 12:54:19:238,resultant_acc:0.993
+ CDTJune/15/2021 12:54:19:275,xyz_acc:0.01 -0.022 -1.0
+ CDTJune/15/2021 12:54:19:283,resultant_acc:1.0
+ CDTJune/15/2021 12:54:19:393,xyz_acc:0.003 -0.024 -0.995
+ CDTJune/15/2021 12:54:19:411,resultant_acc:0.995
+ CDTJune/15/2021 12:54:19:486,xyz_acc:-0.002 -0.012 -0.995
+ CDTJune/15/2021 12:54:19:498,resultant_acc:0.995
+ CDTJune/15/2021 12:54:19:600,xyz_acc:0.005 -0.011 -0.996
+ CDTJune/15/2021 12:54:19:617,resultant_acc:0.996
+ CDTJune/15/2021 12:54:19:698,xyz_acc:0.007 -0.014 -0.997
+ CDTJune/15/2021 12:54:19:711,resultant_acc:0.997
+ CDTJune/15/2021 12:54:19:809,xyz_acc:-0.001 -0.018 -1.007
+ CDTJune/15/2021 12:54:19:823,resultant_acc:1.007
+ CDTJune/15/2021 12:54:19:914,xyz_acc:-0.017 -0.017 -1.003
+ CDTJune/15/2021 12:54:19:932,resultant_acc:1.003
+ CDTJune/15/2021 12:54:19:19,xyz_acc:0.009 0.008 -1.004
+ CDTJune/15/2021 12:54:19:32,resultant_acc:1.004
+ CDTJune/15/2021 12:54:19:94,xyz_acc:0.009 -0.006 -0.996
+ CDTJune/15/2021 12:54:19:113,resultant_acc:0.996
+ CDTJune/15/2021 12:54:20:200,xyz_acc:0.002 -0.046 -0.984
+ CDTJune/15/2021 12:54:20:213,resultant_acc:0.985
+ CDTJune/15/2021 12:54:20:296,xyz_acc:-0.005 -0.055 -0.987
+ CDTJune/15/2021 12:54:20:309,resultant_acc:0.989
+ CDTJune/15/2021 12:54:20:409,xyz_acc:0.006 0.014 -1.004
+ CDTJune/15/2021 12:54:20:422,resultant_acc:1.004
+ CDTJune/15/2021 12:54:20:516,xyz_acc:-0.024 0.001 -1.016
+ CDTJune/15/2021 12:54:20:530,resultant_acc:1.016
+ CDTJune/15/2021 12:54:20:599,xyz_acc:0.001 0.048 -0.992
+ CDTJune/15/2021 12:54:20:610,resultant_acc:0.993
+ CDTJune/15/2021 12:54:20:702,xyz_acc:-0.004 -0.013 -1.001
+ CDTJune/15/2021 12:54:20:717,resultant_acc:1.001
+ CDTJune/15/2021 12:54:20:815,xyz_acc:0.014 0.001 -1.0
+ CDTJune/15/2021 12:54:20:832,resultant_acc:1.0
+ CDTJune/15/2021 12:54:20:910,xyz_acc:-0.01 0.012 -0.998
+ CDTJune/15/2021 12:54:20:919,resultant_acc:0.998
+ CDTJune/15/2021 12:54:20:3,xyz_acc:0.007 -0.029 -0.992
+ CDTJune/15/2021 12:54:20:17,resultant_acc:0.992
+ CDTJune/15/2021 12:54:20:111,xyz_acc:-0.004 -0.011 -1.0
+ CDTJune/15/2021 12:54:20:123,resultant_acc:1.0
+ CDTJune/15/2021 12:54:21:201,xyz_acc:-0.011 -0.017 -0.997
+ CDTJune/15/2021 12:54:21:220,resultant_acc:0.997
+ CDTJune/15/2021 12:54:21:287,xyz_acc:-0.0 -0.044 -0.993
+ CDTJune/15/2021 12:54:21:301,resultant_acc:0.994
+ CDTJune/15/2021 12:54:21:388,xyz_acc:-0.006 -0.021 -0.999
+ CDTJune/15/2021 12:54:21:406,resultant_acc:0.999
+ CDTJune/15/2021 12:54:21:497,xyz_acc:-0.009 -0.024 -0.987
+ CDTJune/15/2021 12:54:21:512,resultant_acc:0.987
+ CDTJune/15/2021 12:54:21:596,xyz_acc:0.001 -0.011 -0.999
+ CDTJune/15/2021 12:54:21:610,resultant_acc:0.999
+ CDTJune/15/2021 12:54:21:708,xyz_acc:0.058 0.546 -1.177
+ CDTJune/15/2021 12:54:21:774,resultant_acc:1.299
+ CDTJune/15/2021 12:54:21:812,xyz_acc:0.032 0.171 -0.922
+ CDTJune/15/2021 12:54:21:822,resultant_acc:0.938
+ CDTJune/15/2021 12:54:21:891,xyz_acc:-0.005 -0.269 -0.51
+ CDTJune/15/2021 12:54:21:906,resultant_acc:0.577
+ CDTJune/15/2021 12:54:21:994,xyz_acc:-0.05 1.142 -0.857
+ CDTJune/15/2021 12:54:21:69,resultant_acc:1.429
+ CDTJune/15/2021 12:54:21:111,xyz_acc:0.325 -0.605 -0.226
+ CDTJune/15/2021 12:54:21:125,resultant_acc:0.723
+ CDTJune/15/2021 12:54:22:210,xyz_acc:-0.027 -0.438 -0.243
+ CDTJune/15/2021 12:54:22:224,resultant_acc:0.502
+ CDTJune/15/2021 12:54:22:319,xyz_acc:-0.101 1.615 -0.818
+ CDTJune/15/2021 12:54:22:365,resultant_acc:1.813
+ CDTJune/15/2021 12:54:22:405,xyz_acc:0.327 -0.697 0.077
+ CDTJune/15/2021 12:54:22:421,resultant_acc:0.774
+ CDTJune/15/2021 12:54:22:487,xyz_acc:-0.051 -0.632 -0.347
+ CDTJune/15/2021 12:54:22:502,resultant_acc:0.723
+ CDTJune/15/2021 12:54:22:598,xyz_acc:-0.095 1.676 -0.777
+ CDTJune/15/2021 12:54:22:613,resultant_acc:1.85
+ CDTJune/15/2021 12:54:22:709,xyz_acc:-0.086 0.896 -0.057
+ CDTJune/15/2021 12:54:22:713,resultant_acc:0.902
+ CDTJune/15/2021 12:54:22:798,xyz_acc:-0.118 -0.611 -0.582
+ CDTJune/15/2021 12:54:22:815,resultant_acc:0.852
+ CDTJune/15/2021 12:54:22:910,xyz_acc:-0.345 0.812 -0.118
+ CDTJune/15/2021 12:54:22:922,resultant_acc:0.89
+ CDTJune/15/2021 12:54:22:23,xyz_acc:0.051 1.512 -0.277
+ CDTJune/15/2021 12:54:22:34,resultant_acc:1.538
+ CDTJune/15/2021 12:54:22:97,xyz_acc:-0.356 0.161 -1.754
+ CDTJune/15/2021 12:54:22:111,resultant_acc:1.797
+ CDTJune/15/2021 12:54:23:194,xyz_acc:-0.303 0.089 -0.5
+ CDTJune/15/2021 12:54:23:213,resultant_acc:0.591
+ CDTJune/15/2021 12:54:23:304,xyz_acc:-0.336 0.603 -0.759
+ CDTJune/15/2021 12:54:23:318,resultant_acc:1.026
+ CDTJune/15/2021 12:54:23:402,xyz_acc:-0.283 -0.581 -0.785
+ CDTJune/15/2021 12:54:23:413,resultant_acc:1.017
+ CDTJune/15/2021 12:54:23:507,xyz_acc:-0.219 -0.453 -0.534
+ CDTJune/15/2021 12:54:23:516,resultant_acc:0.734
+ CDTJune/15/2021 12:54:23:599,xyz_acc:-0.295 2.611 -1.12
+ CDTJune/15/2021 12:54:23:609,resultant_acc:2.856
+ CDTJune/15/2021 12:54:23:710,xyz_acc:-0.054 -0.574 0.466
+ CDTJune/15/2021 12:54:23:723,resultant_acc:0.741
+ CDTJune/15/2021 12:54:23:789,xyz_acc:-0.185 -0.783 -0.296
+ CDTJune/15/2021 12:54:23:797,resultant_acc:0.857
+ CDTJune/15/2021 12:54:23:895,xyz_acc:-0.081 1.741 0.35
+ CDTJune/15/2021 12:54:23:909,resultant_acc:1.778
+ CDTJune/15/2021 12:54:23:987,xyz_acc:-0.143 1.211 0.069
+ CDTJune/15/2021 12:54:23:997,resultant_acc:1.221
+ CDTJune/15/2021 12:54:23:107,xyz_acc:-0.063 -0.216 -1.366
+ CDTJune/15/2021 12:54:23:117,resultant_acc:1.384
+ CDTJune/15/2021 12:54:24:202,xyz_acc:-0.201 1.181 0.745
+ CDTJune/15/2021 12:54:24:212,resultant_acc:1.411
+ CDTJune/15/2021 12:54:24:298,xyz_acc:-0.162 1.198 -0.565
+ CDTJune/15/2021 12:54:24:310,resultant_acc:1.334
+ CDTJune/15/2021 12:54:24:406,xyz_acc:-0.305 -0.576 -1.44
+ CDTJune/15/2021 12:54:24:415,resultant_acc:1.581
+ CDTJune/15/2021 12:54:24:498,xyz_acc:-0.336 0.145 -0.104
+ CDTJune/15/2021 12:54:24:509,resultant_acc:0.38
+ CDTJune/15/2021 12:54:24:598,xyz_acc:-0.177 0.551 -0.25
+ CDTJune/15/2021 12:54:24:611,resultant_acc:0.63
+ CDTJune/15/2021 12:54:24:709,xyz_acc:-0.17 -0.808 -0.289
+ CDTJune/15/2021 12:54:24:721,resultant_acc:0.875
+ CDTJune/15/2021 12:54:24:799,xyz_acc:-0.144 -0.491 0.835
+ CDTJune/15/2021 12:54:24:813,resultant_acc:0.979
+ CDTJune/15/2021 12:54:24:912,xyz_acc:0.134 1.846 -0.626
+ CDTJune/15/2021 12:54:24:919,resultant_acc:1.954
+ CDTJune/15/2021 12:54:24:999,xyz_acc:0.058 -1.11 -0.117
+ CDTJune/15/2021 12:54:24:11,resultant_acc:1.118
+ CDTJune/15/2021 12:54:24:95,xyz_acc:-0.263 -0.45 -0.427
+ CDTJune/15/2021 12:54:24:105,resultant_acc:0.674
+ CDTJune/15/2021 12:54:25:191,xyz_acc:-0.367 2.131 -1.187
+ CDTJune/15/2021 12:54:25:203,resultant_acc:2.467
+ CDTJune/15/2021 12:54:25:299,xyz_acc:0.319 -1.67 0.594
+ CDTJune/15/2021 12:54:25:309,resultant_acc:1.801
+ CDTJune/15/2021 12:54:25:402,xyz_acc:-0.194 -0.556 -0.534
+ CDTJune/15/2021 12:54:25:416,resultant_acc:0.795
+ CDTJune/15/2021 12:54:25:505,xyz_acc:0.024 0.924 0.761
+ CDTJune/15/2021 12:54:25:510,resultant_acc:1.197
+ CDTJune/15/2021 12:54:25:603,xyz_acc:0.212 -0.031 -0.07
+ CDTJune/15/2021 12:54:25:619,resultant_acc:0.225
+ CDTJune/15/2021 12:54:25:710,xyz_acc:-0.09 0.008 -1.409
+ CDTJune/15/2021 12:54:25:720,resultant_acc:1.412
+ CDTJune/15/2021 12:54:25:789,xyz_acc:0.007 2.71 -0.794
+ CDTJune/15/2021 12:54:25:795,resultant_acc:2.824
+ CDTJune/15/2021 12:54:25:901,xyz_acc:-0.283 0.835 0.217
+ CDTJune/15/2021 12:54:25:910,resultant_acc:0.908
+ CDTJune/15/2021 12:54:25:10,xyz_acc:-0.136 -0.132 -1.634
+ CDTJune/15/2021 12:54:25:23,resultant_acc:1.645
+ CDTJune/15/2021 12:54:25:118,xyz_acc:-0.221 0.202 0.21
+ CDTJune/15/2021 12:54:25:125,resultant_acc:0.366
+ CDTJune/15/2021 12:54:26:233,xyz_acc:0.115 0.698 0.47
+ CDTJune/15/2021 12:54:26:269,resultant_acc:0.849
+ CDTJune/15/2021 12:54:26:308,xyz_acc:-0.183 -0.346 -1.607
+ CDTJune/15/2021 12:54:26:318,resultant_acc:1.654
+ CDTJune/15/2021 12:54:26:397,xyz_acc:-0.02 -0.118 -0.79
+ CDTJune/15/2021 12:54:26:409,resultant_acc:0.799
+ CDTJune/15/2021 12:54:26:505,xyz_acc:0.004 -0.334 -1.1
+ CDTJune/15/2021 12:54:26:515,resultant_acc:1.15
+ CDTJune/15/2021 12:54:26:596,xyz_acc:-0.07 0.08 -1.072
+ CDTJune/15/2021 12:54:26:613,resultant_acc:1.077
+ CDTJune/15/2021 12:54:26:749,xyz_acc:-0.066 -0.031 -1.128
+ CDTJune/15/2021 12:54:26:764,resultant_acc:1.13
+ CDTJune/15/2021 12:54:26:803,xyz_acc:-0.059 -0.038 -1.054
+ CDTJune/15/2021 12:54:26:811,resultant_acc:1.056
+ CDTJune/15/2021 12:54:26:900,xyz_acc:-0.056 -0.084 -1.007
+ CDTJune/15/2021 12:54:26:913,resultant_acc:1.012
+ CDTJune/15/2021 12:54:26:3,xyz_acc:-0.066 -0.14 -1.022
+ CDTJune/15/2021 12:54:26:45,resultant_acc:1.034
+ CDTJune/15/2021 12:54:26:95,xyz_acc:-0.054 -0.132 -0.996
+ CDTJune/15/2021 12:54:26:129,resultant_acc:1.006
+ CDTJune/15/2021 12:54:27:201,xyz_acc:-0.054 -0.188 -0.974
+ CDTJune/15/2021 12:54:27:213,resultant_acc:0.993
+ CDTJune/15/2021 12:54:27:292,xyz_acc:-0.054 -0.211 -0.944
+ CDTJune/15/2021 12:54:27:306,resultant_acc:0.969
+ CDTJune/15/2021 12:54:28:509,xyz_acc:-0.035 -0.184 -0.979
+ CDTJune/15/2021 12:54:28:541,resultant_acc:0.997
