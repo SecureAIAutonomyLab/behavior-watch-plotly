@@ -10,14 +10,20 @@ import numpy as np
 import calendar
 pd.options.mode.chained_assignment = None  # default='warn'
 
+# read in secret key
+file = open("aws.key", "r")
+file.readline() # header
+access_key_id = file.readline().replace("\n", "")
+secret_access_key = file.readline().replace("\n", "")
+
 """
 boto3 connestc to aws with params ...
 """
 #Connect to AWS S3
 s3 = boto3.client(
     's3',
-    aws_access_key_id = 'AKIA6A6KUJWZGQR3OZW7',
-    aws_secret_access_key = 'Fu860GmuvRxina4JO8HRyB6X6dskazKhyOlGJgzJ',
+    aws_access_key_id = access_key_id,
+    aws_secret_access_key = secret_access_key,
     region_name = 'us-east-2'
 )
 
