@@ -65,20 +65,19 @@ If given a list of environments to choose pick "ailadev"
    
    Use the arrow keys and select "Access Keys"
    
-   Access Key:
-   
-      AKIA6A6KUJWZGQR3OZW7
-   
-   Secret Access Key:
-   
-      Fu860GmuvRxina4JO8HRyB6X6dskazKhyOlGJgzJ
+   Retrieve the access keys from the aws.key file from another machine
       
    Finally you will be asked to pick your prefered region
    
    Use the arrow keys and select "us-east-2"
 
-You should be able to build the Xcode proect successfully now.
+You should be able to build the Xcode project successfully now.
 
 To ensure everything worked well run the app on your phone connected to the debugger and check for the message "Initialized Amplify" at the top of the debugging console. Also when you upload any piece of data to S3 ensure that the message "DONE UPLOADING DATA" appears in the console.
 
-                       
+
+## Plotly Dashboard
+To run the plotly dashboard follow the documentation "Apple Watch Dashboard Instructions"
+- You will need to get the aws.key file from a local machine or existing developer on this project
+    The aws.key file allows you to connect to the AWS backend and retrieve the apple watch data
+- Move aws.key file into the Plotly_Dashboard folder
