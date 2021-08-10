@@ -18,6 +18,7 @@ import Combine
 /// DESCRIPTION: The SettingsViewController class is responsible for allowing the user to be able to configure Cloud Vitals to upload certain or all or none of the data being transmitted from the apple watch. The class is also responsible for allowing the user to enable location and health data monitoring, and the ability for the app to track the user to get the device's UUID.
 class SettingsViewController: UITableViewController {
     
+    // MARK: Data Properties
     @IBOutlet var healthAuthButton: UIButton!
     @IBOutlet var locationAuthButton: UIButton!
     @IBOutlet var loginOnAppleWatch: UIButton!
@@ -47,7 +48,8 @@ class SettingsViewController: UITableViewController {
     var progressSink: AnyCancellable?
     var hiddenHRSwitches = true
     
-///    DESCRIPTION: The method is called when the interface is first loading. The method configures the attributes of interface items like adjusting the shape of the buttons. It also retrieves the login information and displays them on the screen. Finally the method configures the connection between the apple watch and the iphone for data transfer and communication.
+    // MARK: Init
+    ///    DESCRIPTION: The method is called when the interface is first loading. The method configures the attributes of interface items like adjusting the shape of the buttons. It also retrieves the login information and displays them on the screen. Finally the method configures the connection between the apple watch and the iphone for data transfer and communication.
     override func viewDidLoad() {
         super.viewDidLoad()
         var ID = sharedASIdentifierManager.advertisingIdentifier
@@ -93,6 +95,7 @@ class SettingsViewController: UITableViewController {
         return tableView.rowHeight
     }
     
+    // MARK: IBActions
     /// DESCRIPTION: The uploadAllToggled method is called when the user interacts with the "Upload All" Switch. When the user turns it on all the othe uploading switches will also turn on and when it is turned off all of the other switches do the same. Depending on the state of the switch all or non of the data being transmitted from the watch will be uploaded to AWS. The internal states of all the other switches are also altered when this switch is pressed.
     /// PARAMS: The parameters for this method are the Switch that was pressed.
     @IBAction func uploadAllToggled(_ sender: UISwitch) {
@@ -209,7 +212,7 @@ class SettingsViewController: UITableViewController {
     ///    DESCRIPTION: This method is called when the Refresh Apple Watch User Name button is pressed and it sends the username to the apple watch to be displayed on its main interface.
     ///    PARAMS: the sender which is the specific button that was pressed
     @IBAction func loginOnAppleWatchPressed(_ sender: UIButton) {
-        let userName = loginData.loginInfo()[2]
+//        let userName = loginData.loginInfo()[2]
         //        retrieve username from internal storage
         let ID = userDefaultsSettings.string(forKey: "UUID")!
         let data: [String: Any] = ["Name Label":"\(ID)" as Any]
@@ -261,6 +264,7 @@ class SettingsViewController: UITableViewController {
         //        initalize notification services and create notification with specific attributes
     }
     
+    /// DESCRIPTION: This method is calle when the "Enable Tracking Data" button is pressed in the settings page of the app. Pressing this button displays an alert to the user requesting for them to enable access for data tracking. If enabled the device's unique identifier will be displayed.
     @IBAction func enableTrackingPressed(_ sender: UIButton) {
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization(completionHandler: { (status) in
@@ -268,7 +272,7 @@ class SettingsViewController: UITableViewController {
                     let ID = self.sharedASIdentifierManager.advertisingIdentifier
                     DispatchQueue.main.async {
                     self.secretKeyLabel.text = ("\(ID)")
-                    self.userDefaultsSettings.setValue("\(ID)", forKey: "UUID")
+                    self.userDefaultsSettings.set("\(ID)", forKey: "UUID")
                     }
                 }
                 
@@ -278,6 +282,7 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    /// DESCRIPTION: When the "Sign Out" button is pressed the user is prompted with an alert asking them to confirm if they really want to sign out. The user is then taken back into the login page. This method is currently not in use since the login features have been disabled.
     @IBAction func signOutPressed(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Sign Out?", message: "Are you sure you want to sign out?", preferredStyle: .alert)
         //            create alert verifying if user wants to sign out
@@ -297,6 +302,7 @@ class SettingsViewController: UITableViewController {
         
     }
     
+    // MARK: Methods
     ///    DESCRIPTION: The configureWatchKitSession() allows the user to configure the connection between the iPhone and Apple Watch apps. It first checks if a session is supported and then gives it the default configuration if it is available.
         func configureWatchKitSession(){
             if WCSession.isSupported() {
@@ -309,6 +315,7 @@ class SettingsViewController: UITableViewController {
             }
         }
     
+    /// DESCRIPTION: The dataSwitchCheck method is called when the settings interface loads up and it checks the previous state of the uploading data switches and sets them to that previous state.
     func dataSwitchCheck() {
         let hbSwitchCheck = userDefaultsSettings.string(forKey: "HB Switch")
         let restingHRSwitchCheck = userDefaultsSettings.string(forKey: "RHR Switch")
@@ -390,6 +397,7 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    /// DESCRIPTION: The checkExtraSwitches method checks for wether the user had chosen to hide or display the extra heart rate switches. The method is called when the settings display loads up and it either hides or displays the switches depending on whether they were previously left hidden or displayed.
     func checkExtraSwitches() {
         if userDefaultsSettings.integer(forKey: "MORE SWITCHES") == 0 {
             hrDropDown.setImage(imageDown, for: .normal)
@@ -402,9 +410,10 @@ class SettingsViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    
 }
-// DESCRIPTION:
+
+// MARK: Extension
+// DESCRIPTION: Used for receiving message from the apple watch a more detailed description of this class extension can be found in DataViewController.swift.
 extension SettingsViewController: WCSessionDelegate {
     
     func sessionDidBecomeInactive(_ session: WCSession) {

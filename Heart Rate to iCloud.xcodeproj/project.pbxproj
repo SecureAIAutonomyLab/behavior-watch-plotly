@@ -259,7 +259,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		6825E5A9268273C700FDD1EE /* Model */ = {
+		6825E5A9268273C700FDD1EE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				F17D34F8260D8BB3001FFBAA /* IDInterfaceController.swift */,
@@ -270,42 +270,42 @@
 				68979C7426A08A2300D24E63 /* MapViewController.swift */,
 				68AFD99226A7444F0031508A /* ECGDataViewController.swift */,
 			);
-			path = Model;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		6825E5AA268273EF00FDD1EE /* Controller */ = {
+		6825E5AA268273EF00FDD1EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				68858A70269CD8740090D2DC /* Graphs Controller */,
 				F175B56C25CF2159006F140C /* Extensions.swift */,
 				F10BC24D25CF40A300869324 /* Session Handler.swift */,
+				68858A70269CD8740090D2DC /* Graphs Model */,
 				F1B2443525CF1E60004F8E02 /* HealthDataManager.swift */,
 				68B0B9E1268532F5006B9FC3 /* LoginDataManager.swift */,
 				68C1755E268638B1001549C1 /* AWSDataManager.swift */,
 				68CE7B7A26863D2D00791636 /* TimeStampCreator.swift */,
 				68C17811268E2C2E00A5D50E /* DayChangeManager.swift */,
 			);
-			path = Controller;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		6871E74B269752090091AA3E /* Model */ = {
+		6871E74B269752090091AA3E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				F1A72496260D849E00ECEBB8 /* SignInInterfaceController.swift */,
 				F107A30A25CF1A9400487410 /* InterfaceController.swift */,
 				F135E65A2633C55100D54A51 /* AccelerometerInterfaceController.swift */,
 			);
-			path = Model;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		68858A70269CD8740090D2DC /* Graphs Controller */ = {
+		68858A70269CD8740090D2DC /* Graphs Model */ = {
 			isa = PBXGroup;
 			children = (
 				68858A71269CD8900090D2DC /* GraphManager.swift */,
 				68858A73269CD8AB0090D2DC /* GraphType.swift */,
 				68858A75269CD92E0090D2DC /* UIColor+colorFromHex.swift */,
 			);
-			path = "Graphs Controller";
+			path = "Graphs Model";
 			sourceTree = "<group>";
 		};
 		80954D32D92940CDB7321B6E /* AmplifyConfig */ = {
@@ -352,9 +352,9 @@
 				F107A2CF25CF1A9100487410 /* AppDelegate.swift */,
 				F107A2D125CF1A9100487410 /* SceneDelegate.swift */,
 				F107A33325CF1C5D00487410 /* Heart Rate to iCloud.entitlements */,
-				6825E5A9268273C700FDD1EE /* Model */,
+				6825E5A9268273C700FDD1EE /* Controller */,
 				6825E5A8268273BE00FDD1EE /* View */,
-				6825E5AA268273EF00FDD1EE /* Controller */,
+				6825E5AA268273EF00FDD1EE /* Model */,
 				F107A2D825CF1A9200487410 /* Assets.xcassets */,
 				F107A2DA25CF1A9200487410 /* LaunchScreen.storyboard */,
 				F107A2DD25CF1A9200487410 /* Info.plist */,
@@ -394,7 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				F107A33725CF1C6200487410 /* Heart Rate to iCloud WatchKit Extension.entitlements */,
-				6871E74B269752090091AA3E /* Model */,
+				6871E74B269752090091AA3E /* Controller */,
 				F107A30C25CF1A9400487410 /* ExtensionDelegate.swift */,
 				F107A30E25CF1A9400487410 /* NotificationController.swift */,
 				F107A31025CF1A9400487410 /* ComplicationController.swift */,
@@ -1017,15 +1017,15 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Heart Rate to iCloud WatchKit Extension/Heart Rate to iCloud WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals.watchkitapp.watchkitextension";
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ailalab-devteam.Cloud-Health.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1042,15 +1042,15 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Heart Rate to iCloud WatchKit Extension/Heart Rate to iCloud WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals.watchkitapp.watchkitextension";
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ailalab-devteam.Cloud-Health.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1069,11 +1069,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				IBSC_MODULE = Heart_Rate_to_iCloud_WatchKit_Extension;
 				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit App/Info.plist";
-				MARKETING_VERSION = 5.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals.watchkitapp";
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ailalab-devteam.Cloud-Health.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1091,11 +1091,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				IBSC_MODULE = Heart_Rate_to_iCloud_WatchKit_Extension;
 				INFOPLIST_FILE = "Heart Rate to iCloud WatchKit App/Info.plist";
-				MARKETING_VERSION = 5.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals.watchkitapp";
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ailalab-devteam.Cloud-Health.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1114,15 +1114,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Heart Rate to iCloud/Heart Rate to iCloud.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				INFOPLIST_FILE = "Heart Rate to iCloud/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals";
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ailalab-devteam.Cloud-Health";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -1138,15 +1138,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Heart Rate to iCloud/Heart Rate to iCloud.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				INFOPLIST_FILE = "Heart Rate to iCloud/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-Aim-Industries.Cloud-Vitals";
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ailalab-devteam.Cloud-Health";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -1162,7 +1162,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				INFOPLIST_FILE = "Heart Rate to iCloudTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1186,7 +1186,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				INFOPLIST_FILE = "Heart Rate to iCloudTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1210,7 +1210,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				INFOPLIST_FILE = "Heart Rate to iCloudUITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1233,7 +1233,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YV65AQXUJQ;
+				DEVELOPMENT_TEAM = SW868926VH;
 				INFOPLIST_FILE = "Heart Rate to iCloudUITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (

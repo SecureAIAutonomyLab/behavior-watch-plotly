@@ -5,6 +5,8 @@
 //  Created by Victor Guzman on 6/24/21.
 //
 
+// MARK: UNUSED FILE
+
 import Foundation
 
 struct LoginDataManager {

@@ -2,10 +2,11 @@
 //  GraphType.swift
 //  GraphView
 //
-//  Created by Kelly Roach on 8/18/18.
+//  Created by Victor Guzman on 7/20/21
 //
 
-// The type of the current graph we are showing.
+// MARK: Graphs
+/// DESCRIPTION: The type of the current graph we are showing.
 enum GraphType {
     case heartBeat
     case bloodO2
@@ -17,6 +18,8 @@ enum GraphType {
     case result
     case ecg
     
+    // MARK: Cycles +
+    /// DESCRIPTION: The positive cycle for the graphs, cycles through the switch statement on case at a time when the "NEXT" button is pressed. Loops back to .heartBeat when it reaches the last case.
     mutating func next() {
         switch(self) {
         case .heartBeat:
@@ -40,6 +43,8 @@ enum GraphType {
         }
     }
     
+    // MARK: Cycles +
+    /// DESCRIPTION: The negative cycle for the graphs, cycles through the switch statement on case at a time when the "BACK" button is pressed. Loops back to .heartBeat when it reaches the last case.
     mutating func back() {
         switch(self) {
         case .heartBeat:

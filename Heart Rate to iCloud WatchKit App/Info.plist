@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.1-Aim-Industries.Cloud-Vitals</string>
+	<string>com.ailalab-devteam.Cloud-Health</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

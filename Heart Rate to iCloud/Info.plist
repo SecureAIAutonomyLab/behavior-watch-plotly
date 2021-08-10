@@ -4,13 +4,13 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.1-Aim-Industries.Cloud-VitalsBackgroundAppRefreshIdentifier</string>
-		<string>com.1-Aim-Industries.Cloud-VitalsAppBackgroundProcessingIdentifier</string>
+		<string>com.ailalab-devteam.Cloud-HealthBackgroundAppRefreshIdentifier</string>
+		<string>com.ailalab-devteam.Cloud-HealthAppBackgroundProcessingIdentifier</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Cloud Vitals</string>
+	<string>Cloud Health</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,18 +28,18 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fbcom.1-Aim-Industries.Cloud-Vitals</string>
+				<string>fbcom.ailalab-devteam.Cloud-Health</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>com.1-Aim-Industries.Cloud-Vitals</string>
+	<string>com.ailalab-devteam.Cloud-Health</string>
 	<key>FacebookClientToken</key>
-	<string>Cloud Vitals</string>
+	<string>Cloud Health</string>
 	<key>FacebookDisplayName</key>
-	<string>Cloud Vitals</string>
+	<string>Cloud Health</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -75,7 +75,7 @@
 			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
 			<true/>
 			<key>NSUbiquitousContainerName</key>
-			<string>[com.1-Aim-Industries.Cloud-Vitals]</string>
+			<string>[com.ailalab-devteam.Cloud-Health]</string>
 			<key>NSUbiquitousContainerSupportedFolderLevels</key>
 			<string>Any</string>
 		</dict>

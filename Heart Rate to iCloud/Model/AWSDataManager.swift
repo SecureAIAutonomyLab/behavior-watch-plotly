@@ -10,8 +10,10 @@ import Amplify
 import AmplifyPlugins
 import Combine
 
+/// DESCRIPTION: The AWSDataManager struct han
 struct AWSDataManager {
     
+    // MARK: Data Properties
     let loginData = LoginDataManager()
     let timeStamp = TimeStampCreator()
     let userDefaultsData = UserDefaults.standard
@@ -20,9 +22,10 @@ struct AWSDataManager {
     var resultSink: AnyCancellable?
     var progressSink: AnyCancellable?
     
-    
+    // MARK: Uploading Data
+    /// DESCRIPTION: Uploads data collected from the Apple Watch to an  AWS S3 bucket. The data from the apple watch is sent to this method and then appended to a master array that contains all of the data that has been uplaoded to the cloud since it is not possible to directly append data in S3. This appended array is then converted to an uploadable form of data and then once it is has been sent to upload the method monitors the uploading progress and notifies the user if the upload either failed or succeeded.
+    /// PARAMS: This method has three different parameters because there are so many ecgValues and accelValues that uploading each value as they are being monitored would crash the app. Each new ECG sample is uploaded as an array appended to the master array and each acceleration monitoring session is also uploaded as an array appended to the master array. Also the values in the ECG have a different timestamp since you can only access how many seconds into the sample that the value was collected at.
     mutating func uploadPhysiologicalData(vitalsValue: String, ecgValue: [String], accelValue: [String]) {
-        let username = loginData.loginInfo()[2]
         let uuid = userDefaultsData.string(forKey: "UUID")!
         var biometricInputArray: [String] = userDefaultsData.object(forKey: "Vitals Array6") as? [String] ?? []
         if biometricInputArray == [] {
@@ -82,7 +85,8 @@ struct AWSDataManager {
         
     }
     
-    //    DESCRIPTION: Configure the connection to amazon's amplify services and add authorization and storage plugins for AWS. Provides feedback on the success or failure of the operation notifying user if their connection to AWS was successful or not
+    // MARK: Configure AWS Connection
+    /// DESCRIPTION: Configure the connection to amazon's amplify services and add authorization and storage plugins for AWS. Provides feedback on the success or failure of the operation notifying user if their connection to AWS was successful or not
     func configureAmplify() {
         //        let models = AmplifyModels()
         //        let dataStorePlugin = AWSDataStorePlugin(modelRegistration: models)

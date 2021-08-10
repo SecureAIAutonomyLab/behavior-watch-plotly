@@ -8,10 +8,8 @@
 import UIKit
 import Amplify
 import AmplifyPlugins
-import AuthenticationServices
 import BackgroundTasks
-import GoogleSignIn
- 
+
 /// DESCRIPTION: The AppDelegate class handles objects that need to be initialized before the app screen is present to the user. The connection to AWS and the S3 bucket is established through here as well as setting up the Google Sign in feature. The ability for the app to run in the background is also configured here.
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let loginDataManager = LoginDataManager()
     let AWS = AWSDataManager()
 
+    // MARK: Init
     /// DESCRIPTION: The redeclaration of the application method is called when the app launches. Everytime the app is launched the connection to Amplify is established as well as the ability for the app to run in the background. The configuration for the notifications is also created here so that the notifications sent include an alert, banner, and sound.
     /// PARAMS: The parameters for this method are the application itself, and the options for launching the application in the fom of a .LaunchOptionsKey.
     /// RETURNS: When the application opens this method is called and it always returns true indicating that the app was successful in its launch.
@@ -36,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: UISceneSession Lifecycle
-    
     /// DESCRIPTION: This redeclaration of the application method is called when a new scene session is being created. Use this method to select a configuration to create the new scene with.
     /// PARAMS: The parameters for this method are the application that is running, the session that is being connected to and the the options for connecting to that scene.
     /// RETURNS: Once the method is called it returns a scene with the configuration that was set when the method was called.
@@ -49,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
+    
     /// DESCRIPTION: This redeclaration of the application method is called when the user discards a scene session. If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions. Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     /// PARAMS: The parameters for this method are the current application serving as the UIApplication parameter and the scenes that were discarded serving as the UISceneSession parameter
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
@@ -58,12 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         applicationDidEnterBackground(application)
         print("EXIT")
     }
-///  DESCRIPTION: Use background task identifiers to register the app to run with background tasks. The app will now enable background tasks an give the user the option to disbale the feature in the settings of the app in the phone's settings.
+    
+    // MARK: Background Setup
+    ///  DESCRIPTION: Use background task identifiers to register the app to run with background tasks. The app will now enable background tasks an give the user the option to disbale the feature in the settings of the app in the phone's settings.
     func registerBackgroundTasks() {
         // Declared at the "Permitted background task scheduler identifiers" in info.plist
-        let backgroundAppRefreshTaskSchedulerIdentifier = "com.1-Aim-Industries.Cloud-VitalsBackgroundAppRefreshIdentifier"
+        let backgroundAppRefreshTaskSchedulerIdentifier = "com.ailalab-devteam.Cloud-HealthBackgroundAppRefreshIdentifier"
         //        identifiers for background app refresh
-        let backgroundProcessingTaskSchedulerIdentifier = "com.1-Aim-Industries.Cloud-VitalsBackgroundProcessingIdentifier"
         //        identifiers for background processing
         
         // Use the identifier which represents your needs
@@ -80,16 +80,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             task.setTaskCompleted(success: isFetchingSuccess)
         }
     }
-///    DESCRIPTION: Checks if the app went into the background an calls the submitBackgroundTasks() method to call background tasks to run.
-///    PARAMS: The parameters are the application itself as a data type and whether or not the app went into background mode.
+    
+    ///    DESCRIPTION: Checks if the app went into the background an calls the submitBackgroundTasks() method to call background tasks to run.
+    ///    PARAMS: The parameters are the application itself as a data type and whether or not the app went into background mode.
     func applicationDidEnterBackground(_ application: UIApplication) {
         submitBackgroundTasks()
         //        check if app went in the background and run background functions
     }
-///    DESCRIPTION: If the app was detected entering the background mode this method will be called where the app will begin to run in the background.
+    
+    ///    DESCRIPTION: If the app was detected entering the background mode this method will be called where the app will begin to run in the background.
     func submitBackgroundTasks() {
         // Declared at the "Permitted background task scheduler identifiers" in info.plist
-        let backgroundAppRefreshTaskSchedulerIdentifier = "com.1-Aim-Industries.Cloud-VitalsBackgroundAppRefreshIdentifier"
+        let backgroundAppRefreshTaskSchedulerIdentifier = "com.ailalab-devteam.Cloud-HealthBackgroundAppRefreshIdentifier"
         let timeDelay = 10.0
         
         do {

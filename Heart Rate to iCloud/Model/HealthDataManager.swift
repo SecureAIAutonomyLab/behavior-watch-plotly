@@ -11,8 +11,10 @@ import WatchConnectivity
 import UIKit
 import CoreLocation
 
+/// DESCRIPTION: The HealthDataManager class uses the HealthKit API to run queries to retrieve the data from various sensors. The user's current location is also retrieved through this class. The data collected from the class can be used by either the AppleWatch or the iPhone app since it is a shared instance.
 class HealthDataManager {
     
+    // MARK: Data Properties
     static let sharedInstance = HealthDataManager()
     
     var healthStore: HKHealthStore?
@@ -37,23 +39,30 @@ class HealthDataManager {
     let dateFormatter = DateFormatter()
     //    variables for different units of measurement for the vitals
     
+    // MARK: Init
+    ///DESCRIPTION: Checks for whether health data is available and it guards against crashing if it is not.
+    //// RETURNS: Returns a boolean value of true or false depending on if the health data is available or not.
     func initialize() -> Bool {
         guard HKHealthStore.isHealthDataAvailable() else {
             print("Health data not available")
             return false
-            //            check if health data is available and guard against crashing if it is not
+            // check if health data is available and guard against crashing if it is not
         }
         healthStore = HKHealthStore()
         return true
     }
     
-    func requestAuthorization(completion: @escaping ((Bool) -> Void)) { //request authorization for quantityType biometrics
+    // MARK: Authorization Requests
+    /// DESCRIPTION: Presents an alert to the user that asks them to give the app access to various biometric data. Requests access for heartRate, oxygenSaturation, environmentalAudioExposure, restingHeartRate, heartRateVariabilitySDNN, and ECG. Checks if user gave access and if not throws an error in the console.
+    /// COMPLETION HANDLER: Uses a completion handler to throw a boolean value of true or false depending on whether the user gave access or not. This completion is called when the user grants or denies access and throws the booleans respectively.
+    func requestAuthorization(completion: @escaping ((Bool) -> Void)) {
+        //request authorization for quantityType biometrics
         if #available(iOS 14.0, *) {
             let healthDataTypes = Set([HKObjectType.quantityType(forIdentifier: .heartRate)!,HKObjectType.quantityType(forIdentifier: .oxygenSaturation)!,HKObjectType.quantityType(forIdentifier: .environmentalAudioExposure)!,HKObjectType.quantityType(forIdentifier: .restingHeartRate)!,HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!,(HKElectrocardiogramType.electrocardiogramType())])
             //        define data that you want to request authorization for
             healthStore?.requestAuthorization(toShare: nil, read: healthDataTypes, completion: { (success, error) in
                 if !success {
-                    print("Error getting autorization for heart rate, SPO2, and noise exposure data")
+                    print("Error getting autorization for Health Data")
                 }
                 //            handle any errors here
                 completion(success)
@@ -61,7 +70,8 @@ class HealthDataManager {
         }
     }
     
-    
+    /// DESCRIPTION: Presents the user with an alert that asks them to grant access to updating and reading sleep data. Throws an error if it returns false and if the user grants access the time slept is returned as a double.
+    /// COMPLETION HANDLER: The
     func retrieveSleepWithAuth(completion: @escaping (Double) -> ()) {
         
         let typestoRead = Set([
@@ -74,7 +84,7 @@ class HealthDataManager {
         //        request to read and write sleep data
         healthStore?.requestAuthorization(toShare: typestoShare, read: typestoRead) { (success, error) -> Void in
             if success == false {
-                NSLog(" Display not allowed")
+                NSLog("Display not allowed")
             } else {
                 self.getHealthKitSleep(completion: completion)
             }
@@ -82,6 +92,8 @@ class HealthDataManager {
         //         handle any errors when requesting sleep data
     }
     
+    /// DESCRIPTION: Presents the user with an alert asking them for permissiom to access their location. Whn access is granted the user's coordinates in decimal degrees is retrieved
+    /// RETURNS: The method returns an array of strings that represent the user's location in different formats depending on what they are being used for.
     func requestLocationAuthorization() -> [String] {
         var longitude = ""
         var latitude = ""
@@ -96,6 +108,15 @@ class HealthDataManager {
         return(["location:\(latitude) \(longitude)", longitude, latitude])
     }
     
+    
+    
+    // MARK: OBSERVE DATA
+    
+    
+    
+    //MARK: Heart Beat
+    /// DESCRIPTION: This method executes the heart beat query method when called and creates a heart rate value as a double that is in the units of beats per minute. Also the method protects against any errors when runing the query.
+    /// COMPLETION HANDLER: When query is successfully executed and a heart beat value is produced the value is returned through the completion handler so that it can be accessed by other classes.
     func observeHeartRateSamples(_ newHeartRate: ((Double) -> (Void))?) {
         let heartRateSampleType = HKObjectType.quantityType(forIdentifier: .heartRate)
         //        assign variable to heart rate quantity type
@@ -125,6 +146,9 @@ class HealthDataManager {
         }
     }
     
+    // MARK: Resting Heart Rate
+    /// DESCRIPTION: This method executes the resting heart beat query method when called and creates a resting heart rate value as a double that is in the units of beats per minute. Also the method protects against any errors when runing the query.
+    /// COMPLETION HANDLER: When query is successfully executed and a resting heart beat value is produced the value is returned through the completion handler so that it can be accessed by other classes.
     func observeRestingHeartRate(_ restingHR: ((Double) -> (Void))?) {
         let restingHeartRateSampleType = HKObjectType.quantityType(forIdentifier: .restingHeartRate)
         //        assign variable to heart rate quantity type
@@ -154,6 +178,9 @@ class HealthDataManager {
         }
     }
     
+    // MARK: Blood O2
+    /// DESCRIPTION: This method executes the blood o2 query method when called and creates a blood o2 value as a double that is in the units of percent. Also the method protects against any errors when runing the query.
+    /// COMPLETION HANDLER: When query is successfully executed and a blood o2 value is produced the value is returned through the completion handler so that it can be accessed by other classes.
     func observeSPO2Samples(_ newSPO2: ((Double) -> (Void))?) {
         let SPO2SampleType = HKObjectType.quantityType(forIdentifier: .oxygenSaturation)
         
@@ -182,7 +209,9 @@ class HealthDataManager {
         }
     }
     
-    
+    // MARK: Noise Exposure
+    /// DESCRIPTION: This method executes the noise exposure query method when called and creates a noise exposure value as a double that is in the units of decibels. Also the method protects against any errors when runing the query.
+    /// COMPLETION HANDLER: When query is successfully executed and a noise exposure value is produced the value is returned through the completion handler so that it can be accessed by other classes.
     func observeEnvAudioSamples(_ newNoise: ((Double) -> (Void))?) {
         let NoiseEXSampleType = HKObjectType.quantityType(forIdentifier: .environmentalAudioExposure)
         
@@ -213,6 +242,14 @@ class HealthDataManager {
     }
     
     
+    
+    // MARK: QUERY DATA
+    
+    
+    
+    // MARK: Heart Beat (Query)
+    /// DESCRIPTION: This method configures an observer query that is able to access the most recent heart rate values being recorded by the apple watch through the HealthKit API. This query filters data from the distant past to the current date and sorts the data in descending order. Any errors that occur while running the query are also handled. There is also a protection against the absence of data to prevent the completion handler from returning nil.
+    /// COMPLETION HANDLER: When data is successfully accquired the completion handler returns the raw heart rate value as a HKQuantitySample that is used by the observeHeartRateSamples() method to produce a usable heart rate value.
     func fetchLatestHeartRateSample(completionHandler: @escaping (_ sample: HKQuantitySample?) -> Void) {
         guard let sampleType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate) else {
             completionHandler(nil)
@@ -236,6 +273,9 @@ class HealthDataManager {
         healthStore?.execute(query)
     }
     
+    // MARK: Resting Heart Rate (Query)
+    /// DESCRIPTION: This method configures an observer query that is able to access the most recent resting heart rate values being recorded by the apple watch through the HealthKit API. This query filters data from the distant past to the current date and sorts the data in descending order. Any errors that occur while running the query are also handled. There is also a protection against the absence of data to prevent the completion handler from returning nil.
+    /// COMPLETION HANDLER: When data is successfully accquired the completion handler returns the raw resting heart rate value as a HKQuantitySample that is used by the observeRestingHeartRate() method to produce a usable resting heart rate value.
     func fetchLatestRestingHR(completionHandler: @escaping (_ sample: HKQuantitySample?) -> Void) {
         guard let sampleType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.restingHeartRate) else {
             completionHandler(nil)
@@ -259,6 +299,9 @@ class HealthDataManager {
         healthStore?.execute(query5)
     }
     
+    // MARK: Blood O2 (Query)
+    /// DESCRIPTION: This method configures an observer query that is able to access the most recent blood o2 values being recorded by the apple watch through the HealthKit API. This query filters data from the distant past to the current date and sorts the data in descending order. Any errors that occur while running the query are also handled. There is also a protection against the absence of data to prevent the completion handler from returning nil.
+    /// COMPLETION HANDLER: When data is successfully accquired the completion handler returns the raw blood o2 value as a HKQuantitySample that is used by the observeSPO2Samples() method to produce a usable blood o2 value.
     func fetchLatestSPO2Samples(completionHandler: @escaping (_ sample: HKQuantitySample?) -> Void) {
         guard let sampleType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.oxygenSaturation) else {
             completionHandler(nil)
@@ -283,6 +326,9 @@ class HealthDataManager {
         healthStore?.execute(query2)
     }
     
+    // MARK: Noise Exposure (Query)
+    /// DESCRIPTION: This method configures an observer query that is able to access the most recent noise exposure values being recorded by the apple watch through the HealthKit API. This query filters data from the distant past to the current date and sorts the data in descending order. Any errors that occur while running the query are also handled. There is also a protection against the absence of data to prevent the completion handler from returning nil.
+    /// COMPLETION HANDLER: When data is successfully accquired the completion handler returns the raw noise exposure value as a HKQuantitySample that is used by the observeEnvAudioSamples() method to produce a usable noise exposure value.
     func fetchLatestNoiseEXSamples(completionHandler: @escaping (_ sample3: HKQuantitySample?) -> Void) {
         guard let sampleType3 = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.environmentalAudioExposure) else {
             completionHandler(nil)
@@ -310,6 +356,9 @@ class HealthDataManager {
         healthStore?.execute(query3)
     }
     
+    // MARK: Time Slept (Sample Query)
+    /// DESCRIPTION: This method uses the HealthKit API to gather all of the time intervals for which the user was asleep and then adds them together to produce the total time asleep. A sample query is configured to access the sleep data. The method only gathers data from the past 24 hours and sorts it in a descending order. The data is added together and converted into a double value that represents the user's time asleep in the previous night in seconds.
+    /// COMPLETION HANDLER: When the method successfully runs the completion handler returns the total time asleep value as a double allowing it be used by other classes.
     func getHealthKitSleep(completion: @escaping (Double) -> ()) {
         let healthStore = HKHealthStore()
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
@@ -346,7 +395,8 @@ class HealthDataManager {
         healthStore.execute(sleepQuery)
     }
     
-    
+    // MARK: HRV (Statistics Query)
+    /// DESCRIPTION: This method runs a statistics query to retrieve the lastest heart rate variability value. It gathers the most recent sample up until the current date. Once the HRV value has been retrieved it is pushed to the main thread and internally stored so that it can be used later on in different classes.
     func sdnnQuery() {
         guard let heartRateVar = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRateVariabilitySDNN) else{
             fatalError("*** Unable to get the step count type ***")
@@ -391,6 +441,9 @@ class HealthDataManager {
         
     }
     
+    // MARK: ECG (ECG Query)
+    /// DESCRIPTION: This method runs an ECG query that retrieves all of the voltages across the heart beat recorded during the ECG sample. The data is only gathered from the most recent ECG sample. The voltages and average heart rate during the ECG are internally stored and the classifcation is accessed through the completion handler. A switch statement is created to find out what the classfication of the ECG is since the classification is initially just an integer.
+    /// COMPLETION HANDLER: When the query completes the classification of the most recent ECG is returned through the completion handler as a string so that it can be accessed by other classes.
     func ecgQuery(completion: @escaping (String) -> ()) {
         if #available(iOS 14.0, *) {
             dateFormatter.dateFormat = "MM/dd/yy-HH:mm:ss"

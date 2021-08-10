@@ -233,11 +233,6 @@
             <objects>
                 <controller id="KVd-xu-ujr" customClass="AccelerometerInterfaceController" customModule="Heart_Rate_to_iCloud_WatchKit_Extension">
                     <items>
-                        <dateLabel alignment="left" hidden="YES" format="zMMMM/d/yy HH:mm:ss" id="vBm-vM-zim">
-                            <date key="previewedDate" timeIntervalSinceReferenceDate="437256540">
-                                <!--2014-11-09 20:09:00 +0000-->
-                            </date>
-                        </dateLabel>
                         <label width="136" height="111" alignment="center" text="Name/ID" textAlignment="center" numberOfLines="4" id="Lhb-4A-XYc">
                             <fontDescription key="font" style="UICTFontTextStyleBody"/>
                         </label>
@@ -248,7 +243,6 @@
                     </items>
                     <color key="backgroundColor" red="0.074586845930000006" green="0.070505000649999996" blue="0.074607960880000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
-                        <outlet property="currentTimeStamp" destination="vBm-vM-zim" id="YKK-Nn-A9r"/>
                         <outlet property="userNameLabel" destination="Lhb-4A-XYc" id="vDP-SR-ICZ"/>
                     </connections>
                 </controller>

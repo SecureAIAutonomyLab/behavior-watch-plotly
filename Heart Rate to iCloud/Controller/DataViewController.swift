@@ -21,6 +21,7 @@ import UserNotifications
 /// DESCRIPTION: The DataViewController class inherits the UITableViewController class which allows it to have a table like interface and access all properties of table like interfaces. The class handles displaying all of the data collected from the Apple Watch and calls methods to send the data to AWS. Extra heart beat data can also be presented through the class if the user selects the "moreHRDataPressed" button The class also handles navigating between other pages of Cloud Vitals.
 class DataViewController: UITableViewController{
     
+    // MARK: Data Properties
     @IBOutlet var heartBeatLabel: UILabel!
     @IBOutlet var SPO2iOS: UILabel!
     @IBOutlet var avgLongTermNE: UILabel!
@@ -56,6 +57,7 @@ class DataViewController: UITableViewController{
     let imageConnected = UIImage(systemName: "checkmark.icloud.fill")
     let imageDisconnected = UIImage(systemName: "xmark.icloud.fill")
     
+    // MARK: Init
     /// DESCRIPTION: When the homescreen is loading the interfaced is configured with the following attributes. The navigation buttons are configured to have curved corners. The connection with the Apple Watch component is also established when the view is loading.
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -67,17 +69,6 @@ class DataViewController: UITableViewController{
         configureWatchKitSession()
     }
     
-    /// DESCRIPTION: The configureWatchKitSession() allows the user to configure the connection between the iPhone and Apple Watch apps. It first checks if a session is supported and then gives it the default configuration if it is available.
-    func configureWatchKitSession(){
-        if WCSession.isSupported() {
-            //            check if apple watch sessions are supported
-            session = WCSession.default
-            //            create variable and set it to default watch session config.
-            session?.delegate = self
-            session?.activate()
-            //            begin session
-        }
-    }
     /// DESCRIPTION: The tableView function configures the top table view to hide and show the resting heart beat row in case the user decides they want to view extra heart beat data.
     /// PARAMS: The parameters for the table view method are the UITableView that is being configured and the index path of the section and row that is being configured in the table view.
     /// RETURNS: The tableView method returns a CGFloat that determines the height of table view cell that is being transformed by the function.
@@ -104,6 +95,7 @@ class DataViewController: UITableViewController{
         return tableView.rowHeight
     }
     
+    // MARK: IBActions
     /// DESCRIPTION: When the chevron arrow next to the heart beat label is pressed this method is called and it checks whether the user wants to display extra heart beat info or hide that info based on the current state of the button. When either scenario occurs the method either hides the cells with the extra heart beat info or presents them to teh user through internal storage of variables. The image associated with the button is also changed to point either up or down.
     /// PARAMS: The sender parameter references the button that was pressed.
     @IBAction func moreHRDataPressed(_ sender: UIButton) {
@@ -157,6 +149,19 @@ class DataViewController: UITableViewController{
             userDefaultsVitals.set("Stop Location", forKey: "Location Loop")
         }
         
+    }
+    
+    // MARK: Methods
+    /// DESCRIPTION: The configureWatchKitSession() allows the user to configure the connection between the iPhone and Apple Watch apps. It first checks if a session is supported and then gives it the default configuration if it is available.
+    func configureWatchKitSession(){
+        if WCSession.isSupported() {
+            //            check if apple watch sessions are supported
+            session = WCSession.default
+            //            create variable and set it to default watch session config.
+            session?.delegate = self
+            session?.activate()
+            //            begin session
+        }
     }
     
     /// DESCRIPTION: When this method is called all of the mutating labels on the interface are cleared to only represent "--". This is used once the user has decided to stop monitoring their data.
@@ -234,6 +239,7 @@ class DataViewController: UITableViewController{
     }
 }
 
+// MARK: Extension
 /// DESCRIPTION: The extension to the DataViewController class contains all of the available methods from the UIViewController class and now it conforms to the WCSessionDelegate protocol. The extension is mainly responsible for handling the incoming data stream from the apple watch. Most of the data is the physiological data that is collected by the apple watch but the rest is mainly 
 extension DataViewController: WCSessionDelegate {
     
@@ -254,6 +260,7 @@ extension DataViewController: WCSessionDelegate {
     
     /// DESCRIPTION: This redeclaration of the session method is called when a message from the apple watch is sent through the watch connectivity pipeline and received by the iPhone. Here the message can be processed and even displayed on the interface. This method is responsible for handling all of the physiological, acceleration, and location data that is being transmitted by the apple watch. The moment any piece of data is received it is displayed on the interface in real time and updates whenever the data changes. The method also sends the data to the AWSDataManager to upload the data to the cloud if their respective uploading switches are enabled. That same data is also stored locally so as to not overwrite any data that is already in the cloud. Smaller arrays of each type of data are also internally stored to present the data on the built dashboard of Cloud Vitals. Whether the user has selected to start or stop monitoring is also checked in this method because a message from the watch is sent to the iPhone when the user stops or starts monitoring their data on the watch.
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        // MARK: Empty Arrays
         var heartBeatArray: [String] = []
         var timeStampArray1: [String] = []
         var bloodO2Array: [String] = []
@@ -275,6 +282,7 @@ extension DataViewController: WCSessionDelegate {
         var xyzUpload: [String] = []
         var resultantUpload: [String] = []
         let timeStamp = TimeStampCreator()
+        // MARK: Individual Storage Constants
         let hbSwitchCheck = userDefaultsVitals.string(forKey: "HB Switch")
         let restingHRSwitchCheck = userDefaultsVitals.string(forKey: "RHR Switch")
         let hrvSwitchCheck = userDefaultsVitals.string(forKey: "HRV Switch")
@@ -296,9 +304,10 @@ extension DataViewController: WCSessionDelegate {
         var newRUploadArray = userDefaultsVitals.stringArray(forKey: "R Upload")
         let ecgUpload = userDefaultsVitals.stringArray(forKey: "ECG Upload")
         
-        //        retrieve state of data switch
         DispatchQueue.main.async {
-            //            run in main thread
+            // run in main thread
+            
+            // MARK: Heart Rate
             if let heartRate = message["hr"] as? String {
                 //                check if message from apple watch is for heart rate
                 let heartRateFormat = ("\(heartRate) BPM")
@@ -327,6 +336,7 @@ extension DataViewController: WCSessionDelegate {
                 }
             }
             
+            // MARK: Blood O2
             if let SPO2 = message["spo2"] as? String {
                 //                check if message is for SPO2
                 self.SPO2iOS.text = ("\(SPO2)%")
@@ -352,6 +362,7 @@ extension DataViewController: WCSessionDelegate {
                 }
             }
             
+            // MARK: Noise Exposure
             if let noiseExpos = message["NoiseEx"] as? String {
                 //                check if message is for long term noise exposure
                 self.avgLongTermNE.text = ("\(noiseExpos) dB")
@@ -377,6 +388,7 @@ extension DataViewController: WCSessionDelegate {
                 }
             }
             
+            // MARK: Time Slept
             if let sleepTime = message["SleepTime"] as? Double {
                 //                check if message is for sleep
                 let sleepInHours = sleepTime/3600
@@ -417,7 +429,7 @@ extension DataViewController: WCSessionDelegate {
                 }
             }
             
-            
+            // MARK: Resting Heart Rate
             if let restingHR = message["restingHR"] as? String {
                 let restingHRFormat = ("\(restingHR) BPM")
                 self.restingHRLabel.text = restingHRFormat
@@ -445,6 +457,7 @@ extension DataViewController: WCSessionDelegate {
                 }
             }
             
+            // MARK: Heart Rate Variability
             if let hrvValue = message["hrv"] as? String {
                 let hrvFormat = ("\(hrvValue) ms")
                 self.hrvLabel.text = hrvFormat
@@ -470,6 +483,7 @@ extension DataViewController: WCSessionDelegate {
                 }
             }
             
+            // MARK: XYZ Accelerations
             if let xyzArray = message["Array"] as? [Double] {
                 self.xAccelLabel.text = ("\(xyzArray[0])")
                 self.yAccelLabel.text = ("\(xyzArray[1])")
@@ -515,6 +529,7 @@ extension DataViewController: WCSessionDelegate {
                 //                upload xyz values if enabled
             }
             
+            // MARK: Resultant Accelerations
             if let resultantXYZ = message["Resultant"] as? Double {
                 let resultantRound = Double(round(1000*resultantXYZ)/1000)
                 self.resultAccelLabel.text = ("\(resultantRound)")
@@ -546,6 +561,7 @@ extension DataViewController: WCSessionDelegate {
                 //                upload resultant values if enabled
             }
             
+            // MARK: Check for Start
             if (message["Start Pressed"] as? String) != nil {
                 //                check if user started monitoring on apple watch
                 //                check for state of monitor button on the apple watch
@@ -560,6 +576,7 @@ extension DataViewController: WCSessionDelegate {
                         }
                     }
                 }
+                
                 if xyzSwitchCheck == "ON" && newXArray != nil {
                     self.userDefaultsVitals.setValue("Start", forKey: "Check Pressed")
                     var newXArray = self.userDefaultsVitals.stringArray(forKey: "X Array")!
@@ -587,6 +604,7 @@ extension DataViewController: WCSessionDelegate {
                 }
             }
             
+            // MARK: Check For Stop
             if (message["Stop Pressed"] as? String) != nil {
                 //                check user stopped monitoring data on apple watch
                 self.clearDataFields()
